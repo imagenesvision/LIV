@@ -422,10 +422,19 @@ nav, .banner {
     background-color: #1d4ed8;
 }
 
-/* Ocultar el contenido extra por defecto */
+/* Ocultar el contenido y preparar la animación */
 .contenido-extra {
     display: none;
     margin-top: 15px;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Duración del desvanecido: medio segundo */
+}
+
+/* Clase que aplicaremos con JavaScript para mostrar el texto suavemente */
+.contenido-extra.visible {
+    display: block;
+    opacity: 1;
+}
 }
     </style>
 </head>
@@ -493,33 +502,43 @@ nav, .banner {
     </div>
 </section>
 
-    <section id="proyectos">
-    <h2>Últimos proyectos.</h2>
-    <div class="contenido-publicacion">
-        <p><strong>¡Resumen del artículo!</strong> Aquí va lo primero que ve el usuario.</p>
-        
-        <div class="contenido-extra" id="extra1">
-            <p>Aquí va todo el texto largo, detalles técnicos, más fotos o listas que no quieres que ocupen espacio de entrada.</p>
-        </div>
-
-        <button class="btn-leer-mas" onclick="toggleContenido('extra1', this)">Leer más</button>
-    </div>
-</section>
-    </div>
-</section>
-
-        <section id="novedades">
+    <section id="novedades">
     <h2>Últimas Novedades</h2>
-    <div class="contenido-publicacion">
-        <p><strong>¡Resumen de la noticia!</strong> Aquí va lo primero que ve el usuario.</p>
-        
-        <div class="contenido-extra" id="extra1">
-            <p>Aquí va todo el texto largo, detalles técnicos, más fotos o listas que no quieres que ocupen espacio de entrada.</p>
-            <img src="foto-detalle.jpg" class="imagen-publicacion">
-        </div>
 
-        <button class="btn-leer-mas" onclick="toggleContenido('extra1', this)">Leer más</button>
+    <div class="contenido-publicacion">
+        <p><strong>Novedad #1:</strong> ¡Llegamos a GitHub!</p>
+        <div class="contenido-extra" id="novedad_1">
+            <p>Estamos muy felices de lanzar nuestra web oficial. Aquí compartiremos todo nuestro progreso paso a paso.</p>
+        </div>
+        <button class="btn-leer-mas" onclick="toggleContenido('novedad_1', this)">Leer más ↓</button>
     </div>
+
+    <hr style="opacity: 0.1; margin: 20px 0;"> <div class="contenido-publicacion">
+        <p><strong>Novedad #2:</strong> Actualización de diseño móvil.</p>
+        <div class="contenido-extra" id="novedad_2">
+            <p>Hemos corregido los errores de visualización en celulares para que la experiencia sea mucho más fluida para todos.</p>
+        </div>
+        <button class="btn-leer-mas" onclick="toggleContenido('novedad_2', this)">Leer más ↓</button>
+    </div>
+</section>
+
+
+<section id="proyectos">
+    <h2>Nuestros Proyectos</h2>
+
+    <div class="contenido-publicacion">
+        <p><strong>Proyecto Alfa:</strong> Sistema de Gestión.</p>
+        <div class="contenido-extra" id="proyecto_alfa">
+            <p>Este proyecto busca automatizar las tareas diarias. Incluye:</p>
+            <ul>
+                <li>Base de datos en la nube.</li>
+                <li>Panel de control intuitivo.</li>
+                <li>Reportes en tiempo real.</li>
+            </ul>
+        </div>
+        <button class="btn-leer-mas" onclick="toggleContenido('proyecto_alfa', this)">Leer más ↓</button>
+    </div>
+</section>
             
 </section>
     </div>
@@ -553,17 +572,30 @@ nav, .banner {
     </div>
 </footer>
 
-    <script>
+<script>
 function toggleContenido(id, boton) {
     var elemento = document.getElementById(id);
-    if (elemento.style.display === "block") {
-        elemento.style.display = "none";
+    
+    if (elemento.classList.contains('visible')) {
+        // Si está visible, lo ocultamos
+        elemento.style.opacity = "0";
+        setTimeout(function() {
+            elemento.classList.remove('visible');
+            elemento.style.display = "none";
+        }, 500); // Espera a que termine la animación para quitar el bloque
         boton.innerHTML = "Leer más";
     } else {
+        // Si está oculto, lo mostramos
         elemento.style.display = "block";
+        // Pequeño retraso para que el navegador detecte el cambio y anime la opacidad
+        setTimeout(function() {
+            elemento.classList.add('visible');
+            elemento.style.opacity = "1";
+        }, 10);
         boton.innerHTML = "Leer menos";
     }
 }
+
 </script>
 </body>
 </html>

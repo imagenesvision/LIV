@@ -405,6 +405,28 @@ nav, .banner {
     display: block;
     margin-bottom: 10px;
 }
+        /* Estilo del botón Leer más */
+.btn-leer-mas {
+    background-color: #243e36;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-leer-mas:hover {
+    background-color: #1d4ed8;
+}
+
+/* Ocultar el contenido extra por defecto */
+.contenido-extra {
+    display: none;
+    margin-top: 15px;
+}
     </style>
 </head>
 <body>
@@ -471,23 +493,34 @@ nav, .banner {
     </div>
 </section>
 
-        <section id="proyectos">
-    <h2>Proyectos Recientes</h2>
+    <section id="proyectos">
+    <h2>Últimos proyectos.</h2>
     <div class="contenido-publicacion">
-        <span class="fecha-publicacion">Publicado el 20 de Febrero, 2026</span>
-        <img src="proyecto1.jpg" alt="Proyecto" class="imagen-publicacion">
-        <p>TITULO:</p>
-        <ul>
-            <li>TEXTO.</li>
-        </ul>
+        <p><strong>¡Resumen del artículo!</strong> Aquí va lo primero que ve el usuario.</p>
+        
+        <div class="contenido-extra" id="extra1">
+            <p>Aquí va todo el texto largo, detalles técnicos, más fotos o listas que no quieres que ocupen espacio de entrada.</p>
+        </div>
+
+        <button class="btn-leer-mas" onclick="toggleContenido('extra1', this)">Leer más</button>
+    </div>
+</section>
     </div>
 </section>
 
         <section id="novedades">
     <h2>Últimas Novedades</h2>
     <div class="contenido-publicacion">
-        <p>TEXTOS</p>
+        <p><strong>¡Resumen de la noticia!</strong> Aquí va lo primero que ve el usuario.</p>
+        
+        <div class="contenido-extra" id="extra1">
+            <p>Aquí va todo el texto largo, detalles técnicos, más fotos o listas que no quieres que ocupen espacio de entrada.</p>
+            <img src="foto-detalle.jpg" class="imagen-publicacion">
+        </div>
+
+        <button class="btn-leer-mas" onclick="toggleContenido('extra1', this)">Leer más</button>
     </div>
+            
 </section>
     </div>
 
@@ -520,5 +553,17 @@ nav, .banner {
     </div>
 </footer>
 
+    <script>
+function toggleContenido(id, boton) {
+    var elemento = document.getElementById(id);
+    if (elemento.style.display === "block") {
+        elemento.style.display = "none";
+        boton.innerHTML = "Leer más";
+    } else {
+        elemento.style.display = "block";
+        boton.innerHTML = "Leer menos";
+    }
+}
+</script>
 </body>
 </html>

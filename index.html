@@ -435,6 +435,33 @@ nav, .banner {
     display: block;
     opacity: 1;
 }
+/* Estilo para autor, fecha y link */
+.publicacion-meta {
+    font-size: 0.85rem;
+    color: #64748b; /* Gris suave */
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Espacio entre autor y fecha */
+}
+
+.publicacion-meta span {
+    display: flex;
+    align-items: center;
+}
+
+.link-proyecto {
+    display: inline-block;
+    margin-top: 15px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.link-proyecto:hover {
+    border-bottom: 2px solid #2563eb;
 }
     </style>
 </head>
@@ -502,38 +529,43 @@ nav, .banner {
     </div>
 </section>
 
-    <section id="novedades">
-    <h2>Últimas Novedades</h2>
+    <section id="proyectos">
+    <h2>Últimos proyectos</h2>
 
-    <div class="contenido-publicacion">
-        <p><strong>Novedad #1:</strong> ¡Llegamos a GitHub!</p>
-        <div class="contenido-extra" id="novedad_1">
-            <p>Estamos muy felices de lanzar nuestra web oficial. Aquí compartiremos todo nuestro progreso paso a paso.</p>
-        </div>
-        <button class="btn-leer-mas" onclick="toggleContenido('novedad_1', this)">Leer más ↓</button>
+   <div class="contenido-publicacion">
+    <p><strong>Proyecto 1: titulo</strong></p>
+    
+    <div class="publicacion-meta">
+        <span>👤 Escrito por: nombre y apellido</span>
+        <span>📅 22 de Febrero, 2026</span>
     </div>
 
-    <hr style="opacity: 0.1; margin: 20px 0;"> <div class="contenido-publicacion">
-        <p><strong>Novedad #2:</strong> Actualización de diseño móvil.</p>
-        <div class="contenido-extra" id="novedad_2">
-            <p>Hemos corregido los errores de visualización en celulares para que la experiencia sea mucho más fluida para todos.</p>
-        </div>
-        <button class="btn-leer-mas" onclick="toggleContenido('novedad_2', this)">Leer más ↓</button>
+    <p>Breve descripción.</p>
+    
+    <div class="contenido-extra" id="proyecto_1">
+        <p>Detalles técnicos del desarrollo y herramientas utilizadas.</p>
+        
+        <a href="https://tu-enlace-aqui.com" target="_blank" class="link-proyecto">
+            🔗 Ver proyecto en vivo →
+        </a>
+    </div>
+
+    <button class="btn-leer-mas" onclick="toggleContenido('proyecto_1', this)">Leer más ↓</button>
+</div>
     </div>
 </section>
 
 
-<section id="proyectos">
-    <h2>Nuestros Proyectos</h2>
+<section id="novedades">
+    <h2>Últimas novedades</h2>
 
     <div class="contenido-publicacion">
-        <p><strong>Proyecto Alfa:</strong> Sistema de Gestión.</p>
+        <p><strong>Novedad1</strong> titulo.</p>
         <div class="contenido-extra" id="proyecto_alfa">
-            <p>Este proyecto busca automatizar las tareas diarias. Incluye:</p>
+            <p>Descripción y puntos importantes</p>
             <ul>
-                <li>Base de datos en la nube.</li>
-                <li>Panel de control intuitivo.</li>
-                <li>Reportes en tiempo real.</li>
+                <li>Punto 1</li>
+                <li>Punto 2</li>
             </ul>
         </div>
         <button class="btn-leer-mas" onclick="toggleContenido('proyecto_alfa', this)">Leer más ↓</button>

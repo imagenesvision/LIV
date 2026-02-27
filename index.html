@@ -5,20 +5,465 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIV</title>
     
-    <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIV</title>
-    
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+<style>
+    :root {
+            --color-primario: #243e36;
+            --color-secundario: #fafffd;
+            --texto-oscuro: #000000;
+            --texto-claro: #fafffd;
+            --blanco: #ffffff;
+        }
 
-    <script src="js/scripts.js"></script>
-</body>
-</html>
+        html { scroll-behavior: smooth; }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            background-color: var(--color-secundario);
+            color: var(--texto-oscuro);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 1. NAVEGACIÓN */
+/* --- NAVEGACIÓN BASE (PC) --- */
+nav { 
+    background: #fafffd; 
+    padding: 10px 5%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky; top: 0; z-index: 1000;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo { height: 60px; width: auto; }
+.nombre-pagina { font-size: 1.4rem; font-weight: bold; color: #5fad41; }
+
+.nav-links { display: flex; gap: 10px; }
+.nav-links a { 
+    text-decoration: none; color: #333; padding: 10px 15px; 
+    border-radius: 20px; font-weight: 600; transition: 0.3s; background: #fafffd;
+}
+
+/* --- AJUSTE PARA CELULAR (EL CAMBIO REAL) --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Pone el nombre arriba y el menú abajo */
+        padding: 15px;
+        height: auto;
+    }
+
+    .brand {
+        margin-bottom: 15px; /* Separa el logo de los botones */
+        justify-content: center;
+        width: 100%;
+    }
+
+    .logo {
+        height: 50px; /* Un poco más pequeño en móvil */
+    }
+
+    .nombre-pagina {
+        font-size: 1.1rem; /* Texto más cómodo */
+    }
+
+    .nav-links {
+        display: grid; /* Convertimos el menú en una rejilla */
+        grid-template-columns: 1fr 1fr; /* Dos botones por fila */
+        gap: 8px;
+        width: 100%; /* Que ocupe todo el ancho */
+    }
+
+    .nav-links a {
+        display: block;
+        text-align: center;
+        margin: 0;
+        font-size: 0.85rem;
+        padding: 12px 5px; /* Más gorditos para que sea fácil de tocar */
+        background: #f1f5f9; /* Color de fondo para que parezcan botones reales */
+    }
+}
+        /* 2. BANNER LIMPIO */
+        .banner { 
+            width: 100%;
+            height: 450px;
+            background: url('../img/banner.jpg') no-repeat center center/cover; 
+        }
+
+        /* 3. CONTENIDO */
+        .container { 
+            max-width: 1100px; 
+            margin: 40px auto; 
+            padding: 0 20px;
+            flex: 1; /* Esto empuja el footer hacia abajo */
+        }
+
+        section { 
+            background: var(--blanco); padding: 40px; margin-bottom: 30px; 
+            border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+        }
+
+        h2 { color: var(--color-primario); margin-top: 0; }
+
+        /* 4. MIEMBROS */
+        /* Contenedor que permite el deslizamiento horizontal */
+.miembros-wrapper {
+    display: flex;          /* Alinea los miembros en una fila */
+    overflow-x: auto;       /* Habilita el scroll horizontal */
+    gap: 20px;              /* Espacio entre cada tarjeta */
+    padding: 20px 10px;     /* Espacio para que no se corten las sombras */
+    scroll-snap-type: x mandatory; /* Hace que el scroll se detenga justo en cada tarjeta */
+    -webkit-overflow-scrolling: touch; /* Suavidad extra en iPhones */
+}
+
+/* Ocultar la barra de scroll en algunos navegadores para que se vea más limpio */
+.miembros-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+.miembros-wrapper::-webkit-scrollbar-thumb {
+    background: var(--color-primario);
+    border-radius: 10px;
+}
+
+/* Cada tarjeta de miembro */
+.miembro-card {
+    min-width: 260px;       /* Ancho de cada tarjeta */
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    text-align: center;
+    flex-shrink: 0;         /* Evita que las tarjetas se achiquen */
+    scroll-snap-align: start; /* Alineación al deslizar */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.foto-4x4 {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 3px solid var(--color-primario);
+}
+
+        /* 5. FOOTER */
+        /* DISEÑO DEL FOOTER DE TRES COLUMNAS */
+footer {
+    background-color: #243e36; 
+    color: #ffffff;
+    padding: 60px 5% 30px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    /* Crea 3 columnas iguales en PC y 1 sola en celulares */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-section h4 {
+    color: #5fad41; /* Color de acento para los títulos */
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-section p, .footer-section a {
+    color: #fafffd; /* Gris claro para el texto */
+    text-decoration: none;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    display: block;
+}
+
+.footer-section a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    color: #828489;
+}
+
+/* Ajuste para que se vea bien en celular */
+@media (max-width: 768px) {
+    .footer-container {
+        text-align: center;
+    }
+
+/* Flecha indicadora para el scroll horizontal */
+.indicador-scroll {
+    text-align: right;
+    color: var(--color-primario);
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: moverFlecha 1.5s infinite;
+}
+
+@keyframes moverFlecha {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 20px; gap: 15px; }
+            .logo { height: 60px; }
+            .banner { height: 250px; }
+            .footer-content { text-align: center; }
+        }
+        /* Contenedor de la cuadrícula */
+.miembros-grid {
+    display: grid;
+    /* Esto crea columnas automáticas que miden mínimo 250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px; /* Espacio entre cada tarjeta */
+    margin-top: 30px;
+}
+
+/* Cada tarjeta individual */
+.miembro-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #edf2f7;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.miembro-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primario);
+}
+
+/* La foto cuadrada 4x4 */
+.foto-4x4 {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Mantiene la proporción sin estirar la imagen */
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 3px solid var(--color-primario);
+}
+        /* REGLAS ESPECÍFICAS PARA CELULARES */
+@media (max-width: 768px) {
+    /* Achicamos el header para que no ocupe toda la pantalla */
+    nav {
+        flex-direction: column; /* Pone el logo arriba y los botones abajo */
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .logo {
+        height: 50px; /* Logo más razonable para móvil */
+    }
+
+    .nombre-pagina {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap; /* Si son muchos botones, pasan a la siguiente línea */
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem; /* Letra más chica para que entren todos */
+        padding: 8px 12px;
+        margin: 0;
+    }
+
+    /* Banner más bajo para que no haya que hacer tanto scroll */
+    .banner {
+        height: 200px;
+    }
+
+    /* Secciones con menos espacio blanco */
+    section {
+        padding: 20px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    /* La grilla horizontal de miembros */
+    .miembro-card {
+        min-width: 80%; /* Cada tarjeta ocupa casi todo el ancho del celular */
+        padding: 15px;
+    }
+
+    .foto-4x4 {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Footer en una sola columna centrada */
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+}
+        /* 1. Aseguramos que nada se salga por los costados */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Esto corta cualquier cosa que quiera salirse a la derecha */
+}
+
+/* 2. Forzamos al Nav y al Banner a ocupar el 100% real */
+nav, .banner {
+    width: 100% !important;
+    max-width: 100vw;
+    box-sizing: border-box; /* Evita que los márgenes internos inflen el ancho */
+    margin: 0 !important;
+}
+
+/* 3. Ajuste para el Menú en Celulares */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Apila logo y botones para que no se estiren hacia el costado */
+        padding: 15px 5%;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap; /* Permite que los botones bajen si no hay espacio */
+        justify-content: center;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        font-size: 13px; /* Achicamos un poco la letra para que entren mejor */
+        padding: 8px 12px;
+    }
+
+    /* Ajustamos el contenedor de las secciones para que no quede espacio blanco */
+    .container {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    section {
+        width: 95% !important; /* Estira las tarjetas blancas al borde */
+        margin: 10px auto;
+    }
+}
+        /* Estilos para el contenido de las secciones */
+.contenido-publicacion {
+    text-align: left; /* Alineación natural para lectura */
+    line-height: 1.6; /* Espacio entre líneas para que no canse la vista */
+    color: #475569;   /* Un gris oscuro elegante */
+}
+
+.contenido-publicacion p {
+    margin-bottom: 15px;
+}
+
+.contenido-publicacion ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.imagen-publicacion {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.fecha-publicacion {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    display: block;
+    margin-bottom: 10px;
+}
+        /* Estilo del botón Leer más */
+.btn-leer-mas {
+    background-color: #243e36;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-leer-mas:hover {
+    background-color: #243e36;
+}
+
+/* Ocultar el contenido y preparar la animación */
+.contenido-extra {
+    display: none;
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Duración del desvanecido: medio segundo */
+}
+
+/* Clase que aplicaremos con JavaScript para mostrar el texto suavemente */
+.contenido-extra.visible {
+    display: block;
+    opacity: 1;
+}
+/* Estilo para autor, fecha y link */
+.publicacion-meta {
+    font-size: 0.85rem;
+    color: #64748b; /* Gris suave */
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Espacio entre autor y fecha */
+}
+
+.publicacion-meta span {
+    display: flex;
+    align-items: center;
+}
+
+.link-proyecto {
+    display: inline-block;
+    margin-top: 15px;
+    color: #243e36;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.link-proyecto:hover {
+    border-bottom: 2px solid #243e36;
+}
+    </style>
 </head>
 <body>
 
@@ -160,20 +605,8 @@
 </footer>
 
 <script>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIV</title>
-    
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
 
-    <script src="js/scripts.js"></script>
-</body>
-</html>
+
 </script>
 </body>
 </html>

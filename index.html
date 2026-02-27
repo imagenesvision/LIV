@@ -40,7 +40,12 @@ nav {
 
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo { height: 60px; width: auto; }
-.nombre-pagina { font-size: 1.4rem; font-weight: bold; color: #5fad41; }
+.nombre-pagina { 
+    font-size: 2rem; /* Antes era 1.4rem, ahora es mucho más grande */
+    font-weight: bold; 
+    color: #5fad41; 
+    line-height: 1.2; /* Ajusta el espacio entre líneas por si el título se divide */
+}
 
 .nav-links { display: flex; gap: 10px; }
 .nav-links a { 
@@ -62,12 +67,14 @@ nav {
         width: 100%;
     }
 
-    .logo {
-        height: 50px; /* Un poco más pequeño en móvil */
+    ..logo { 
+    height: 80px; /* Antes era 60px */
+    width: auto; 
+}
     }
 
     .nombre-pagina {
-        font-size: 1.1rem; /* Texto más cómodo */
+        font-size: 1.3rem; /* Texto más cómodo */
     }
 
     .nav-links {
@@ -276,8 +283,13 @@ footer {
         height: 50px; /* Logo más razonable para móvil */
     }
 
+   @media (max-width: 768px) {
+    /* ... otros códigos ... */
     .nombre-pagina {
-        font-size: 1.2rem;
+        font-size: 1.3rem; /* Tamaño ideal para que no se amontone en el móvil */
+        text-align: center;
+    }
+}
     }
 
     .nav-links {

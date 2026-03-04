@@ -367,31 +367,31 @@ footer {
 .link-proyecto:hover {
     border-bottom: 2px solid #2274A5;
 
-/* Botón Volver Arriba Flotante */
 #btnArriba {
     display: none; /* Se oculta al inicio */
-    position: fixed; /* Esto hace que "flote" y no se quede abajo */
-    bottom: 90px;    /* Distancia desde el suelo (ajustado para estar sobre el footer) */
-    right: 30px;     /* Distancia desde la derecha */
-    z-index: 9999;   /* Para que siempre esté por encima de todo */
+    position: fixed; /* ¡IMPORTANTE! Esto lo hace flotar sobre la página */
+    bottom: 40px;    /* Altura desde el borde inferior */
+    right: 30px;     /* Distancia desde el borde derecho */
+    z-index: 9999;   /* Lo pone por encima de todo el contenido */
     border: none;
     outline: none;
-    background-color: #3C1642; /* El color violeta de tu logo */
+    background-color: #3C1642; /* El color violeta de tu marca */
     color: white;
     cursor: pointer;
-    width: 50px;     /* Ancho fijo para que sea un círculo perfecto */
-    height: 50px;    /* Alto fijo */
+    width: 50px;     /* Tamaño fijo para que sea un círculo */
+    height: 50px;
     border-radius: 50%; 
     font-size: 24px;
     box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
     transition: 0.3s;
+    /* Centrado de la flecha */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #btnArriba:hover {
-    background-color: #5fad41; /* Cambia a verde al pasar el mouse */
+    background-color: #BA8F95; 
     transform: scale(1.1);
 }
 }
@@ -734,9 +734,8 @@ footer {
         &copy; 2026 LIV. Todos los derechos reservados.
     </div>
 </footer>
-
-    <button onclick="irArriba()" id="btnArriba" title="Volver arriba">↑</button>
-    <script>
+    
+<script>
 // Función para los botones de "Leer más"
 function toggleContenido(id, boton) {
     var elemento = document.getElementById(id);
@@ -757,24 +756,26 @@ function toggleContenido(id, boton) {
     }
 }
 
-// Función para el botón de volver arriba
-let miBoton = document.getElementById("btnArriba");
+// Lógica del botón Volver Arriba
+const miBoton = document.getElementById("btnArriba");
 
 window.onscroll = function() {
-    // Aparece cuando bajas más de 400px
+    // Si bajamos más de 400px, mostramos el botón
     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-        miBoton.style.style.display = "flex"; 
+        miBoton.style.display = "flex";
     } else {
-        miBoton.style.style.display = "none";
+        miBoton.style.display = "none";
     }
 };
 
 function irArriba() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth' // Subida suave
+        behavior: 'smooth' // Subida suave y fluida
     });
 }
 </script>
+</script>
+    <button onclick="irArriba()" id="btnArriba" title="Volver arriba">↑</button>
 </body>
 </html>

@@ -367,6 +367,29 @@ footer {
 .link-proyecto:hover {
     border-bottom: 2px solid #2274A5;
 }
+        #btnArriba {
+    display: none; /* Se oculta por defecto */
+    position: fixed; /* Se queda fijo en la pantalla */
+    bottom: 20px; /* Distancia desde abajo */
+    right: 30px; /* Distancia desde la derecha */
+    z-index: 99; /* Para que esté por encima de todo */
+    border: none;
+    outline: none;
+    background-color: #BA8F95; 
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%; /* Lo hace circular */
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+#btnArriba:hover {
+    background-color: #9C7178;
+    transform: scale(1.1); /* Se agranda un poquito */
+}
     </style>
 </head>
 <body>
@@ -730,7 +753,30 @@ function toggleContenido(id, boton) {
         boton.innerHTML = "Leer menos";
     }
 }
+// Seleccionamos el botón
+let miBoton = document.getElementById("btnArriba");
 
+// Cuando el usuario hace scroll 20px hacia abajo desde el tope, aparece el botón
+window.onscroll = function() {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        miBoton.style.display = "block";
+    } else {
+        miBoton.style.display = "none";
+    }
+}
+
+// Cuando el usuario hace clic, sube suavemente al principio
+function irArriba() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Esto hace que el movimiento sea fluido y no un salto brusco
+    });
+}
 </script>
+    <button onclick="irArriba()" id="btnArriba" title="Volver arriba">↑</button>
 </body>
 </html>

@@ -366,24 +366,22 @@ footer {
 
 .link-proyecto:hover {
     border-bottom: 2px solid #2274A5;
-}
-        #btnArriba {
-    display: none; /* Se oculta por defecto */
-    position: fixed; /* Se queda fijo en la pantalla */
-    bottom: 20px; /* Distancia desde abajo */
-    right: 30px; /* Distancia desde la derecha */
-    z-index: 99; /* Para que esté por encima de todo */
+#btnArriba {
+    display: none; /* Se activa con JavaScript al bajar */
+    position: fixed; /* Se queda quieto en la pantalla */
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 9999; /* Número alto para que nada lo tape */
     border: none;
     outline: none;
     background-color: #BA8F95; 
     color: white;
     cursor: pointer;
-    padding: 15px;
-    border-radius: 50%; /* Lo hace circular */
-    font-size: 20px;
-    font-weight: bold;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-    transition: 0.3s;
+    padding: 12px 18px;
+    border-radius: 50px; /* Forma de píldora */
+    font-size: 24px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+}
 }
 
 #btnArriba:hover {
@@ -730,7 +728,9 @@ footer {
     </div>
 </footer>
 
-<script>
+    <button onclick="irArriba()" id="btnArriba" title="Volver arriba">↑</button>
+
+    <script>
 function toggleContenido(id, boton) {
     var elemento = document.getElementById(id);
     
@@ -752,33 +752,26 @@ function toggleContenido(id, boton) {
         }, 10);
         boton.innerHTML = "Leer menos";
     }
-}
-// Seleccionamos el botón
+// Seleccionamos el botón por su ID
 let miBoton = document.getElementById("btnArriba");
 
-// Cuando el usuario hace scroll 20px hacia abajo desde el tope, aparece el botón
+// Escuchamos el evento de scroll en la ventana
 window.onscroll = function() {
-    scrollFunction();
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        miBoton.style.display = "block"; // Aparece tras bajar 300px
+    } else {
+        miBoton.style.display = "none"; // Desaparece al subir
+    }
 };
 
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        miBoton.style.display = "block";
-    } else {
-        miBoton.style.display = "none";
-    }
-}
-
-// Cuando el usuario hace clic, sube suavemente al principio
+// Función para volver al inicio suavemente
 function irArriba() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth' // Esto hace que el movimiento sea fluido y no un salto brusco
+        behavior: 'smooth' 
     });
 }
+}
 </script>
-    
-    <button onclick="irArriba()" id="btnArriba" title="Volver arriba">↑</button>
-
 </body>
 </html>

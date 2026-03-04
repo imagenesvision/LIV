@@ -367,27 +367,31 @@ footer {
 .link-proyecto:hover {
     border-bottom: 2px solid #2274A5;
 
-   #btnArriba {
-    display: none; 
-    position: fixed; 
-    bottom: 40px; 
-    right: 30px; 
-    z-index: 9999; 
+/* Botón Volver Arriba Flotante */
+#btnArriba {
+    display: none; /* Se oculta al inicio */
+    position: fixed; /* Esto hace que "flote" y no se quede abajo */
+    bottom: 90px;    /* Distancia desde el suelo (ajustado para estar sobre el footer) */
+    right: 30px;     /* Distancia desde la derecha */
+    z-index: 9999;   /* Para que siempre esté por encima de todo */
     border: none;
     outline: none;
-    background-color: #3C1642; /* Color primario de tu laboratorio */
+    background-color: #3C1642; /* El color violeta de tu logo */
     color: white;
     cursor: pointer;
-    padding: 15px 20px;
+    width: 50px;     /* Ancho fijo para que sea un círculo perfecto */
+    height: 50px;    /* Alto fijo */
     border-radius: 50%; 
-    font-size: 22px;
-    font-weight: bold;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.4);
+    font-size: 24px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #btnArriba:hover {
-    background-color: #BA8F95; 
+    background-color: #5fad41; /* Cambia a verde al pasar el mouse */
     transform: scale(1.1);
 }
 }
@@ -754,15 +758,15 @@ function toggleContenido(id, boton) {
     }
 }
 
-// Lógica para el botón de volver arriba
+// Función para el botón de volver arriba
 let miBoton = document.getElementById("btnArriba");
 
 window.onscroll = function() {
-    // Aparece tras bajar 400px
+    // Aparece cuando bajas más de 400px
     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-        miBoton.style.display = "block";
+        miBoton.style.style.display = "flex"; 
     } else {
-        miBoton.style.display = "none";
+        miBoton.style.style.display = "none";
     }
 };
 

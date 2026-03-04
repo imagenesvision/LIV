@@ -367,26 +367,28 @@ footer {
 .link-proyecto:hover {
     border-bottom: 2px solid #2274A5;
 #btnArriba {
-    display: none; /* Se activa con JavaScript al bajar */
-    position: fixed; /* Se queda quieto en la pantalla */
-    bottom: 20px; 
-    right: 20px; 
-    z-index: 9999; /* Número alto para que nada lo tape */
+    display: none; /* Se activa con el scroll */
+    position: fixed; /* Mantiene el botón siempre visible al navegar */
+    bottom: 40px;    /* Lo elevamos un poco más para que no tape el copyright del footer */
+    right: 30px;     /* Separación del borde derecho */
+    z-index: 9999;   /* Asegura que esté por encima del banner y el footer */
     border: none;
     outline: none;
     background-color: #BA8F95; 
     color: white;
     cursor: pointer;
-    padding: 12px 18px;
-    border-radius: 50px; /* Forma de píldora */
-    font-size: 24px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
-}
+    padding: 15px 20px;
+    border-radius: 50%; /* Botón circular */
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.4); /* Sombra para que resalte sobre el fondo oscuro */
+    transition: 0.3s;
 }
 
 #btnArriba:hover {
     background-color: #9C7178;
-    transform: scale(1.1); /* Se agranda un poquito */
+    transform: scale(1.1);     /* Efecto de aumento */
+}
 }
     </style>
 </head>
@@ -752,26 +754,24 @@ function toggleContenido(id, boton) {
         }, 10);
         boton.innerHTML = "Leer menos";
     }
-// Seleccionamos el botón por su ID
 let miBoton = document.getElementById("btnArriba");
 
-// Escuchamos el evento de scroll en la ventana
 window.onscroll = function() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        miBoton.style.display = "block"; // Aparece tras bajar 300px
+    // Aparece cuando bajas más de 400px (después del banner)
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        miBoton.style.display = "block";
     } else {
-        miBoton.style.display = "none"; // Desaparece al subir
+        miBoton.style.display = "none";
     }
 };
 
-// Función para volver al inicio suavemente
 function irArriba() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth' 
+        behavior: 'smooth' // Desplazamiento suave hacia arriba
     });
 }
-}
+    });
 </script>
 </body>
 </html>

@@ -406,6 +406,47 @@ footer {
     font-size: 0.8rem;
     font-weight: bold;
     margin-bottom: 10px;
+
+            /* Contenedor principal de novedades */
+.novedades-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre una novedad y otra */
+}
+
+/* Cada tarjeta de novedad */
+.novedad-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border-left: 5px solid var(--color-primario);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.novedad-item:hover {
+    transform: translateX(5px); /* Efecto sutil al pasar el mouse */
+}
+
+.fecha-novedad {
+    font-size: 0.8rem;
+    color: var(--color-acento);
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.novedad-item h4 {
+    margin: 0 0 10px 0;
+    color: var(--color-primario);
+}
+
+.novedad-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
 }
 .en-curso { background-color: #fff3cd; color: #856404; } /* Amarillo */
 .finalizado { background-color: #d4edda; color: #155724; } /* Verde */
@@ -738,16 +779,32 @@ footer {
 
 <section id="novedades">
     <h2>Últimas novedades</h2>
-
-   <div class="novedades-card">
-    <h3>Charla/conferencia</h3>
-    <span class="estado-novedad finalizado">Finzalizado</span> 
-    <p>Descripción.</p>
-    <p><strong>¿Quíenes dan la charla?:</strong> ¿Dónde?.</p>
+    
 </div>
-        <button class="btn-leer-mas" onclick="toggleContenido('proyecto_alfa', this)">Leer más ↓</button>
+   <div class="novedades-item">
+    <h3>Charla</h3>
+    <span class="estado-novedad en-curso">En curso</span> 
+    <p><strong>Participantes:</strong> nombres</p>
+    <p><strong>Lugar:</strong> ubicación</p>
+    <p><strong>Fecha:</strong> agregar fecha </p>
+   <div id="novedad1" class="contenido-extra">
+       <p> Breve descripción.</p>
+</div>
+      <button class="btn-leer-mas" onclick="toggleNovedad('novedad1', this)">Ver más</button>
     </div>
-            
+
+    </div>
+   <div class="novedades-item">
+    <h3>Charla</h3>
+    <span class="estado-novedad finalizado">Finalizado</span> 
+    <p><strong>Participantes:</strong> nombres</p>
+    <p><strong>Lugar:</strong> ubicación</p>
+    <p><strong>Fecha:</strong> agregar fecha </p>
+   <div id="novedad2" class="contenido-extra">
+       <p> Breve descripción.</p>
+</div>
+      <button class="btn-leer-mas" onclick="toggleNovedad('novedad2', this)">Ver más</button>
+    </div>
 </section>
   
 </section>
@@ -809,6 +866,25 @@ function toggleContenido(id, boton) {
             elemento.style.opacity = "1";
         }, 10);
         boton.innerHTML = "Leer menos";
+    }
+}
+    function toggleNovedad(id, boton) {
+    var elemento = document.getElementById(id);
+    
+    if (elemento.classList.contains('visible')) {
+        // Si ya se ve, lo ocultamos
+        elemento.style.opacity = "0";
+        setTimeout(function() {
+            elemento.classList.remove('visible');
+        }, 500);
+        boton.innerHTML = "Ver más";
+    } else {
+        // Si está oculto, lo mostramos
+        elemento.classList.add('visible');
+        setTimeout(function() {
+            elemento.style.opacity = "1";
+        }, 10);
+        boton.innerHTML = "Ver menos";
     }
 }
 

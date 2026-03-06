@@ -413,6 +413,7 @@ footer {
             <a href="#miembros">Miembros</a>
             <a href="#proyectos">Proyectos</a>
             <a href="#novedades">Novedades</a>
+            <a href="#contacto">Contacto</a>
         </div>
     </nav>
 
@@ -710,13 +711,16 @@ footer {
 </section>
     </div>
 
-  <footer>
+  <footer id="contacto">
     <div class="footer-container">
         <div class="footer-section">
             <h4>Sobre Nosotros</h4>
             <p>Descripcion.</p>
+               <p>Ubicación: Buenos Aires, Argentina</p>
+            <a href="#">Instagram: -</a>
+            <a href="#">LinkedIn: -</a>
         </div>
-
+       
         <div class="footer-section">
             <h4>Enlaces Rápidos</h4>
             <a href="#inicio">Inicio</a>
@@ -725,14 +729,15 @@ footer {
             <a href="#novedades">Novedades</a>
         </div>
 
-        <div class="footer-section">
-            <h4>Contacto</h4>
-            <p>Email: hacer mail</p>
-            <p>Ubicación: Buenos Aires, Argentina</p>
-            <a href="#">Instagram: -</a>
-            <a href="#">LinkedIn: -</a>
-        </div>
-    </div>
+     <div class="footer-section">
+    <h4>Envíanos un mensaje</h4>
+    <form action="https://formspree.io/f/TU_CODIGO" method="POST" style="display: flex; flex-direction: column; gap: 10px;">
+        <input type="text" name="nombre" placeholder="Tu Nombre" style="padding: 8px; border-radius: 5px; border: none;">
+        <input type="email" name="email" placeholder="Tu Email" style="padding: 8px; border-radius: 5px; border: none;">
+        <textarea name="mensaje" placeholder="Mensaje" style="padding: 8px; border-radius: 5px; border: none;"></textarea>
+        <button type="submit" style="background: #5fad41; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Enviar</button>
+    </form>
+</div>
 
     <div class="footer-bottom">
         &copy; 2026 LIV. Todos los derechos reservados.

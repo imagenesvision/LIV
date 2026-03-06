@@ -399,6 +399,49 @@ footer {
 .link-proyecto:hover {
     border-bottom: 2px solid #2274A5;
 }
+        .estado-proyecto {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.en-curso { background-color: #fff3cd; color: #856404; } /* Amarillo */
+.finalizado { background-color: #d4edda; color: #155724; } /* Verde */
+
+        .contacto-flex {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.contacto-info { flex: 1; min-width: 300px; }
+.formulario-contacto {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.formulario-contacto input, .formulario-contacto textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+}
+.btn-enviar {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.btn-enviar:hover {
+    background-color: #5fad41;
+}
     </style>
 </head>
 <body>
@@ -695,20 +738,33 @@ footer {
 <section id="novedades">
     <h2>Últimas novedades</h2>
 
-    <div class="contenido-publicacion">
-        <p><strong>Novedad1</strong> titulo.</p>
-        <div class="contenido-extra" id="proyecto_alfa">
-            <p>Descripción y puntos importantes</p>
-            <ul>
-                <li>Punto 1</li>
-                <li>Punto 2</li>
-            </ul>
-        </div>
+   <div class="novedades-card">
+    <h3>Charla/conferencia</h3>
+    <span class="estado-novedad en-curso">En curso</span> 
+    <p>Descripción.</p>
+    <p><strong>¿Quíenes dan la charla?:</strong> ¿Dónde?.</p>
+</div>
         <button class="btn-leer-mas" onclick="toggleContenido('proyecto_alfa', this)">Leer más ↓</button>
     </div>
             
 </section>
     </div>
+
+    <section id="contacto" class="container">
+    <h2>Contacto</h2>
+    <div class="contacto-flex">
+        <div class="contacto-info">
+            <p>Si estás interesado en colaborar con nosotros o tienes alguna consulta, no dudes en escribirnos.</p>
+        </div>
+        
+        <form class="formulario-contacto">
+            <input type="text" name="nombre" placeholder="Tu Nombre" required>
+            <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
+            <textarea name="mensaje" placeholder="Tu Mensaje" rows="5" required></textarea>
+            <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+        </form>
+    </div>
+</section>
 
   <footer>
     <div class="footer-container">

@@ -158,32 +158,37 @@ nav {
     margin-bottom: 15px;
     border: 3px solid var(--color-primario);
 }
-        #btnArriba {
-    display: none; /* Se oculta al inicio */
-    position: fixed; /* ¡IMPORTANTE! Esto lo hace flotar sobre la página */
-    bottom: 40px;    /* Altura desde el borde inferior */
-    right: 30px;     /* Distancia desde el borde derecho */
-    z-index: 9999;   /* Lo pone por encima de todo el contenido */
+       /* Estilo para crear la flechita manual */
+.flecha {
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 6px;
+    transform: rotate(-135deg); /* Gira el cuadrado para que parezca una flecha */
+    -webkit-transform: rotate(-135deg);
+    margin-top: 5px; /* Ajuste para centrarla visualmente */
+}
+
+#btnArriba {
+    display: none; 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 9999; 
     border: none;
     outline: none;
-    background-color: #3C1642; /* El color violeta de tu marca */
+    background-color: var(--color-primario); /* Usa el violeta de tu archivo */
     color: white;
     cursor: pointer;
-    width: 50px;     /* Tamaño fijo para que sea un círculo */
+    width: 50px;
     height: 50px;
-    border-radius: 50%; 
-    font-size: 24px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
     transition: 0.3s;
-    /* Centrado de la flecha */
+    /* Esto centra la flecha nueva */
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#btnArriba:hover {
-    background-color: #BA8F95; 
-    transform: scale(1.1);
 }
 
         /* 5. FOOTER */
@@ -734,7 +739,7 @@ footer {
     </div>
 </footer>
     
-       <button onclick="irArriba()" id="btnArriba" title="Volver arriba">🡡</button>
+      <button onclick="irArriba()" id="btnArriba" title="Volver arriba"><i class="flecha"></i></button>
     
 <script>
 // Función para los botones de "Leer más"
@@ -760,13 +765,13 @@ function toggleContenido(id, boton) {
 // Lógica del botón Volver Arriba
         const miBoton = document.getElementById("btnArriba");
 
-        window.onscroll = function() {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                miBoton.style.display = "flex";
-            } else {
-                miBoton.style.display = "none";
-            }
-        };
+       window.onscroll = function() {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        miBoton.style.display = "flex"; // Cambiado de style.style a solo style
+    } else {
+        miBoton.style.display = "none";
+    }
+};
 
         function irArriba() {
             window.scrollTo({

@@ -411,41 +411,32 @@ footer {
 .novedades-container {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espacio entre una novedad y otra */
+    gap: 20px;
 }
 
-/* Cada tarjeta de novedad */
 .novedad-item {
-    background: #f9f9f9;
+    background: white;
     padding: 20px;
     border-left: 5px solid var(--color-primario);
     border-radius: 0 8px 8px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.novedad-item:hover {
-    transform: translateX(5px); /* Efecto sutil al pasar el mouse */
+.contenido-extra {
+    display: none; /* Se oculta por defecto */
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
 }
 
-.fecha-novedad {
-    font-size: 0.8rem;
-    color: var(--color-acento);
+.btn-leer-mas {
+    background: none;
+    border: none;
+    color: #5fad41;
     font-weight: bold;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.novedad-item h4 {
-    margin: 0 0 10px 0;
-    color: var(--color-primario);
-}
-
-.novedad-item p {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: underline;
 }
 }
 .en-curso { background-color: #fff3cd; color: #856404; } /* Amarillo */
@@ -482,37 +473,6 @@ footer {
 }
 .btn-enviar:hover {
     background-color: #5fad41;
-
-    .novedades-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.novedad-item {
-    background: white;
-    padding: 20px;
-    border-left: 5px solid var(--color-primario);
-    border-radius: 0 8px 8px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.contenido-extra {
-    display: none; /* Se oculta por defecto */
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
-}
-
-.btn-leer-mas {
-    background: none;
-    border: none;
-    color: #3C1642;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    text-decoration: underline;
-}
 }
     </style>
 </head>
@@ -809,39 +769,36 @@ footer {
 
 
 <section id="novedades" class="container">
-    <h2>Últimas novedades</h2>
+    <h2>Últimas Novedades</h2>
     <div class="novedades-container">
-    
-</div>
-   <div class="novedades-item">
-    <h3>Charla</h3>
-    <span class="estado-novedad en-curso">En curso</span> 
-    <p><strong>Participantes:</strong> nombres</p>
-    <p><strong>Lugar:</strong> ubicación</p>
-    <p><strong>Fecha:</strong> agregar fecha </p>
-  
-    <div id="nov1" class="contenido-extra">
-                <p>breve descrpción.</p>
+        
+        <div class="novedad-item">
+            <span class="estado-novedad en-curso">En curso</span> 
+            <span class="fecha-novedad">06 Mar 2026</span>
+            <h4>Charla</h4>
+            <p><strong>Participantes:</strong> nombres y apellidos</p>
+            
+            <div id="nov1" class="contenido-extra">
+                <p>Descripción.</p>
             </div>
             <button class="btn-leer-mas" onclick="toggleNovedad('nov1', this)">Ver más</button>
         </div>
-
-     <hr style="opacity: 0.1; margin: 30px 0;">
-
-   <div class="novedades-item">
-    <h3>Charla</h3>
-    <span class="estado-novedad finalizado">Finalizado</span> 
-    <p><strong>Participantes:</strong> nombres</p>
-    <p><strong>Lugar:</strong> ubicación</p>
-    <p><strong>Fecha:</strong> agregar fecha </p>
-   
-       <div id="nov2" class="contenido-extra">
-                <p>breve descripción.</p>
+        
+                       <hr style="opacity: 0.1; margin: 30px 0;">
+        
+        <div class="novedad-item">
+            <span class="estado-novedad finalizado">Finalizado</span> 
+            <span class="fecha-novedad">28 Feb 2026</span>
+            <h4>Conferencia</h4>
+            <p><strong>Participantes:</strong> nombres y apellidos</p>
+            
+            <div id="nov2" class="contenido-extra">
+                <p>Breve descrpción</p>
             </div>
             <button class="btn-leer-mas" onclick="toggleNovedad('nov2', this)">Ver más</button>
         </div>
-</section>
-  
+
+    </div>
 </section>
 
   <footer id="contacto">
@@ -902,7 +859,6 @@ function toggleContenido(id, boton) {
         }, 10);
         boton.innerHTML = "Leer menos";
     }
-}
 function toggleNovedad(id, boton) {
     var elemento = document.getElementById(id);
     
@@ -914,7 +870,6 @@ function toggleNovedad(id, boton) {
         boton.innerHTML = "Ver menos";
     }
 }
-
 // Lógica del botón Volver Arriba
         const miBoton = document.getElementById("btnArriba");
 

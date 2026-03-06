@@ -482,6 +482,37 @@ footer {
 }
 .btn-enviar:hover {
     background-color: #5fad41;
+
+    .novedades-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.novedad-item {
+    background: white;
+    padding: 20px;
+    border-left: 5px solid var(--color-primario);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.contenido-extra {
+    display: none; /* Se oculta por defecto */
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.btn-leer-mas {
+    background: none;
+    border: none;
+    color: #3C1642;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: underline;
+}
 }
     </style>
 </head>
@@ -777,8 +808,9 @@ footer {
     </section>
 
 
-<section id="novedades">
+<section id="novedades" class="container">
     <h2>Últimas novedades</h2>
+    <div class="novedades-container">
     
 </div>
    <div class="novedades-item">
@@ -787,10 +819,10 @@ footer {
     <p><strong>Participantes:</strong> nombres</p>
     <p><strong>Lugar:</strong> ubicación</p>
     <p><strong>Fecha:</strong> agregar fecha </p>
-   <div id="novedad1" class="contenido-extra">
+   <div id="nov1" class="contenido-extra">
        <p> Breve descripción.</p>
 </div>
-      <button class="btn-leer-mas" onclick="toggleNovedad('novedad1', this)">Ver más</button>
+     <button class="btn-leer-mas" onclick="toggleNovedad('nov1', this)">Ver más</button>
     </div>
 
     </div>
@@ -800,10 +832,10 @@ footer {
     <p><strong>Participantes:</strong> nombres</p>
     <p><strong>Lugar:</strong> ubicación</p>
     <p><strong>Fecha:</strong> agregar fecha </p>
-   <div id="novedad2" class="contenido-extra">
+   <div id="nov2" class="contenido-extra">
        <p> Breve descripción.</p>
 </div>
-      <button class="btn-leer-mas" onclick="toggleNovedad('novedad2', this)">Ver más</button>
+      <button class="btn-leer-mas" onclick="toggleNovedad('nov2', this)">Ver más</button>
     </div>
 </section>
   
@@ -868,22 +900,14 @@ function toggleContenido(id, boton) {
         boton.innerHTML = "Leer menos";
     }
 }
-    function toggleNovedad(id, boton) {
+function toggleNovedad(id, boton) {
     var elemento = document.getElementById(id);
     
-    if (elemento.classList.contains('visible')) {
-        // Si ya se ve, lo ocultamos
-        elemento.style.opacity = "0";
-        setTimeout(function() {
-            elemento.classList.remove('visible');
-        }, 500);
+    if (elemento.style.display === "block") {
+        elemento.style.display = "none";
         boton.innerHTML = "Ver más";
     } else {
-        // Si está oculto, lo mostramos
-        elemento.classList.add('visible');
-        setTimeout(function() {
-            elemento.style.opacity = "1";
-        }, 10);
+        elemento.style.display = "block";
         boton.innerHTML = "Ver menos";
     }
 }

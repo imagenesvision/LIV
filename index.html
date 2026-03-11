@@ -782,6 +782,17 @@ function toggleContenido(id, boton) {
         boton.innerHTML = "Leer menos";
     }
 }
+    function toggleNovedad(id, boton) {
+    var elemento = document.getElementById(id);
+    
+    if (elemento.classList.contains('visible')) {
+        elemento.classList.remove('visible');
+        boton.innerHTML = "Leer más";
+    } else {
+        elemento.classList.add('visible');
+        boton.innerHTML = "Leer menos";
+    }
+}
 
 // Lógica del botón Volver Arriba
         const miBoton = document.getElementById("btnArriba");

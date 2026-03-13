@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIV</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
@@ -18,18 +17,25 @@
             --texto-oscuro: #000000;
             --texto-claro: #fafffd;
             --blanco: #ffffff;
+            --fondo-card: #ffffff;
+        }
+
+        /* Estilos Modo Oscuro */
+        [data-theme="dark"] {
+            --color-primario: #251029;
+            --color-secundario: #121212;
+            --texto-oscuro: #fafffd;
+            --blanco: #1e1e1e;
+            --fondo-card: #2a2a2a;
         }
 
         html { scroll-behavior: smooth; }
-
         body { 
             font-family: 'Merriweather', serif; 
             margin: 0; 
             background-color: var(--color-secundario);
             color: var(--texto-oscuro);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
         }
 
         /* --- NAVEGACIÓN --- */
@@ -45,15 +51,13 @@
             z-index: 1000;
         }
 
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .logo { height: 60px; }
-        .logo-container span { 
-            font-size: 2rem; /* Título más grande */
-            font-weight: 900;
-            color: var(--color-primario);
-        }
+        .logo-container span { font-size: 2rem; font-weight: 900; color: var(--color-primario); }
 
-        .nav-links { display: flex; gap: 15px; }
+        /* Menú Hamburguesa */
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .menu-toggle span { width: 25px; height: 3px; background: var(--color-primario); border-radius: 2px; }
+
+        .nav-links { display: flex; gap: 15px; align-items: center; }
         .nav-links a {
             text-decoration: none;
             color: var(--blanco);
@@ -61,75 +65,57 @@
             border-radius: 20px;
             font-weight: 600;
             background: var(--color-primario);
-            transition: 0.3s;
             font-size: 0.9rem;
         }
-        .nav-links a:hover { background: var(--color-acento); }
 
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; flex: 1; }
-        section { margin-bottom: 60px; }
-        h2 { color: var(--color-primario); border-bottom: 3px solid var(--color-acento); padding-bottom: 10px; }
+        /* Botón Modo Oscuro */
+        #dark-mode-toggle {
+            background: none; border: 2px solid var(--color-primario);
+            color: var(--color-primario); cursor: pointer; padding: 5px 10px;
+            border-radius: 20px; font-weight: bold; margin-left: 10px;
+        }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 
         /* --- MIEMBROS DESLIZABLES --- */
-        .miembros-wrapper { position: relative; }
         .miembros-grid {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px 5px;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none; /* Oculta scroll en Firefox */
+            display: flex; overflow-x: auto; gap: 20px; padding: 20px 0;
+            scroll-snap-type: x mandatory; scrollbar-width: none;
         }
-        .miembros-grid::-webkit-scrollbar { display: none; } /* Oculta scroll en Chrome/Safari */
-
         .miembro-card {
-            flex: 0 0 280px;
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            scroll-snap-align: center;
+            flex: 0 0 280px; background: var(--fondo-card); border-radius: 15px;
+            padding: 25px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .miembro-foto { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--color-secundario); }
-        .deslice-aviso { text-align: right; font-size: 0.8rem; color: var(--color-acento); margin-top: -10px; font-style: italic; }
+        .miembro-foto { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
 
-        /* --- ARTÍCULOS --- */
-        .articulo-card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        /* --- ARTÍCULOS Y NOVEDADES --- */
+        .articulo-card, .novedad-item { 
+            background: var(--fondo-card); padding: 25px; border-radius: 10px; 
+            margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        .meta-info { font-size: 0.85rem; color: #666; margin-bottom: 10px; }
-        .articulo-link { color: var(--color-acento); text-decoration: none; font-weight: bold; display: block; margin: 10px 0; }
-        .articulo-link:hover { text-decoration: underline; }
-
-        /* --- NOVEDADES --- */
-        .novedad-item { background: white; padding: 20px; border-left: 5px solid var(--color-primario); margin-bottom: 20px; border-radius: 0 10px 10px 0; }
-        .estado { display: inline-block; padding: 4px 10px; border-radius: 15px; font-size: 0.75rem; font-weight: bold; margin-bottom: 10px; }
-        .en-curso { background: #fff3cd; color: #856404; }
-        .finalizado { background: #d4edda; color: #155724; }
-        .contenido-extra { display: none; margin-top: 10px; }
-        
-        .btn-leer-mas { background: none; border: none; color: var(--color-acento); font-weight: bold; cursor: pointer; padding: 0; margin-top: 10px; text-decoration: underline; font-family: inherit; }
+        .contenido-extra { display: none; margin-top: 15px; }
+        .btn-leer-mas { background: none; border: none; color: var(--color-acento); font-weight: bold; cursor: pointer; text-decoration: underline; }
 
         /* --- FOOTER --- */
-        footer { background-color: var(--color-primario); color: var(--texto-claro); padding: 50px 0 20px 0; width: 100%; margin-top: auto; }
+        footer { background: var(--color-primario); color: var(--texto-claro); padding: 50px 0; }
         .footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding: 0 20px; }
-        .form-contacto { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
-        .form-contacto input, .form-contacto textarea { padding: 12px; border-radius: 5px; border: none; font-family: inherit; width: 100%; box-sizing: border-box; }
-        .btn-enviar { background: var(--color-acento); color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .btn-enviar:hover { background: #4d8d35; }
+        .form-contacto input, .form-contacto textarea { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 5px; border: none; box-sizing: border-box; }
+        .btn-enviar { background: var(--color-acento); color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
-        /* --- BOTÓN SUBIR --- */
-        #btnArriba { display: none; position: fixed; bottom: 30px; right: 25px; z-index: 9999; width: 50px; height: 50px; background: var(--color-primario); border: none; border-radius: 50%; cursor: pointer; align-items: center; justify-content: center; }
-        .flecha { border: solid white; border-width: 0 4px 4px 0; display: inline-block; padding: 6px; transform: rotate(-135deg); margin-top: 5px; }
+        /* Botón Subir */
+        #btnArriba { display: none; position: fixed; bottom: 30px; right: 25px; background: var(--color-primario); border-radius: 50%; width: 50px; height: 50px; border: none; cursor: pointer; color: white; font-size: 20px; }
 
+        /* RESPONSIVE: Menú Móvil */
         @media (max-width: 768px) {
-            .nav-links { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 10px; }
-            .logo-container span { font-size: 1.5rem; }
+            .menu-toggle { display: flex; }
+            .nav-links {
+                display: none; flex-direction: column; position: absolute;
+                top: 70px; left: 0; width: 100%; background: var(--blanco);
+                padding: 20px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { background: none; color: var(--color-primario); width: 80%; text-align: center; }
+            #dark-mode-toggle { margin: 10px 0; }
         }
     </style>
 </head>
@@ -137,124 +123,109 @@
 
     <nav>
         <div class="logo-container">
-            <img src="Logo_LBP_SF_Color.png" class="logo" alt="LIV Logo">
             <span>LIV</span>
         </div>
-        <div class="nav-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#miembros">Miembros</a>
-            <a href="#articulos">Artículos</a>
-            <a href="#novedades">Novedades</a>
-            <a href="#contacto">Contacto</a>
+        
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+            <a href="#miembros" onclick="toggleMenu()">Miembros</a>
+            <a href="#articulos" onclick="toggleMenu()">Artículos</a>
+            <a href="#novedades" onclick="toggleMenu()">Novedades</a>
+            <button id="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Modo</button>
         </div>
     </nav>
 
     <div class="container">
         <section id="inicio">
-            <h2>Inicio</h2>
-            <p>Laboratorio de Investigación Vegetal (LIV). Ciencia aplicada para un futuro sustentable.</p>
+            <h1>Laboratorio de Investigación Vegetal</h1>
+            <p>Bienvenido a nuestro espacio científico.</p>
         </section>
 
         <section id="miembros">
             <h2>Miembros</h2>
-            <p class="deslice-aviso">Deslice para ver más &rarr;</p>
             <div class="miembros-grid">
                 <div class="miembro-card">
-                    <img src="foto1.jpg" alt="Miembro" class="miembro-foto">
-                    <h3>Dr. Juan Pérez</h3>
-                    <p>Director de Investigación. Especialista en Genómica.</p>
+                    <img src="foto1.jpg" class="miembro-foto" alt="Miembro">
+                    <h3>Dr. Ejemplo</h3>
+                    <p>Investigador Principal</p>
                 </div>
-                <div class="miembro-card">
-                    <img src="foto2.jpg" alt="Miembro" class="miembro-foto">
-                    <h3>Dra. Ana López</h3>
-                    <p>Investigadora Adjunta. Biotecnología Vegetal.</p>
                 </div>
-                <div class="miembro-card">
-                    <img src="foto3.jpg" alt="Miembro" class="miembro-foto">
-                    <h3>Lic. Carlos Ruiz</h3>
-                    <p>Asistente Técnico. Análisis de Suelos.</p>
-                </div>
-            </div>
         </section>
 
         <section id="articulos">
             <h2>Artículos</h2>
             <div class="articulo-card">
-                <div class="meta-info">📅 12 de Marzo, 2026 | 👤 Participantes: Equipo Genética LIV</div>
-                <h3>Título de la Publicación Científica</h3>
-                <p>Breve introducción sobre el descubrimiento o estudio realizado por el laboratorio...</p>
-                
-                <div id="art1" class="contenido-extra">
-                    <p>Aquí se incluye el resto de la información técnica del artículo, metodologías y resultados obtenidos durante la investigación.</p>
-                </div>
-                
-                <a href="https://doi.org/ejemplo" class="articulo-link" target="_blank">🔗 Ver publicación oficial</a>
+                <h3>Título del Artículo</h3>
+                <p>Resumen del estudio...</p>
+                <div id="art1" class="contenido-extra">Contenido expandido aquí...</div>
                 <button class="btn-leer-mas" onclick="toggleContenido('art1', this)">Leer más</button>
-            </div>
-        </section>
-
-        <section id="novedades">
-            <h2>Últimas Novedades</h2>
-            <div class="novedad-item">
-                <span class="estado en-curso">En curso</span>
-                <h4>Proyecto de Resistencia Térmica</h4>
-                <p>Iniciamos una nueva fase de pruebas en cultivos de clima extremo.</p>
-                <div id="nov1" class="contenido-extra">
-                    <p>Se evaluarán 20 especies nativas bajo estrés controlado para medir su adaptabilidad.</p>
-                </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('nov1', this)">Leer más</button>
             </div>
         </section>
     </div>
 
-    <footer id="contacto">
-        <div class="footer-container">
-            <div class="footer-section">
+    <footer>
+        <div class="footer-container" id="contacto">
+            <div>
                 <h4>LIV</h4>
-                <p>📍 Calle Falsa 123, La Plata, Argentina</p>
-                <p>✉️ contacto@liv.edu.ar</p>
+                <p>Ciencia y Tecnología</p>
             </div>
-            <div class="footer-section">
-                <h4>Mandanos un mensaje</h4>
+            <div>
+                <h4>Contacto</h4>
                 <form action="https://formspree.io/f/TU_CODIGO" method="POST" class="form-contacto">
-                    <input type="text" name="name" placeholder="Tu nombre" required>
-                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                    <textarea name="message" placeholder="¿Cómo podemos ayudarte?" rows="4" required></textarea>
-                    <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+                    <input type="email" name="email" placeholder="Tu Email" required>
+                    <textarea name="message" placeholder="Mensaje"></textarea>
+                    <button type="submit" class="btn-enviar">Enviar</button>
                 </form>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; opacity: 0.7;">
-            &copy; 2026 LIV. Todos los derechos reservados.
-        </div>
     </footer>
 
-    <button onclick="irArriba()" id="btnArriba" title="Volver arriba"><i class="flecha"></i></button>
+    <button onclick="irArriba()" id="btnArriba">↑</button>
 
-<script>
-function toggleContenido(id, boton) {
-    var elemento = document.getElementById(id);
-    if (elemento.style.display === "block") {
-        elemento.style.display = "none";
-        boton.innerHTML = "Leer más";
-    } else {
-        elemento.style.display = "block";
-        boton.innerHTML = "Leer menos";
-    }
-}
+    <script>
+        // Función Menú Móvil
+        function toggleMenu() {
+            if (window.innerWidth <= 768) {
+                document.getElementById('navLinks').classList.toggle('active');
+            }
+        }
 
-const miBoton = document.getElementById("btnArriba");
-window.onscroll = function() {
-    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-        miBoton.style.display = "flex";
-    } else {
-        miBoton.style.display = "none";
-    }
-};
+        // Función Modo Oscuro
+        function toggleDarkMode() {
+            const body = document.body;
+            const btn = document.getElementById('dark-mode-toggle');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                btn.innerHTML = "🌙 Modo";
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.innerHTML = "☀️ Modo";
+            }
+        }
 
-function irArriba() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-</script>
+        // Leer más
+        function toggleContenido(id, btn) {
+            const el = document.getElementById(id);
+            if (el.style.display === "block") {
+                el.style.display = "none";
+                btn.innerHTML = "Leer más";
+            } else {
+                el.style.display = "block";
+                btn.innerHTML = "Leer menos";
+            }
+        }
+
+        // Botón Arriba
+        window.onscroll = function() {
+            const btn = document.getElementById("btnArriba");
+            if (document.documentElement.scrollTop > 400) { btn.style.display = "block"; }
+            else { btn.style.display = "none"; }
+        };
+        function irArriba() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+    </script>
 </body>
 </html>

@@ -15,9 +15,10 @@
             --color-primario: #3C1642;
             --color-secundario: #E9F1F7;
             --texto-oscuro: #000000;
-            --texto-claro: #fafffd;
             --blanco: #ffffff;
             --azul-acento: #2274A5;
+            --estado-curso: #28a745;
+            --estado-finalizado: #dc3545;
         }
 
         html { scroll-behavior: smooth; }
@@ -53,18 +54,9 @@
             border-radius: 20px; font-weight: bold; transition: 0.3s; background: var(--color-primario);
         }
 
-        .nav-links a:hover {
-            background: var(--azul-acento);    
-            color: white;
-        }
+        .nav-links a:hover { background: var(--azul-acento); color: white; }
 
-        /* 2. CONTENIDO */
-        .container { 
-            max-width: 1100px; 
-            margin: 40px auto; 
-            padding: 0 20px;
-            flex: 1;
-        }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; flex: 1; }
 
         section { 
             background: var(--blanco); padding: 40px; margin-bottom: 30px; 
@@ -73,81 +65,61 @@
 
         h2 { color: var(--color-primario); margin-top: 0; border-bottom: 2px solid var(--color-secundario); padding-bottom: 10px; }
 
-        /* 3. MIEMBROS */
+        /* 2. MIEMBROS (Efecto Punto 1) */
         .miembros-wrapper {
             display: flex; overflow-x: auto; gap: 20px; padding: 20px 10px;
             scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
         }
-
-        .miembros-wrapper::-webkit-scrollbar { height: 8px; }
-        .miembros-wrapper::-webkit-scrollbar-thumb { background: var(--color-primario); border-radius: 10px; }
-
         .miembro-card {
             min-width: 260px; background: white; padding: 20px; border-radius: 15px;
             border: 1px solid #eee; text-align: center; flex-shrink: 0;
             scroll-snap-align: start; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease; /* Efecto punto 1 */
+            transition: transform 0.3s ease;
         }
-        
         .miembro-card:hover { transform: translateY(-5px); }
+        .foto-4x4 { width: 150px; height: 150px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; border: 3px solid var(--color-primario); }
 
-        .foto-4x4 {
-            width: 150px; height: 150px; object-fit: cover; border-radius: 12px;
-            margin-bottom: 15px; border: 3px solid var(--color-primario);
+        /* 3. NOVEDADES (Con botones de estado) */
+        .estado-badge {
+            display: inline-block; padding: 4px 12px; border-radius: 15px;
+            font-size: 0.75rem; font-weight: bold; color: white; margin-bottom: 10px;
+            text-transform: uppercase;
         }
+        .en-curso { background-color: var(--estado-curso); }
+        .finalizado { background-color: var(--estado-finalizado); }
 
-        /* 4. BOTÓN VOLVER ARRIBA (Punto 4) */
-        .flecha {
-            border: solid white; border-width: 0 4px 4px 0;
-            display: inline-block; padding: 6px; transform: rotate(-135deg);
-        }
-
-        #btnArriba {
-            display: none; position: fixed; bottom: 20px; right: 20px; 
-            z-index: 9999; border: none; background-color: var(--color-primario); 
-            color: white; cursor: pointer; width: 50px; height: 50px; border-radius: 50%;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.3); transition: 0.3s;
-            align-items: center; justify-content: center;
-        }
-
-        /* 5. FOOTER Y FORMULARIO DE CONTACTO */
+        /* 4. FOOTER Y CONTACTO */
         footer { background-color: #BA8F95; color: #ffffff; padding: 60px 5% 30px; margin-top: 50px; }
         .footer-container {
             max-width: 1100px; margin: 0 auto; display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;
         }
-        .footer-section h4 { color: var(--color-primario); margin-bottom: 20px; font-size: 1.2rem; text-transform: uppercase; }
-        .footer-section p, .footer-section a { color: #ffffff; text-decoration: none; font-size: 0.95rem; line-height: 1.8; }
-        
-        /* Box de mensaje */
         .contact-form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
-        .contact-form input, .contact-form textarea {
-            padding: 10px; border-radius: 8px; border: none; font-family: sans-serif; font-size: 0.9rem;
-        }
+        .contact-form input, .contact-form textarea { padding: 10px; border-radius: 8px; border: none; font-size: 0.9rem; }
         .contact-form textarea { height: 80px; resize: none; }
-        .btn-enviar { 
-            background: var(--color-primario); color: white; border: none; padding: 10px; 
-            border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
-        }
+        .btn-enviar { background: var(--color-primario); color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .btn-enviar:hover { background: var(--azul-acento); }
 
-        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; }
-
-        /* 6. PUBLICACIONES */
+        /* 5. PUBLICACIONES / ARTICULOS */
         .contenido-publicacion { text-align: left; line-height: 1.6; color: #333; margin-bottom: 20px; }
         .publicacion-meta { font-size: 0.85rem; color: #64748b; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 15px; }
-        .link-proyecto { display: inline-block; margin-top: 15px; color: var(--azul-acento); font-weight: bold; text-decoration: none; }
         .contenido-extra { display: none; margin-top: 15px; opacity: 0; transition: opacity 0.5s ease; }
         .contenido-extra.visible { display: block; opacity: 1; }
         .btn-leer-mas { background: var(--color-primario); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; }
 
+        /* VOLVER ARRIBA (Punto 4) */
+        #btnArriba {
+            display: none; position: fixed; bottom: 20px; right: 20px; 
+            z-index: 9999; border: none; background-color: var(--color-primario); 
+            color: white; width: 50px; height: 50px; border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3); align-items: center; justify-content: center; cursor: pointer;
+        }
+        .flecha { border: solid white; border-width: 0 4px 4px 0; display: inline-block; padding: 6px; transform: rotate(-135deg); }
+
         @media (max-width: 768px) {
             nav { flex-direction: column; padding: 15px; }
-            .brand { margin-bottom: 15px; justify-content: center; }
             .nav-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
             .nav-links a { text-align: center; font-size: 0.85rem; padding: 12px 5px; }
-            .container { padding: 10px; }
-            section { padding: 20px; }
             .footer-container { text-align: center; }
         }
     </style>
@@ -162,23 +134,20 @@
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#miembros">Miembros</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#contacto">Contacto</a> </div>
+            <a href="#articulos">Artículos</a>
+            <a href="#novedades">Novedades</a>
+            <a href="#contacto">Contacto</a>
+        </div>
     </nav>
 
     <div class="container">
         <section id="inicio">
             <h2>¿Qué hacemos?</h2>
-            <div class="contenido-publicacion">
-                <p>Introducción al laboratorio y sus objetivos principales en el área de visión artificial.</p>
-            </div>
+            <p>Introducción al laboratorio y sus objetivos principales.</p>
         </section>
 
         <section id="miembros">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                <h2>Miembros</h2>
-                <div style="color: var(--color-primario); font-size: 0.8rem; font-weight: bold;">Desliza para ver más →</div>
-            </div>
+            <h2>Miembros</h2>
             <div class="miembros-wrapper">
                 <div class="miembro-card">
                     <img src="foto1.jpg" alt="María Elena Buemi" class="foto-4x4">
@@ -190,27 +159,40 @@
                     <h3>Daniel Acevedo</h3>
                     <p><strong>Investigador del CONICET</strong></p>
                 </div>
-                <div class="miembro-card">
-                    <img src="foto3.jpg" alt="Pablo Negri" class="foto-4x4">
-                    <h3>Pablo Negri</h3>
-                    <p><strong>Investigador del CONICET</strong></p>
-                </div>
             </div>
         </section>
 
-        <section id="proyectos">
-            <h2>Últimos proyectos</h2>
+        <section id="articulos">
+            <h2>Últimos Artículos</h2>
             <div class="contenido-publicacion">
                 <p><strong>Event-based facial microexpression analysis</strong></p>
                 <div class="publicacion-meta">
                     <span>👤 Daniel Acevedo, Pablo Negri, Maria E. Buemi</span>
                     <span>📅 2026</span>
                 </div>
-                <div class="contenido-extra" id="proyecto_1">
-                    <p>Descripción detallada del proyecto...</p>
-                    <a href="#" class="link-proyecto">🔗 Ver proyecto completo</a>
+                <div class="contenido-extra" id="art_1">
+                    <p>Resumen detallado del artículo científico...</p>
+                    <a href="#" style="color: var(--azul-acento); font-weight: bold; text-decoration: none;">🔗 Ver publicación completa</a>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_1', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" onclick="toggleContenido('art_1', this)">Leer más ↓</button>
+            </div>
+        </section>
+
+        <section id="novedades">
+            <h2>Últimas Novedades</h2>
+            
+            <div class="contenido-publicacion">
+                <span class="estado-badge en-curso">En curso</span>
+                <p><strong>Seminario de Deep Learning 2026</strong></p>
+                <p>Abierta la inscripción para el ciclo de charlas de invierno.</p>
+            </div>
+            
+            <hr style="opacity: 0.1; margin: 20px 0;">
+
+            <div class="contenido-publicacion">
+                <span class="estado-badge finalizado">Finalizado</span>
+                <p><strong>Conferencia ICPRS</strong></p>
+                <p>Presentación exitosa de los trabajos del laboratorio en la 15va edición.</p>
             </div>
         </section>
     </div>
@@ -219,25 +201,20 @@
         <div class="footer-container">
             <div class="footer-section">
                 <h4>Sobre Nosotros</h4>
-                <p>Laboratorio de Imágenes y Visión. Investigamos el futuro de la IA y el procesamiento de imágenes.</p>
+                <p>Investigación en Visión por Computadora.</p>
             </div>
-
             <div class="footer-section">
-                <h4>Contacto</h4>
-                <p>📍 Buenos Aires, Argentina</p>
-                <p>📧 Email: contacto@liv.uba.ar</p>
+                <h4>Escríbenos</h4>
                 <form class="contact-form">
-                    <input type="text" placeholder="Tu nombre" required>
-                    <textarea placeholder="Tu mensaje..." required></textarea>
+                    <input type="text" placeholder="Nombre" required>
+                    <textarea placeholder="Mensaje..." required></textarea>
                     <button type="submit" class="btn-enviar">Enviar Mensaje</button>
                 </form>
             </div>
-
             <div class="footer-section">
-                <h4>Enlaces Rápidos</h4>
-                <a href="#inicio">Inicio</a><br>
-                <a href="#miembros">Nuestro Equipo</a><br>
-                <a href="#proyectos">Proyectos</a>
+                <h4>Contacto</h4>
+                <p>📍 Buenos Aires, Argentina</p>
+                <p>📧 contacto@liv.uba.ar</p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -245,24 +222,18 @@
         </div>
     </footer>
 
-    <button onclick="irArriba()" id="btnArriba" title="Volver arriba"><i class="flecha"></i></button>
+    <button onclick="irArriba()" id="btnArriba"><i class="flecha"></i></button>
 
     <script>
         function toggleContenido(id, boton) {
             const elemento = document.getElementById(id);
             if (elemento.classList.contains('visible')) {
                 elemento.style.opacity = "0";
-                setTimeout(() => {
-                    elemento.classList.remove('visible');
-                    elemento.style.display = "none";
-                }, 500);
+                setTimeout(() => { elemento.classList.remove('visible'); elemento.style.display = "none"; }, 500);
                 boton.innerText = "Leer más ↓";
             } else {
                 elemento.style.display = "block";
-                setTimeout(() => {
-                    elemento.classList.add('visible');
-                    elemento.style.opacity = "1";
-                }, 10);
+                setTimeout(() => { elemento.classList.add('visible'); elemento.style.opacity = "1"; }, 10);
                 boton.innerText = "Leer menos ↑";
             }
         }
@@ -276,9 +247,7 @@
             }
         };
 
-        function irArriba() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        function irArriba() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
 </body>
 </html>

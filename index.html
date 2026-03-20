@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIV</title>
+    <title>LIV - Laboratorio de Imágenes y Visión</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- ESTILOS ORIGINALES INTACTOS --- */
         :root {
             --color-primario: #3C1642;
             --color-secundario: #E9F1F7;
             --texto-oscuro: #000000;
             --texto-claro: #fafffd;
             --blanco: #ffffff;
+            --azul-acento: #2274A5;
         }
 
         html { scroll-behavior: smooth; }
@@ -33,7 +34,7 @@
             min-height: 100vh;
         }
 
-        /* 1. NAVEGACIÓN (PC) */
+        /* 1. NAVEGACIÓN BASE (PC) */
         nav { 
             background: #fafffd; 
             padding: 10px 5%; 
@@ -44,36 +45,55 @@
             position: sticky; top: 0; z-index: 1000;
         }
 
-        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .logo { height: 60px; width: auto; }
-        .nombre-pagina { font-size: 1.4rem; font-weight: bold; color: #2274A5; }
+        .nombre-pagina { font-size: 1.4rem; font-weight: bold; color: var(--azul-acento); }
 
         .nav-links { display: flex; gap: 10px; }
+        
         .nav-links a { 
-            text-decoration: none; color: #E9F1F7; padding: 10px 15px; 
-            border-radius: 20px; font-weight: bold; transition: 0.3s; background: #3C1642;
-        }
-        .nav-links a:hover {
-            background: #E9F1F7;    
-            color: #3C1642;
+            text-decoration: none; 
+            color: #E9F1F7; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            background: var(--color-primario);
         }
 
-        /* 3. CONTENIDO (EL BANNER FUE ELIMINADO COMO PEDISTE) */
+        .nav-links a:hover {
+            background: var(--azul-acento);    
+            color: white;
+        }
+
+        /* 2. BANNER */
+        .banner { 
+            width: 100%;
+            height: 450px;
+            background: url('banner.jpg') no-repeat center center/cover; 
+        }
+
+        /* 3. CONTENIDO (Restaurado ancho original) */
         .container { 
-            max-width: 1100px; 
+            max-width: 1100px; /* Vuelve a tener un máximo para no ser gigante */
             margin: 40px auto; 
             padding: 0 20px;
             flex: 1;
+            width: 100%; /* Asegura que ocupe espacio si la pantalla es mediana */
+            box-sizing: border-box;
         }
 
         section { 
-            background: var(--blanco); padding: 40px; margin-bottom: 30px; 
-            border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            background: var(--blanco); 
+            padding: 40px; 
+            margin-bottom: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
         }
 
-        h2 { color: var(--color-primario); margin-top: 0; }
+        h2 { color: var(--color-primario); margin-top: 0; border-bottom: 2px solid var(--color-secundario); padding-bottom: 10px;}
 
-        /* 4. MIEMBROS */
+        /* 4. MIEMBROS con efecto HOVER */
         .miembros-wrapper {
             display: flex;
             overflow-x: auto;
@@ -83,24 +103,40 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        .miembros-wrapper::-webkit-scrollbar { height: 8px; }
-        .miembros-wrapper::-webkit-scrollbar-thumb { background: var(--color-primario); border-radius: 10px; }
+        .miembros-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+        .miembros-wrapper::-webkit-scrollbar-thumb {
+            background: var(--color-primario);
+            border-radius: 10px;
+        }
 
         .miembro-card {
             min-width: 260px;
-            background: white;
-            padding: 20px;
+            background: #ffffff;
+            padding: 25px;
             border-radius: 15px;
-            border: 1px solid #eee;
+            border: 1px solid #edf2f7;
             text-align: center;
             flex-shrink: 0;
             scroll-snap-align: start;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            
+            /* Preparar para el efecto hover */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* --- EFECTO HOVER EN MIEMBROS --- */
+        .miembro-card:hover {
+            transform: translateY(-10px); /* Se levanta un poco */
+            box-shadow: 0 10px 20px rgba(60, 22, 66, 0.15); /* Sombra más pronunciada */
+            border-color: var(--color-primario);
         }
 
         .foto-4x4 {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 15px;
@@ -108,65 +144,217 @@
         }
 
         /* PUBLICACIONES Y ARTÍCULOS */
-        .contenido-publicacion { text-align: left; line-height: 1.6; color: #000000; }
+        .contenido-publicacion {
+            text-align: left;
+            line-height: 1.6;
+            color: #000000;   
+        }
+
         .contenido-publicacion p { margin-bottom: 15px; }
-        .contenido-publicacion ul { padding-left: 20px; margin-bottom: 15px; }
 
         .btn-leer-mas {
-            background-color: #3C1642; color: white; border: none; padding: 10px 20px;
-            border-radius: 20px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s;
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.3s;
         }
-        .btn-leer-mas:hover { background-color: #2274A5; }
 
-        .contenido-extra { display: none; margin-top: 15px; opacity: 0; transition: opacity 0.5s ease; }
-        .contenido-extra.visible { display: block; opacity: 1; }
+        .btn-leer-mas:hover { background-color: var(--azul-acento); }
 
-        .publicacion-meta { font-size: 0.85rem; color: #64748b; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 15px; }
-        .publicacion-meta span { display: flex; align-items: center; }
+        .contenido-extra {
+            display: none;
+            margin-top: 15px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
 
-        .link-proyecto { display: inline-block; margin-top: 15px; color: #2274A5; text-decoration: none; font-weight: bold; border-bottom: 2px solid transparent; transition: 0.3s; }
-        .link-proyecto:hover { border-bottom: 2px solid #2274A5; }
+        .contenido-extra.visible {
+            display: block;
+            opacity: 1;
+        }
 
-        /* NOVEDADES BADGE */
-        .estado-badge { display: inline-block; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: bold; color: white; text-transform: uppercase; }
-        .en-curso { background-color: #28a745; }
-        .finalizado { background-color: #dc3545; }
-        .novedad-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .novedad-fecha { font-size: 0.85rem; color: #64748b; font-weight: bold; }
+        .publicacion-meta {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .link-proyecto {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--azul-acento);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .link-proyecto:hover { border-bottom: 2px solid var(--azul-acento); }
 
         /* BOTÓN VOLVER ARRIBA */
-        .flecha { border: solid white; border-width: 0 4px 4px 0; display: inline-block; padding: 6px; transform: rotate(-135deg); margin-top: 5px; }
-        #btnArriba { display: none; position: fixed; bottom: 20px; right: 20px; z-index: 9999; border: none; background-color: var(--color-primario); color: white; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; }
+        .flecha {
+            border: solid white;
+            border-width: 0 4px 4px 0;
+            display: inline-block;
+            padding: 6px;
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+        }
 
-        /* FOOTER RENOVADO (SIN ALTERAR TU DISEÑO DE COLUMNAS) */
-        footer { background-color: #BA8F95; padding: 60px 5% 30px; margin-top: 50px; }
-        .footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-section h4 { color: #2274A5; margin-bottom: 20px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-section p, .footer-section a { color: #ffffff; text-decoration: none; font-size: 0.95rem; line-height: 1.8; display: block; }
-        
-        .contact-box { display: flex; flex-direction: column; gap: 10px; }
-        .contact-box input, .contact-box textarea { padding: 10px; border-radius: 8px; border: none; font-family: inherit; }
-        .btn-enviar { background: #3C1642; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .btn-enviar:hover { background: #2274A5; }
+        #btnArriba {
+            display: none; 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            z-index: 9999; 
+            border: none;
+            outline: none;
+            background-color: var(--color-primario);
+            color: white;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        /* Enlaces rápidos ahora tiene los iconos */
-        .redes-sociales a { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; font-size: 1.1rem; margin-bottom: 15px; transition: 0.3s; }
-        .redes-sociales a i { font-size: 1.8rem; }
-        .redes-sociales a:hover { color: #3C1642; }
+        /* 5. FOOTER BASE (PC) */
+        footer {
+            background-color: #BA8F95; 
+            color: #ffffff;
+            padding: 60px 5% 30px;
+            margin-top: 50px;
+        }
 
-        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #ffffff; }
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
 
-        /* AJUSTE PARA CELULAR IDÉNTICO AL ORIGINAL */
+        .footer-section h4 {
+            color: var(--color-primario);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ffffff; 
+            text-decoration: none;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            display: block;
+        }
+
+        .footer-section a:hover { text-decoration: underline; }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.85rem;
+        }
+
+        /* Indicador de scroll animado */
+        .indicador-scroll {
+            text-align: right;
+            color: var(--color-primario);
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            animation: moverFlecha 1.5s infinite;
+        }
+
+        @keyframes moverFlecha {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        /* =========================================
+           SOLUCIONES RESPONSIVE (CELULAR)
+           Corrigiendo amontonamiento de barras y footer
+           ========================================= */
         @media (max-width: 768px) {
-            nav { flex-direction: column; padding: 15px; height: auto; }
-            .brand { margin-bottom: 15px; justify-content: center; width: 100%; }
-            .logo { height: 50px; }
-            .nombre-pagina { font-size: 1.1rem; }
-            .nav-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
-            .nav-links a { display: block; text-align: center; margin: 0; font-size: 0.85rem; padding: 12px 5px; background: #3C1642; }
-            .container { width: 100%; padding: 10px; box-sizing: border-box; }
-            .footer-container { text-align: center; }
-            .redes-sociales a { justify-content: center; }
+            /* --- Mejoras en Barra de Navegación --- */
+            nav {
+                flex-direction: column; /* Stacks logo arriba, links abajo */
+                padding: 15px 10px;
+                height: auto; /* Permite que crezca */
+                gap: 5px;
+            }
+
+            .brand {
+                justify-content: center; /* Centra el logo en móvil */
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .logo { height: 50px; } /* Un poco más chico en móvil */
+            .nombre-pagina { font-size: 1.1rem; text-align: center; }
+
+            .nav-links {
+                display: grid; /* Convertimos a rejilla para que no se apilen */
+                grid-template-columns: 1fr 1fr; /* Dos por fila */
+                gap: 8px;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .nav-links a {
+                display: block;
+                text-align: center;
+                font-size: 13px; /* Achicamos letra */
+                padding: 12px 5px; /* Más gorditos para tocar fácil */
+                margin: 0;
+            }
+
+            /* --- Mejoras en Footer --- */
+            .footer-container {
+                text-align: center; /* Centra todo el texto */
+                grid-template-columns: 1fr; /* Una columna por sección */
+                gap: 30px;
+            }
+
+            .footer-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Centra elementos flex */
+            }
+
+            /* Ajuste para iconos sociales si los tuvieras */
+            .footer-section i {
+                margin: 10px auto;
+            }
+
+            /* --- Contenedor general en móvil --- */
+            .container {
+                width: 100%;
+                padding: 10px;
+                margin: 20px auto;
+                box-sizing: border-box;
+            }
+            
+            section {
+                padding: 25px 15px; /* Menos padding interno */
+            }
+            
+            .banner { height: 200px; } /* Banner más corto en móvil */
         }
     </style>
 </head>
@@ -174,7 +362,7 @@
 
     <nav>
         <a href="#" class="brand">
-            <img src="logo.png" alt="Logo" class="logo">
+            <img src="logo.png" alt="Logo LIV" class="logo">
             <span class="nombre-pagina">LABORATORIO DE IMÁGENES Y VISIÓN</span>
         </a>
         <div class="nav-links">
@@ -182,9 +370,10 @@
             <a href="#miembros">Miembros</a>
             <a href="#articulos">Artículos</a>
             <a href="#novedades">Novedades</a>
-            <a href="#contacto">Contacto</a>
         </div>
     </nav>
+
+    <div class="banner"></div>
 
     <div class="container">
         <section id="inicio">
@@ -195,49 +384,56 @@
         </section>
 
         <section id="miembros">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                 <h2>Miembros</h2>
-                <div style="color: var(--color-primario); font-size: 0.9rem; font-weight: bold;">Desliza para ver más →</div>
+                <div class="indicador-scroll">Desliza para ver más →</div>
             </div>
             
             <div class="miembros-wrapper">
                 <div class="miembro-card">
-                    <img src="foto1.jpg" alt="Nombre 1" class="foto-4x4">
+                    <img src="foto1.jpg" alt="María Elena Buemi" class="foto-4x4">
                     <h3>María Elena Buemi</h3>
                     <p><strong>Investigadora de la UBA.</strong></p>
                 </div>
+
                 <div class="miembro-card">
-                    <img src="foto2.jpg" alt="Nombre 2" class="foto-4x4">
+                    <img src="foto2.jpg" alt="Daniel Acevedo" class="foto-4x4">
                     <h3>Daniel Acevedo</h3>
                     <p><strong>Investigador del CONICET.</strong></p>
                 </div>
+
                 <div class="miembro-card">
-                    <img src="foto3.jpg" alt="Nombre 3" class="foto-4x4">
+                    <img src="foto3.jpg" alt="Pablo Negri" class="foto-4x4">
                     <h3>Pablo Negri</h3>
                     <p><strong>Investigador del CONICET.</strong></p>
                 </div>
+                
                 <div class="miembro-card">
-                    <img src="foto4.jpg" alt="Nombre 4" class="foto-4x4">
+                    <img src="foto4.jpg" alt="Manuel Dubinsky" class="foto-4x4">
                     <h3>Manuel Dubinsky</h3>
                     <p><strong>Rol</strong></p>
                 </div>
+
                 <div class="miembro-card">
-                    <img src="foto5.jpg" alt="Nombre 5" class="foto-4x4">
+                    <img src="foto5.jpg" alt="Nicolas Mastropasqua" class="foto-4x4">
                     <h3>Nicolas Mastropasqua</h3>
                     <p><strong>Rol</strong></p>
                 </div>
-                 <div class="miembro-card">
-                    <img src="foto6.jpg" alt="Nombre 6" class="foto-4x4">
+                
+                <div class="miembro-card">
+                    <img src="foto6.jpg" alt="Julieta Goria" class="foto-4x4">
                     <h3>Julieta Goria</h3>
                     <p><strong>ROL.</strong></p>
                 </div>
+                 
                 <div class="miembro-card">
-                    <img src="foto7.jpg" alt="Nombre 7" class="foto-4x4">
-                    <h3>Juan Ignacio Bustos Gorostegui</h3>
+                    <img src="foto7.jpg" alt="Juan Ignacio Bustos Gorostegui" class="foto-4x4">
+                    <h3>Juan Ignacio Bustos G.</h3>
                     <p><strong>ROL.</strong></p>
                 </div>
+                
                 <div class="miembro-card">
-                    <img src="foto8.jpg" alt="Nombre 8" class="foto-4x4">
+                    <img src="foto8.jpg" alt="Nicolas Carrasco" class="foto-4x4">
                     <h3>Nicolas Carrasco</h3>
                     <p><strong>ROL.</strong></p>
                 </div>
@@ -245,168 +441,124 @@
         </section>
 
         <section id="articulos">
-            <h2>Últimos Artículos</h2>
+            <h2>Últimos artículos</h2>
 
             <div class="contenido-publicacion">
                 <p><strong>Event-based facial microexpression analysis using Spiking Neural Networks</strong></p>
                 <div class="publicacion-meta">
-                    <span>👤 Escrito por: Daniel Acevedo, Pablo Negri, Maria E. Buemi y Nicolas Mastropasqua.</span>
+                    <span>👤 Daniel Acevedo, Pablo Negri, Maria E. Buemi y Nicolas Mastropasqua.</span>
                     <span>📅 29 de diciembre, 2025</span>
                 </div>
-                <p>Conferencia: 2025 15th IEEE International Conference on Pattern Recognition Systems (ICPRS)</p>
+                <p>Conferencia: 2025 15th IEEE ICPRS</p>
                 
-                <div class="contenido-extra" id="proyecto_1">
-                    <p>Microexpression analysis plays a key role in many applications such as those in Human-Robot Interaction and Driving Monitoring Systems (DMS). However, robust and fast detection of subtle facial micro-movements in-the-wild still remains a significant challenge for standard RGB cameras. Recently, bio-inspired sensors such as event cameras have emerged as a promising alternative due to their high temporal resolution, low latency and energy efficiency.</p>
-                    <ul>
-                        <a href="https://ieeexplore.ieee.org/abstract/document/11302823" target="_blank" class="link-proyecto">🔗 Ver proyecto</a>
-                    </ul>
+                <div class="contenido-extra" id="art_1">
+                    <p>Resumen extenso del artículo...</p>
+                    <a href="#" target="_blank" class="link-proyecto">🔗 Ver proyecto</a>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_1', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" onclick="toggleContenido('art_1', this)">Leer más ↓</button>
             </div>
+            
             <hr style="opacity: 0.1; margin: 30px 0;">
 
             <div class="contenido-publicacion">
                 <p><strong>Viabilidad de búsqueda de parentesco en Problema Inverso Familiar</strong></p>
                 <div class="publicacion-meta">
-                    <span>👤 Escrito por: Daniel Acevedo, Pablo Negri y Julieta Goria</span>
+                    <span>👤 Daniel Acevedo, Pablo Negri y Julieta Goria</span>
                     <span>📅 21 de Octubre, 2025</span>
                 </div>
-                <p>Revista: JAIIO, Jornadas Argentinas de Informática.</p>
-              
-                <div class="contenido-extra" id="proyecto_2">
-                    <p>El reconocimiento familiar a partir de imágenes faciales es una tarea desafiante que amplía la verificación facial tradicional al incorporar variaciones genéticas y generacionales. Mientras que los enfoques existentes, como los explorados en el desafío Recognizing Families In the Wild (RFIW), se centran en verificar relaciones familiares en una dirección temporal lineal.</p>
-                    <ul>
-                        <a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19857" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a>
-                    </ul>
+                <p>Revista: JAIIO</p>
+                
+                <div class="contenido-extra" id="art_2">
+                    <p>Resumen extenso del artículo...</p>
+                    <a href="#" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_2', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" onclick="toggleContenido('art_2', this)">Leer más ↓</button>
             </div>
-            </section>
+        </section>
 
         <section id="novedades">
-            <h2>Últimas Novedades</h2>
-
+            <h2>Últimas novedades</h2>
             <div class="contenido-publicacion">
-                <div class="novedad-header">
-                    <span class="estado-badge en-curso">En curso</span>
-                    <span class="novedad-fecha">17 de Marzo, 2026</span>
-                </div>
-                
-                <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Inscripciones Abiertas: Seminario de Visión</h3>
-                <p>Breve descripción de la novedad. Aquí cuentas de qué se trata el evento, congreso o noticia importante para que los visitantes se enteren rápidamente del tema principal.</p>
-                
+                <p><strong>Novedad1</strong> titulo.</p>
                 <div class="contenido-extra" id="nov_1">
-                    <p>Aquí puedes poner los detalles extendidos, horarios, links de inscripción o requisitos.</p>
-                    <ul>
-                        <li>Requisito 1</li>
-                        <li>Requisito 2</li>
-                    </ul>
+                    <p>Descripción detallada de la novedad...</p>
                 </div>
-                <button class="btn-leer-mas" style="margin-top: 0;" onclick="toggleContenido('nov_1', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" onclick="toggleContenido('nov_1', this)">Leer más ↓</button>
             </div>
-            
-            <hr style="opacity: 0.1; margin: 30px 0;">
-            
-            <div class="contenido-publicacion">
-                <div class="novedad-header">
-                    <span class="estado-badge finalizado">Finalizado</span>
-                    <span class="novedad-fecha">10 de Febrero, 2026</span>
-                </div>
-                
-                <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Participación en Congreso ICPRS</h3>
-                <p>El equipo del laboratorio presentó de forma exitosa los últimos avances en el congreso internacional.</p>
-                
-                <div class="contenido-extra" id="nov_2">
-                    <p>Se presentaron los artículos de microexpresiones faciales y redes neuronales con gran recepción del público asistente.</p>
-                </div>
-                <button class="btn-leer-mas" style="margin-top: 0;" onclick="toggleContenido('nov_2', this)">Leer más ↓</button>
-            </div>
-
         </section>
     </div>
 
-    <footer id="contacto">
+    <footer>
         <div class="footer-container">
-            
             <div class="footer-section">
-                <h4>Escríbenos</h4>
-                <form action="https://formspree.io/f/xkoqrqoz" method="POST" class="contact-box">
-    <input type="text" name="nombre" placeholder="Tu Nombre" required>
-    
-    <input type="email" name="email" placeholder="Tu Email" required>
-    
-    <textarea name="mensaje" placeholder="Tu Mensaje..." rows="3" required></textarea>
-    
-    <button type="submit" class="btn-enviar">Enviar Mensaje</button>
-</form>
-            </div>
-
-            <div class="footer-section">
-                <h4>Contacto</h4>
-                <p>📧 Email: contacto@liv.uba.ar</p>
-                <p>📍 Ubicación: Buenos Aires, Argentina</p>
+                <h4>Sobre Nosotros</h4>
+                <p>Descripción del laboratorio LIV.</p>
             </div>
 
             <div class="footer-section">
                 <h4>Enlaces Rápidos</h4>
-                <div class="redes-sociales">
-                    <a href="#" target="_blank">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                </div>
+                <a href="#inicio">Inicio</a>
+                <a href="#miembros">Nuestro Equipo</a>
+                <a href="#articulos">Artículos</a>
+                <a href="#novedades">Novedades</a>
             </div>
 
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-envelope"></i> Email: contacto@liv.uba.ar</p>
+                <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+                <div style="display: flex; gap: 15px; margin-top: 10px; justify-content: inherit;">
+                    <a href="#" title="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+                </div>
+            </div>
         </div>
 
         <div class="footer-bottom">
-            &copy; 2026 LIV. Todos los derechos reservados.
+            &copy; 2026 LIV - Laboratorio de Imágenes y Visión. Todos los derechos reservados.
         </div>
     </footer>
     
     <button onclick="irArriba()" id="btnArriba" title="Volver arriba"><i class="flecha"></i></button>
     
-<script>
-    function toggleContenido(id, boton) {
-        var elemento = document.getElementById(id);
-        if (elemento.classList.contains('visible')) {
-            elemento.style.opacity = "0";
-            setTimeout(function() {
-                elemento.classList.remove('visible');
-                elemento.style.display = "none";
-            }, 500);
-            boton.innerHTML = "Leer más ↓";
-        } else {
-            elemento.style.display = "block";
-            setTimeout(function() {
-                elemento.classList.add('visible');
-                elemento.style.opacity = "1";
-            }, 10);
-            boton.innerHTML = "Leer menos ↑";
+    <script>
+        // Función para los botones de "Leer más"
+        function toggleContenido(id, boton) {
+            var elemento = document.getElementById(id);
+            if (elemento.classList.contains('visible')) {
+                elemento.style.opacity = "0";
+                setTimeout(function() {
+                    elemento.classList.remove('visible');
+                    elemento.style.display = "none";
+                }, 500);
+                boton.innerHTML = "Leer más ↓";
+            } else {
+                elemento.style.display = "block";
+                setTimeout(function() {
+                    elemento.classList.add('visible');
+                    elemento.style.opacity = "1";
+                }, 10);
+                boton.innerHTML = "Leer menos ↑";
+            }
         }
-    }
 
-    const miBoton = document.getElementById("btnArriba");
+        // Lógica del botón Volver Arriba
+        const miBoton = document.getElementById("btnArriba");
 
-    window.onscroll = function() {
-        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-            miBoton.style.display = "flex"; 
-        } else {
-            miBoton.style.display = "none";
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                miBoton.style.display = "flex"; 
+            } else {
+                miBoton.style.display = "none";
+            }
+        };
+
+        function irArriba() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
-    };
-
-    function irArriba() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-
-    // Código agregado para que el botón de inicio funcione
-    document.getElementById("btnArriba").style.display = "none";
-</script>
+    </script>
 </body>
 </html>

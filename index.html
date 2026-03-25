@@ -50,7 +50,7 @@
         .logo { height: 60px; width: auto; }
         .nombre-pagina { font-size: 1.4rem; font-weight: bold; color: #2274A5; }
 
-        .nav-links { display: flex; gap: 10px; }
+        .nav-links { display: flex; gap: 10px; align-items: center; }
         .nav-links a { 
             text-decoration: none; color: #E9F1F7; padding: 10px 15px; 
             border-radius: 20px; font-weight: bold; transition: 0.3s; background: #3C1642;
@@ -58,6 +58,18 @@
         .nav-links a:hover {
             background: #E9F1F7;    
             color: #3C1642;
+        }
+
+        /* BOTÓN DE IDIOMA */
+        .nav-links .lang-switch {
+            background: transparent;
+            color: var(--color-primario);
+            border: 2px solid var(--color-primario);
+            padding: 8px 15px; /* Ajuste leve para compensar el borde */
+        }
+        .nav-links .lang-switch:hover {
+            background: var(--color-primario);
+            color: var(--color-secundario);
         }
 
         /* 2. CONTENIDO */
@@ -168,24 +180,24 @@
             /* COMPRIMIENDO EL MENÚ */
             nav {
                 flex-direction: column;
-                padding: 10px; /* Reducimos el padding general del nav */
+                padding: 10px; 
                 height: auto;
             }
 
             .brand {
-                margin-bottom: 5px; /* Menos separación entre logo y botones */
+                margin-bottom: 5px; 
                 justify-content: center;
                 width: 100%;
             }
 
-            .logo { height: 40px; } /* Logo más chico */
+            .logo { height: 40px; } 
             .nombre-pagina { font-size: 1rem; }
 
             .nav-links {
                 display: flex;
-                flex-wrap: wrap; /* Permite que se acomoden si no caben */
+                flex-wrap: wrap; 
                 justify-content: center;
-                gap: 5px; /* Botones mucho más pegados */
+                gap: 5px; 
                 width: 100%;
                 margin-top: 5px;
             }
@@ -194,8 +206,13 @@
                 display: block;
                 text-align: center;
                 margin: 0;
-                font-size: 0.75rem; /* Texto más pequeño */
-                padding: 6px 12px; /* Botones más finitos (menos padding arriba y abajo) */
+                font-size: 0.75rem; 
+                padding: 6px 12px; 
+            }
+
+            .nav-links .lang-switch {
+                padding: 5px 10px; /* Compensa el borde en celular para mantener el tamaño */
+                border-width: 1px;
             }
 
             /* COMPRIMIENDO EL RESTO EN MÓVIL */
@@ -206,12 +223,12 @@
             }
             
             section {
-                padding: 20px 15px; /* Secciones con menos aire a los costados */
+                padding: 20px 15px; 
             }
 
             .footer-container {
                 text-align: center;
-                gap: 20px; /* Menos espacio entre las columnas del footer */
+                gap: 20px; 
             }
         }
     </style>
@@ -229,6 +246,9 @@
             <a href="#articulos">Artículos</a>
             <a href="#novedades">Novedades</a>
             <a href="#contacto">Contacto</a>
+            <a href="index_en.html" class="lang-switch" title="Ver en Inglés">
+                <i class="fas fa-globe"></i> EN
+            </a>
         </div>
     </nav>
 

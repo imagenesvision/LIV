@@ -416,36 +416,6 @@
                 </div>
                 <button class="btn-leer-mas" onclick="toggleContenido('proyecto_7', this)">Leer más ↓</button>
             </div>
-            <hr style="opacity: 0.1; margin: 30px 0;">
-
-            <div class="contenido-publicacion">
-                <p><strong>Facial Expression Recognition using lightweight deep convolutional networks with Label Distribution Learning on Action Units labels space</strong></p>
-                <div class="publicacion-meta">
-                    <span>👤 Escrito por: Nicolas Mastropasqua, Daniel Acevedo</span>
-                    <span>📅 Junio, 2023</span>
-                </div>
-                <p>Revista: Electronic Journal of SADIO</p>
-                <div class="contenido-extra" id="proyecto_8">
-                    <p>Nowadays, the search for ‘lightweight’ solutions that achieve comparable results to those of heavy deep learning models has received increasing attention due to a feasible implementation on mobile devices. One of the areas that might benefit from this approach is the task of Facial Expression Recognition (FER). Considering the fact that datasets usually come with categoric labeling but most emotions occur as combinations, mixtures, or compounds of the basic emotions, we make use of label distribution learning (LDL) as a training strategy. In this article we deal with the FER problem using lightweight neuronal networks and LDL. We further assume that facial images should have similar emotion distributions to their neighbors when the right auxiliary task is considered, like the Action Unit Recognition problem. This neighbors’ distribution information is captured in the loss function to help the LDL training process. Specifically, we conduct an analysis of EfficientFace, a state-of-the-art ligthweight CNN and we analyze the impact of using different approaches to LDL on a variety of in-the-wild datasets: RAF-DB, CAER-S, FER+ and AffectNet.</p>
-                    <ul><a href="https://sedici.unlp.edu.ar/handle/10915/157870" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a></ul>
-                </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_8', this)">Leer más ↓</button>
-            </div>
-            <hr style="opacity: 0.1; margin: 30px 0;">
-
-            <div class="contenido-publicacion">
-                <p><strong>Manipulación de expresiones faciales vía espacio latente de Red Generativa Antagónica (GAN)</strong></p>
-                <div class="publicacion-meta">
-                    <span>👤 Escrito por: Julieta Goria, Daiana Aranda, Francisco Sandalinas, Mateo Suffern y Pablo Negri</span>
-                    <span>📅 Octubre, 2022</span>
-                </div>
-                <p>Conferencia: Simposio Argentino de Imágenes y Visión (SAIV 2022)-JAIIO 51 (Modalidad virtual y presencial (UAI), octubre 2022)</p>
-                <div class="contenido-extra" id="proyecto_9">
-                    <p>StyleGAN destaca como la arquitectura de vanguardia en generación de rostros sintéticos altamente realistas. Su implementación proyecta una imagen en su espacio latente, el cual es posible de manipular por medio de curvas direccionales modificando rasgos de la imagen original. Sin embargo, su alta dimensionalidad provoca que la búsqueda manual de una direccionalidad que produzca un rasgo o gesto dado resulte impracticable. Este trabajo propone una arquitectura neuronal de tipo pseudo-autoencoder que manipula la proyección latente alternando la apariencia del rostro. Esto se realiza gracias a la codificación del gesto facial con los vectores de Action Units. Se consiguió una dinámica de expresiones que permite la transición de un gesto a otro sin necesidad de pasar por el neutral, mejorando la naturalidad de la dinámica gestual.</p>
-                    <ul><a href="https://sedici.unlp.edu.ar/handle/10915/151743" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a></ul>
-                </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_9', this)">Leer más ↓</button>
-            </div>
         </section>
 
         <section id="novedades">
@@ -456,8 +426,8 @@
                     <span class="estado-badge en-curso">En curso</span>
                     <span class="novedad-fecha">Marzo 2026</span>
                 </div>
-                <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Ejemplo de Novedad en Curso</h3>
-                <p>Breve descripción del evento, congreso o noticia importante para que los visitantes se enteren rápidamente.</p>
+                <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Conferencia</h3>
+                <p>Breve descripción de la conferencia.</p>
                 <div class="contenido-extra" id="nov_1">
                     <p>Descripción detallada y puntos importantes.</p>
                     <ul>
@@ -475,10 +445,10 @@
                     <span class="estado-badge finalizado">Finalizado</span>
                     <span class="novedad-fecha">Febrero 2026</span>
                 </div>
-                <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Ejemplo de Novedad Finalizada</h3>
+                <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Evento</h3>
                 <p>Breve descripción de lo que sucedió en el evento del laboratorio.</p>
                 <div class="contenido-extra" id="nov_2">
-                    <p>Aquí cuentas cómo les fue y los resultados obtenidos en detalle.</p>
+                    <p>Como fue y los resultados obtenidos en detalle.</p>
                 </div>
                 <button class="btn-leer-mas" style="margin-top: 0;" onclick="toggleContenido('nov_2', this)">Leer más ↓</button>
             </div>
@@ -490,13 +460,15 @@
             
             <div class="footer-section">
                 <h4>Contacto</h4>
-                <p>📍 Buenos Aires, Argentina</p>
-                <p>✉️ contacto@liv.uba.ar</p>
+                <p>📍 Oficina 2115, Pabellón 0+Infinito, Ciudad Universitaria
+                    C1428EGA, Ciudad Autónoma de Buenos Aires
+                    Argentina</p>
+                <p>✉️ laboratoriodeimegenesyvision@gmail.com</p>
             </div>
 
             <div class="footer-section">
                 <h4>Escríbenos</h4>
-                <form id="formContacto" action="https://formspree.io/f/TU_CODIGO_AQUI" method="POST" class="formulario-contacto">
+                <form id="formContacto" action="https://formspree.io/f/xkoqrqoz" method="POST" class="formulario-contacto">
                     <input type="text" name="nombre" placeholder="Nombre" required>
                     <input type="email" name="email" placeholder="Email" required>
                     <textarea name="mensaje" placeholder="Mensaje..." rows="2" required></textarea>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIV</title>
+    <title>LIV- Laboratorio de Imágenes y Visión</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,8 +16,8 @@
            ESTILOS ORIGINALES DE TU ARCHIVO (INTACTOS)
            ========================================= */
         :root {
-            --color-primario: #3C1642;
-            --color-secundario: #E9F1F7;
+            --color-primario: #1B1B3A;
+            --color-secundario: #fafffd;
             --texto-oscuro: #000000;
             --texto-claro: #fafffd;
             --blanco: #ffffff;
@@ -48,16 +48,16 @@
 
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo { height: 60px; width: auto; }
-        .nombre-pagina { font-size: 1.4rem; font-weight: bold; color: #2274A5; }
+        .nombre-pagina { font-size: 1.4rem; font-weight: bold; color: #6C4965; }
 
         .nav-links { display: flex; gap: 10px; align-items: center; }
         .nav-links a { 
-            text-decoration: none; color: #E9F1F7; padding: 10px 15px; 
-            border-radius: 20px; font-weight: bold; transition: 0.3s; background: #3C1642;
+            text-decoration: none; color: #fafffd; padding: 10px 15px; 
+            border-radius: 20px; font-weight: bold; transition: 0.3s; background: #275665;
         }
         .nav-links a:hover {
-            background: #E9F1F7;    
-            color: #3C1642;
+            background: #fafffd;    
+            color: #275665;
         }
 
         /* BOTÓN DE IDIOMA */
@@ -85,7 +85,7 @@
             border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
         }
 
-        h2 { color: var(--color-primario); margin-top: 0; }
+        h2 { color: #BC7690; margin-top: 0; }
 
         /* 3. MIEMBROS */
         .miembros-wrapper {
@@ -98,14 +98,14 @@
         }
 
         .miembros-wrapper::-webkit-scrollbar { height: 8px; }
-        .miembros-wrapper::-webkit-scrollbar-thumb { background: var(--color-primario); border-radius: 10px; }
+        .miembros-wrapper::-webkit-scrollbar-thumb { background: #91D8A7; border-radius: 10px; }
 
         .miembro-card {
             min-width: 260px;
             background: white;
             padding: 25px;
             border-radius: 15px;
-            border: 1px solid #edf2f7;
+            border: 1px solid #FCECC9‎;
             text-align: center;
             flex-shrink: 0;
             scroll-snap-align: start;
@@ -133,14 +133,14 @@
         .contenido-publicacion p { margin-bottom: 15px; }
         .contenido-publicacion ul { padding-left: 20px; margin-bottom: 15px; }
 
-        .publicacion-meta { font-size: 0.85rem; color: #64748b; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 15px; }
+        .publicacion-meta { font-size: 0.85rem; color: #6C4965‎; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 15px; }
         .publicacion-meta span { display: flex; align-items: center; }
 
-        .link-proyecto { display: inline-block; margin-top: 15px; color: #2274A5; text-decoration: none; font-weight: bold; border-bottom: 2px solid transparent; transition: 0.3s; }
-        .link-proyecto:hover { border-bottom: 2px solid #2274A5; }
+        .link-proyecto { display: inline-block; margin-top: 15px; color: #91D8A7; text-decoration: none; font-weight: bold; border-bottom: 2px solid transparent; transition: 0.3s; }
+        .link-proyecto:hover { border-bottom: 2px solid #91D8A7; }
 
-        .btn-leer-mas { background-color: #3C1642; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s; }
-        .btn-leer-mas:hover { background-color: #2b0f30; }
+        .btn-leer-mas { background-color: #32908F; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s; }
+        .btn-leer-mas:hover { background-color: #275665; }
 
         .contenido-extra { display: none; margin-top: 15px; opacity: 0; transition: opacity 0.5s ease; }
         .contenido-extra.visible { display: block; opacity: 1; }
@@ -148,25 +148,25 @@
         /* NOVEDADES BADGES */
         .novedad-header { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
         .estado-badge { display: inline-block; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: bold; color: white; text-transform: uppercase; }
-        .en-curso { background-color: #28a745; }
-        .finalizado { background-color: #dc3545; }
-        .novedad-fecha { font-size: 0.85rem; color: #64748b; font-weight: bold; }
+        .en-curso { background-color: #6AA84F; }
+        .finalizado { background-color: #CC0000; }
+        .novedad-fecha { font-size: 0.85rem; color: #6C4965; font-weight: bold; }
 
         /* 5. FOOTER DE TRES COLUMNAS */
-        footer { background-color: #BA8F95; color: #9C7178; padding: 60px 5% 30px; margin-top: 50px; }
+        footer { background-color: #C7E2B8; color: #91D8A7; padding: 60px 5% 30px; margin-top: 50px; }
         .footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-section h4 { color: #2274A5; margin-bottom: 20px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-section p, .footer-section a { color: #ffffff; text-decoration: none; font-size: 0.95rem; line-height: 1.8; display: block; }
-        .footer-section a:hover { color: #ffffff; text-decoration: underline; }
+        .footer-section h4 { color: #1B1B3A; margin-bottom: 20px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-section p, .footer-section a { color: #000000; text-decoration: none; font-size: 0.95rem; line-height: 1.8; display: block; }
+        .footer-section a:hover { color: #fafffd; text-decoration: underline; }
         
         /* Estilos del Formulario en Footer */
         .formulario-contacto { display: flex; flex-direction: column; gap: 10px; }
         .formulario-contacto input, .formulario-contacto textarea { width: 100%; padding: 10px; border-radius: 5px; border: none; font-family: inherit; box-sizing: border-box;}
-        .formulario-contacto button { background-color: #3C1642; color: white; border: none; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .formulario-contacto button:hover { background-color: #2b0f30; }
-        .mensaje-exito { display: none; background-color: #28a745; color: white; text-align: center; padding: 10px; border-radius: 5px; margin-top: 10px; font-weight: bold; font-size: 0.9rem;}
+        .formulario-contacto button { background-color: #BC7690; color: white; border: none; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .formulario-contacto button:hover { background-color: #6C4965; }
+        .mensaje-exito { display: none; background-color: #6AA84F; color: white; text-align: center; padding: 10px; border-radius: 5px; margin-top: 10px; font-weight: bold; font-size: 0.9rem;}
 
-        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #9C7178; }
+        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #000000; }
 
         /* FLECHA VOLVER ARRIBA */
         .flecha { border: solid white; border-width: 0 4px 4px 0; display: inline-block; padding: 6px; transform: rotate(-135deg); -webkit-transform: rotate(-135deg); margin-top: 5px; }
@@ -263,14 +263,14 @@
         <section id="miembros">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2>Members</h2>
-                <div style="color: var(--color-primario); font-size: 0.9rem; font-weight: bold;">Slide to see more →</div>
+                <div style="color: #E5D7B7; font-size: 0.9rem; font-weight: bold;">Slide to see more →</div>
             </div>
             
             <div class="miembros-wrapper">
                 <div class="miembro-card">
                     <img src="foto1.jpg" alt="Nombre 1" class="foto-4x4">
                     <h3>María Elena Buemi</h3>
-                    <p><strong>Researcher at the University of Buenos Aires.</strong></p>
+                    <p><strong>UBA researcher.</strong></p>
                 </div>
                 <div class="miembro-card">
                     <img src="foto2.jpg" alt="Nombre 2" class="foto-4x4">

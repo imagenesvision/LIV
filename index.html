@@ -65,7 +65,7 @@
             background: transparent;
             color: var(--color-primario);
             border: 2px solid var(--color-primario);
-            padding: 8px 15px; /* Ajuste leve para compensar el borde */
+            padding: 8px 15px;
         }
         .nav-links .lang-switch:hover {
             background: var(--color-primario);
@@ -77,7 +77,7 @@
             max-width: 1100px; 
             margin: 40px auto; 
             padding: 0 20px;
-            flex: 1; /* Empuja el footer hacia abajo */
+            flex: 1; 
         }
 
         section { 
@@ -88,6 +88,20 @@
         h2 { color: #BC7690; margin-top: 0; }
 
         /* 3. MIEMBROS */
+        #miembros { position: relative; }
+
+        #miembros::after {
+            content: '';
+            position: absolute;
+            top: 60px; 
+            right: 0;
+            bottom: 20px;
+            width: 50px;
+            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+            pointer-events: none; 
+            border-radius: 0 15px 15px 0;
+        }
+
         .miembros-wrapper {
             display: flex;
             overflow-x: auto;
@@ -110,10 +124,9 @@
             flex-shrink: 0;
             scroll-snap-align: start;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease; /* Transición para el Hover */
+            transition: all 0.3s ease; 
         }
 
-        /* EFECTO HOVER SOLICITADO */
         .miembro-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 10px 20px rgba(60, 22, 66, 0.15);
@@ -172,64 +185,69 @@
         .flecha { border: solid white; border-width: 0 4px 4px 0; display: inline-block; padding: 6px; transform: rotate(-135deg); -webkit-transform: rotate(-135deg); margin-top: 5px; }
         #btnArriba { display: none; position: fixed; bottom: 20px; right: 20px; z-index: 9999; border: none; outline: none; background-color: var(--color-primario); color: white; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
 
+        /* Estilos para el botón hamburguesa (oculto en PC) */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--color-primario);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-toggle:hover {
+            color: #6C4965;
+        }
+
         /* =========================================
            AJUSTE COMPRIMIDO EXCLUSIVO PARA CELULAR
            ========================================= */
         @media (max-width: 768px) {
-            
-            /* COMPRIMIENDO EL MENÚ */
             nav {
-                flex-direction: column;
-                padding: 10px; 
-                height: auto;
+                flex-direction: row; 
+                padding: 10px 20px;
             }
 
-            .brand {
-                margin-bottom: 5px; 
-                justify-content: center;
-                width: 100%;
-            }
+            .brand { margin-bottom: 0; width: auto; }
+            .nombre-pagina { display: none; } 
+            .logo { height: 45px; } 
 
-            .logo { height: 40px; } 
-            .nombre-pagina { font-size: 1rem; }
+            .menu-toggle { display: block; }
 
             .nav-links {
-                display: flex;
-                flex-wrap: wrap; 
-                justify-content: center;
-                gap: 5px; 
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%; 
+                left: 0;
                 width: 100%;
-                margin-top: 5px;
+                background: var(--color-secundario);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex; 
             }
 
             .nav-links a {
                 display: block;
                 text-align: center;
-                margin: 0;
-                font-size: 0.75rem; 
-                padding: 6px 12px; 
+                margin: 0 20px;
+                font-size: 1rem; 
+                padding: 10px; 
             }
 
             .nav-links .lang-switch {
-                padding: 5px 10px; /* Compensa el borde en celular para mantener el tamaño */
-                border-width: 1px;
+                margin: 0 auto;
+                width: fit-content;
             }
 
-            /* COMPRIMIENDO EL RESTO EN MÓVIL */
-            .container {
-                width: 100%;
-                padding: 10px;
-                box-sizing: border-box;
-            }
-            
-            section {
-                padding: 20px 15px; 
-            }
-
-            .footer-container {
-                text-align: center;
-                gap: 20px; 
-            }
+            .container { padding: 10px; box-sizing: border-box; width: 100%; }
+            section { padding: 25px 15px; }
+            .footer-container { text-align: center; gap: 20px; }
         }
     </style>
 </head>
@@ -240,13 +258,18 @@
             <img src="logo.png" alt="Logo" class="logo">
             <span class="nombre-pagina">LABORATORIO DE IMÁGENES Y VISIÓN</span>
         </a>
-        <div class="nav-links">
+        
+        <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="nav-links" id="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#miembros">Miembros</a>
             <a href="#articulos">Artículos</a>
             <a href="#novedades">Novedades</a>
             <a href="#contacto">Contacto</a>
-            <a href="index_en.html" class="lang-switch" title="Ver en Inglés">
+            <a href="index_en.html" class="lang-switch" title="Ver en Inglés" aria-label="Cambiar idioma a Inglés">
                 <i class="fas fa-globe"></i> EN
             </a>
         </div>
@@ -324,7 +347,7 @@
                     <p>Microexpression analysis plays a key role in many applications such as those in Human-Robot Interaction and Driving Monitoring Systems (DMS). However, robust and fast detection of subtle facial micro-movements in-the-wild still remains a significant challenge for standard RGB cameras. Recently, bio-inspired sensors such as event cameras have emerged as a promising alternative due to their high temporal resolution, low latency and energy efficiency. Despite their potential, the public availability of event-based datasets focusing on facial analysis is still scarce. To address this limitation, we introduce a preliminary multi-resolution and multi-modal (event-based and RGB) microexpression dataset labelled according to the Facial Action Unit Coding System and recorded under mixed lighting conditions. Additionally, this paper explores the use of Spiking Neural Networks to detect these microexpressions and to perform facial recognition using the event data.</p>
                     <ul><a href="https://ieeexplore.ieee.org/abstract/document/11302823" target="_blank" class="link-proyecto">🔗 Ver proyecto</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_1', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_1" onclick="toggleContenido('proyecto_1', this)">Leer más ↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -339,7 +362,7 @@
                     <p>El reconocimiento familiar a partir de imágenes faciales es una tarea desafiante que amplía la verificación facial tradicional al incorporar variaciones genéticas y generacionales. Mientras que los enfoques existentes, como los explorados en el desafío Recognizing Families In the Wild (RFIW), se centran en verificar relaciones familiares en una dirección temporal lineal (comparando mayormente padres con hijos jóvenes), nuestra investigación aborda un problema inverso: la identificación de hijos mediante la comparación de adultos con versiones más jóvenes de sus padres. El objetivo de este trabajo es determinar si esta formulación inversa constituye un problema distinto al reconocimiento de parentesco tradicional o si puede resolverse con los mismos enfoques. Para ello, utilizamos ArcFace [Deng et al., 2019] para la alineación de rostros y extracción de embeddings faciales. Desarrollamos además un conjunto de datos que refleja esta inversión temporal, basado en imágenes extraídas del sitio  MDb (Internet Movie Database). Evaluamos el comportamiento del modelo comparando las distribuciones de similitud del coseno en ambos datasets: el tradicional (FIW) y el nuevo dataset inverso.</p>
                     <ul><a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19857" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_2', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_2" onclick="toggleContenido('proyecto_2', this)">Leer más ↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -354,7 +377,7 @@
                     <p>El monitoreo de la precipitación es sumamente crucial para la actividad agropecuaria, ya que es un componente fundamental del balance hidrológico que tiene un gran impacto en los rindes. Las observaciones in-situ a través de pluviómetros son escasas, por lo cual se complementa con estimaciones de precipitación provenientes de sensores remotos (i.e. satélites y radares meteorológicos) que incrementan la cobertura espacial y temporal. En este trabajo se propone utilizar un modelo de redes neuronales convolucionales con una arquitectura de tipo UNet a partir de datos provistos por el satélite GOES-16. En particular, se evaluará el uso combinado de temperatura de brillo en infrarrojo (que brinda información de la temperatura del tope de las nubes) y la actividad eléctrica (que brinda información sobre la intensidad de la convección). El entrenamiento del modelo se realiza utilizando datos de precipitación estimada por el radar meteorológico a bordo del satélite GPM.</p>
                     <ul><a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19682" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_3', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_3" onclick="toggleContenido('proyecto_3', this)">Leer más ↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -369,7 +392,7 @@
                     <p>The advent of automatic precipitation detection with high-frequency data at very low spatial resolution (4 km) renders the satellite infrared brightness temperature (IR-BT) sensor a promising variable. Nevertheless, this approach must confront the inherent simplicity of this variable, where there is not always a strong correlation with convective precipitation, and the very low number of rain events occurring in nature, presenting an imbalanced problem. This paper proposes a novel approach to identify rainfall that integrates the IR-BT variable with lightning activity, defined as the number of detected lightning flashes per unit of time and space. The approach utilizes a recurrent neural network to estimate a binary output and a conditional GAN (cGAN) framework, which enhances the training and performance of this imbalanced problem. Inverse Dice loss, an alternative loss function, is employed to enhance the convergence and results of our framework: PD-GAN. Tests have shown that integrating sensors and the proposed architecture leads to positive outcomes, including a reduction in false alarms and an enhancement in the overlap of positive events.</p>
                     <ul><a href="https://www.sciencedirect.com/science/article/abs/pii/S016786552500217X" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_4', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_4" onclick="toggleContenido('proyecto_4', this)">Leer más ↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -384,7 +407,7 @@
                     <p>Glioblastoma multiforme (GBM) is the most prevalent and agressive primary brain tumour that has the worst prognosis in adults. Currently, the automatic segmentation of this kind of tumour is being intensively studied. Here, the automatic three-dimensional segmentation of the GBM is achieved with its related subzones (active tumour, inner necrosis, and peripheral oedema). Preliminary segmentations were first defined based on the four basic magnetic resonance imaging modalities and classic image processing methods (multithreshold Otsu, Chan–Vese active contours, and morphological erosion). After an automatic gap-filling post processing step, these preliminary segmentations were combined and corrected by a supervised artificial neural network of multilayer perceptron type with a hidden layer of 80 neurons, fed by 30 selected radiomic features of gray intensity and texture. Network classification has an overall accuracy of 83.9%, while the complete combined algorithm achieves average Dice similarity coefficients of 89.3%, 80.7%, 79.7%, and 66.4% for the entire region of interest, active tumour, oedema, and necrosis segmentations, respectively. These values are in the range of the best reported in the present bibliography, but even with better Hausdorff distances and lower computational costs. Results presented here evidence that it is possible to achieve the automatic segmentation of this kind of tumour by traditional radiomics. This has relevant clinical potential at the time of diagnosis, precision radiotherapy planning, or post-treatment response evaluation.</p>
                     <ul><a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19558" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_5', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_5" onclick="toggleContenido('proyecto_5', this)">Leer más ↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -399,7 +422,7 @@
                     <p>Este trabajo evalúa la eficacia de clasificación automática de tipos polínicos apícolas mediante redes neuronales convolucionales. Utilizando muestras de diez especies de plantas apícolas de Buenos Aires (Argentina) se prepararon y fotografiaron especímenes polínicos hidratados sin acetolizar bajo microscopio óptico con un aumento mediano (10× lente objetivo). Se desarrolló un algoritmo de segmentación para extraer imágenes individuales de granos de polen, generando dos conjuntos de datos independientes. Los resultados preliminares con la red ResNet18 sin acetólisis muestran una precisión del 90% para imágenes en escala de grises versus 63% para imágenes en color. Esta investigación busca optimizar la identificación automática del origen floral de mieles bonaerenses utilizando equipamiento de baja complejidad.</p>
                     <ul><a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19562" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_6', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_6" onclick="toggleContenido('proyecto_6', this)">Leer más ↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -414,7 +437,7 @@
                     <p>Micro-expression analysis has applications in domains such as Human-Robot Interaction and Driver Monitoring Systems. Accurately capturing subtle and fast facial movements remains difficult when relying solely on RGB cameras, due to limitations in temporal resolution and sensitivity to motion blur. Event cameras offer an alternative, with microsecond-level precision, high dynamic range, and low latency. However, public datasets featuring event-based recordings of Action Units are still scarce. In this work, we introduce a novel, preliminary multi-resolution and multi-modal micro-expression dataset recorded with synchronized RGB and event cameras under variable lighting conditions. Two baseline tasks are evaluated to explore the spatial-temporal dynamics of micro-expressions: Action Unit classification using Spiking Neural Networks (51.23% accuracy with events vs. 23.12% with RGB), and frame reconstruction using Conditional Variational Autoencoders, achieving SSIM= 0.8513 and PSNR= 26.89 dB with high-resolution event input. These promising results show that event-based data can be used for micro-expression recognition and frame reconstruction.</p>
                     <ul><a href="https://openaccess.thecvf.com/content/ICCV2025W/NeVi/html/Mastropasqua_Exploring_spatial-temporal_dynamics_in_event-based_facial_micro-expression_analysis_ICCVW_2025_paper.html" target="_blank" class="link-proyecto">🔗 Ver proyecto completo</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_7', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_7" onclick="toggleContenido('proyecto_7', this)">Leer más ↓</button>
             </div>
         </section>
 
@@ -435,7 +458,7 @@
                         <li>Punto 2</li>
                     </ul>
                 </div>
-                <button class="btn-leer-mas" style="margin-top: 0;" onclick="toggleContenido('nov_1', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" style="margin-top: 0;" aria-expanded="false" aria-controls="nov_1" onclick="toggleContenido('nov_1', this)">Leer más ↓</button>
             </div>
             
             <hr style="opacity: 0.1; margin: 30px 0;">
@@ -450,7 +473,7 @@
                 <div class="contenido-extra" id="nov_2">
                     <p>Como fue y los resultados obtenidos en detalle.</p>
                 </div>
-                <button class="btn-leer-mas" style="margin-top: 0;" onclick="toggleContenido('nov_2', this)">Leer más ↓</button>
+                <button class="btn-leer-mas" style="margin-top: 0;" aria-expanded="false" aria-controls="nov_2" onclick="toggleContenido('nov_2', this)">Leer más ↓</button>
             </div>
         </section>
     </div>
@@ -498,9 +521,29 @@
     <button onclick="irArriba()" id="btnArriba" title="Volver arriba"><i class="flecha"></i></button>
     
 <script>
-    // 1. Ocultar/Mostrar contenido
+    // --- Lógica del menú hamburguesa ---
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // Actualiza accesibilidad
+        const isExpanded = navLinks.classList.contains('active');
+        mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+    });
+
+    // Cierra el menú automáticamente al tocar un enlace en el celular
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // 1. Ocultar/Mostrar contenido (Actualizado con Accesibilidad)
     function toggleContenido(id, boton) {
         var elemento = document.getElementById(id);
+        
         if (elemento.classList.contains('visible')) {
             elemento.style.opacity = "0";
             setTimeout(function() {
@@ -508,6 +551,7 @@
                 elemento.style.display = "none";
             }, 500);
             boton.innerHTML = "Leer más ↓";
+            boton.setAttribute('aria-expanded', 'false'); // Accesibilidad
         } else {
             elemento.style.display = "block";
             setTimeout(function() {
@@ -515,6 +559,7 @@
                 elemento.style.opacity = "1";
             }, 10);
             boton.innerHTML = "Leer menos ↑";
+            boton.setAttribute('aria-expanded', 'true'); // Accesibilidad
         }
     }
 

@@ -13,7 +13,7 @@
     
     <style>
         /* =========================================
-           ESTILOS ORIGINALES DE TU ARCHIVO (INTACTOS)
+           ESTILOS BASE
            ========================================= */
         :root {
             --color-primario: #1B1B3A;
@@ -50,6 +50,13 @@
         .logo { height: 60px; width: auto; }
         .nombre-pagina { font-size: 1.4rem; font-weight: bold; color: #6C4965; }
 
+        /* Contenedor para agrupar menú, idioma y hamburguesa */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .nav-links { display: flex; gap: 10px; align-items: center; }
         .nav-links a { 
             text-decoration: none; color: #fafffd; padding: 10px 15px; 
@@ -61,13 +68,20 @@
         }
 
         /* BOTÓN DE IDIOMA */
-        .nav-links .lang-switch {
+        .lang-switch {
             background: transparent;
             color: var(--color-primario);
             border: 2px solid var(--color-primario);
             padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        .nav-links .lang-switch:hover {
+        .lang-switch:hover {
             background: var(--color-primario);
             color: var(--color-secundario);
         }
@@ -206,12 +220,26 @@
         @media (max-width: 768px) {
             nav {
                 flex-direction: row; 
-                padding: 10px 20px;
+                padding: 10px 15px; /* Padding levemente reducido para ahorrar espacio */
             }
 
-            .brand { margin-bottom: 0; width: auto; }
-            .nombre-pagina { display: none; } 
-            .logo { height: 45px; } 
+            .brand { margin-bottom: 0; width: auto; gap: 8px; }
+            
+            /* Ajustes para que el nombre de la página entre bien en celular */
+            .nombre-pagina { 
+                display: block; 
+                font-size: 0.65rem; 
+                line-height: 1.2;
+                max-width: 110px;
+            } 
+            .logo { height: 35px; } /* Logo apenas más chico */
+
+            .nav-controls { gap: 10px; }
+
+            .lang-switch {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
 
             .menu-toggle { display: block; }
 
@@ -240,11 +268,6 @@
                 padding: 10px; 
             }
 
-            .nav-links .lang-switch {
-                margin: 0 auto;
-                width: fit-content;
-            }
-
             .container { padding: 10px; box-sizing: border-box; width: 100%; }
             section { padding: 25px 15px; }
             .footer-container { text-align: center; gap: 20px; }
@@ -259,19 +282,22 @@
             <span class="nombre-pagina">LABORATORIO DE IMÁGENES Y VISIÓN</span>
         </a>
         
-        <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <div class="nav-links" id="nav-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#miembros">Miembros</a>
-            <a href="#articulos">Artículos</a>
-            <a href="#novedades">Novedades</a>
-            <a href="#contacto">Contacto</a>
+        <div class="nav-controls">
+            <div class="nav-links" id="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#miembros">Miembros</a>
+                <a href="#articulos">Artículos</a>
+                <a href="#novedades">Novedades</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            
             <a href="index_en.html" class="lang-switch" title="Ver en Inglés" aria-label="Cambiar idioma a Inglés">
                 <i class="fas fa-globe"></i> EN
             </a>
+
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 

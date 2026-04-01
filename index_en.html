@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
     
     <style>
         /* =========================================
-           ESTILOS ORIGINALES DE TU ARCHIVO (INTACTOS)
+           ESTILOS BASE
            ========================================= */
         :root {
             --color-primario: #1B1B3A;
@@ -50,6 +50,13 @@
         .logo { height: 60px; width: auto; }
         .nombre-pagina { font-size: 1.4rem; font-weight: bold; color: #6C4965; }
 
+        /* Contenedor para agrupar menú, idioma y hamburguesa */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .nav-links { display: flex; gap: 10px; align-items: center; }
         .nav-links a { 
             text-decoration: none; color: #fafffd; padding: 10px 15px; 
@@ -61,13 +68,20 @@
         }
 
         /* BOTÓN DE IDIOMA */
-        .nav-links .lang-switch {
+        .lang-switch {
             background: transparent;
             color: var(--color-primario);
             border: 2px solid var(--color-primario);
-            padding: 8px 15px; /* Ajuste leve para compensar el borde */
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        .nav-links .lang-switch:hover {
+        .lang-switch:hover {
             background: var(--color-primario);
             color: var(--color-secundario);
         }
@@ -77,7 +91,7 @@
             max-width: 1100px; 
             margin: 40px auto; 
             padding: 0 20px;
-            flex: 1; /* Empuja el footer hacia abajo */
+            flex: 1; 
         }
 
         section { 
@@ -88,6 +102,20 @@
         h2 { color: #BC7690; margin-top: 0; }
 
         /* 3. MIEMBROS */
+        #miembros { position: relative; }
+
+        #miembros::after {
+            content: '';
+            position: absolute;
+            top: 60px; 
+            right: 0;
+            bottom: 20px;
+            width: 50px;
+            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+            pointer-events: none; 
+            border-radius: 0 15px 15px 0;
+        }
+
         .miembros-wrapper {
             display: flex;
             overflow-x: auto;
@@ -105,15 +133,14 @@
             background: white;
             padding: 25px;
             border-radius: 15px;
-            border: 1px solid #FCECC9‎;
+            border: 1px solid #FCECC9;
             text-align: center;
             flex-shrink: 0;
             scroll-snap-align: start;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease; /* Transición para el Hover */
+            transition: all 0.3s ease; 
         }
 
-        /* EFECTO HOVER SOLICITADO */
         .miembro-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 10px 20px rgba(60, 22, 66, 0.15);
@@ -133,13 +160,13 @@
         .contenido-publicacion p { margin-bottom: 15px; }
         .contenido-publicacion ul { padding-left: 20px; margin-bottom: 15px; }
 
-        .publicacion-meta { font-size: 0.85rem; color: #6C4965‎; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 15px; }
+        .publicacion-meta { font-size: 0.85rem; color: #6C4965; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 15px; }
         .publicacion-meta span { display: flex; align-items: center; }
 
         .link-proyecto { display: inline-block; margin-top: 15px; color: #91D8A7; text-decoration: none; font-weight: bold; border-bottom: 2px solid transparent; transition: 0.3s; }
         .link-proyecto:hover { border-bottom: 2px solid #91D8A7; }
 
-        .btn-leer-mas { background-color: #32908F; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s; }
+        .btn-leer-mas { background-color: #32908F; color: #1B1B3A; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s; }
         .btn-leer-mas:hover { background-color: #275665; }
 
         .contenido-extra { display: none; margin-top: 15px; opacity: 0; transition: opacity 0.5s ease; }
@@ -172,64 +199,78 @@
         .flecha { border: solid white; border-width: 0 4px 4px 0; display: inline-block; padding: 6px; transform: rotate(-135deg); -webkit-transform: rotate(-135deg); margin-top: 5px; }
         #btnArriba { display: none; position: fixed; bottom: 20px; right: 20px; z-index: 9999; border: none; outline: none; background-color: var(--color-primario); color: white; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
 
+        /* Estilos para el botón hamburguesa (oculto en PC) */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--color-primario);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-toggle:hover {
+            color: #6C4965;
+        }
+
         /* =========================================
            AJUSTE COMPRIMIDO EXCLUSIVO PARA CELULAR
            ========================================= */
         @media (max-width: 768px) {
-            
-            /* COMPRIMIENDO EL MENÚ */
             nav {
-                flex-direction: column;
-                padding: 10px; 
-                height: auto;
+                flex-direction: row; 
+                padding: 10px 15px; /* Padding levemente reducido para ahorrar espacio */
             }
 
-            .brand {
-                margin-bottom: 5px; 
-                justify-content: center;
-                width: 100%;
+            .brand { margin-bottom: 0; width: auto; gap: 8px; }
+            
+            /* Ajustes para que el nombre de la página entre bien en celular */
+            .nombre-pagina { 
+                display: block; 
+                font-size: 0.65rem; 
+                line-height: 1.2;
+                max-width: 110px;
+            } 
+            .logo { height: 35px; } /* Logo apenas más chico */
+
+            .nav-controls { gap: 10px; }
+
+            .lang-switch {
+                padding: 6px 10px;
+                font-size: 0.85rem;
             }
 
-            .logo { height: 40px; } 
-            .nombre-pagina { font-size: 1rem; }
+            .menu-toggle { display: block; }
 
             .nav-links {
-                display: flex;
-                flex-wrap: wrap; 
-                justify-content: center;
-                gap: 5px; 
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%; 
+                left: 0;
                 width: 100%;
-                margin-top: 5px;
+                background: var(--color-secundario);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex; 
             }
 
             .nav-links a {
                 display: block;
                 text-align: center;
-                margin: 0;
-                font-size: 0.75rem; 
-                padding: 6px 12px; 
+                margin: 0 20px;
+                font-size: 1rem; 
+                padding: 10px; 
             }
 
-            .nav-links .lang-switch {
-                padding: 5px 10px; /* Compensa el borde en celular para mantener el tamaño */
-                border-width: 1px;
-            }
-
-            /* COMPRIMIENDO EL RESTO EN MÓVIL */
-            .container {
-                width: 100%;
-                padding: 10px;
-                box-sizing: border-box;
-            }
-            
-            section {
-                padding: 20px 15px; 
-            }
-
-            .footer-container {
-                text-align: center;
-                gap: 20px; 
-            }
+            .container { padding: 10px; box-sizing: border-box; width: 100%; }
+            section { padding: 25px 15px; }
+            .footer-container { text-align: center; gap: 20px; }
         }
     </style>
 </head>
@@ -238,32 +279,40 @@
     <nav>
         <a href="#" class="brand">
             <img src="logo.png" alt="Logo" class="logo">
-            <span class="nombre-pagina">IMAGING AND VISION LABORATORY</span>
+            <span class="nombre-pagina">IMAGINING AND VISION LABORATORY</span>
         </a>
-        <div class="nav-links">
-            <a href="#inicio">Introduction</a>
-            <a href="#miembros">Members</a>
-            <a href="#articulos">Articles</a>
-            <a href="#novedades">News</a>
-            <a href="#contacto">Contact</a>
-            <a href="index.html" class="lang-switch" title="Ver en Español">
+        
+        <div class="nav-controls">
+            <div class="nav-links" id="nav-links">
+                <a href="#inicio">Home</a>
+                <a href="#miembros">Members</a>
+                <a href="#articulos">Articles</a>
+                <a href="#novedades">News</a>
+                <a href="#contacto">Contact</a>
+            </div>
+            
+            <a href="index_en.html" class="lang-switch" title="Ver en Inglés" aria-label="Cambiar idioma a Inglés">
                 <i class="fas fa-globe"></i> ES
             </a>
+
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
     <div class="container">
         <section id="inicio">
-            <h2>Title</h2>
+            <h2>¿Qué hacemos?</h2>
             <div class="contenido-publicacion">
-                <p>Introduction.</p>
+                <p>Introducción.</p>
             </div>
         </section>
 
         <section id="miembros">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2>Members</h2>
-                <div style="color: #E5D7B7; font-size: 0.9rem; font-weight: bold;">Slide to see more →</div>
+                <div style="color: #E5D7B7 ; font-size: 0.9rem; font-weight: bold;">Slide to see more →</div>
             </div>
             
             <div class="miembros-wrapper">
@@ -285,27 +334,27 @@
                 <div class="miembro-card">
                     <img src="foto4.jpg" alt="Nombre 4" class="foto-4x4">
                     <h3>Manuel Dubinsky</h3>
-                    <p><strong>Role</strong></p>
+                    <p><strong>Rol</strong></p>
                 </div>
                 <div class="miembro-card">
                     <img src="foto5.jpg" alt="Nombre 5" class="foto-4x4">
                     <h3>Nicolas Mastropasqua</h3>
-                    <p><strong>Role</strong></p>
+                    <p><strong>Rol</strong></p>
                 </div>
                  <div class="miembro-card">
                     <img src="foto6.jpg" alt="Nombre 6" class="foto-4x4">
                     <h3>Julieta Goria</h3>
-                    <p><strong>Role.</strong></p>
+                    <p><strong>Rol.</strong></p>
                 </div>
                 <div class="miembro-card">
                     <img src="foto7.jpg" alt="Nombre 7" class="foto-4x4">
                     <h3>Juan Ignacio Bustos Gorostegui</h3>
-                    <p><strong>Role.</strong></p>
+                    <p><strong>Rol.</strong></p>
                 </div>
                 <div class="miembro-card">
                     <img src="foto8.jpg" alt="Nombre 8" class="foto-4x4">
                     <h3>Nicolas Carrasco</h3>
-                    <p><strong>Role.</strong></p>
+                    <p><strong>Rol.</strong></p>
                 </div>
             </div>
         </section>
@@ -316,7 +365,7 @@
             <div class="contenido-publicacion">
                 <p><strong>Event-based facial microexpression analysis using Spiking Neural Networks</strong></p>
                 <div class="publicacion-meta">
-                    <span>👤 Written by: Daniel Acevedo, Pablo Negri, Maria E. Buemi and Nicolas Mastropasqua.</span>
+                    <span>👤 Written by: Daniel Acevedo, Pablo Negri, Maria E. Buemi y Nicolas Mastropasqua.</span>
                     <span>📅 December 29, 2025</span>
                 </div>
                 <p>Conference: 2025 15th IEEE International Conference on Pattern Recognition Systems (ICPRS)</p>
@@ -324,7 +373,7 @@
                     <p>Microexpression analysis plays a key role in many applications such as those in Human-Robot Interaction and Driving Monitoring Systems (DMS). However, robust and fast detection of subtle facial micro-movements in-the-wild still remains a significant challenge for standard RGB cameras. Recently, bio-inspired sensors such as event cameras have emerged as a promising alternative due to their high temporal resolution, low latency and energy efficiency. Despite their potential, the public availability of event-based datasets focusing on facial analysis is still scarce. To address this limitation, we introduce a preliminary multi-resolution and multi-modal (event-based and RGB) microexpression dataset labelled according to the Facial Action Unit Coding System and recorded under mixed lighting conditions. Additionally, this paper explores the use of Spiking Neural Networks to detect these microexpressions and to perform facial recognition using the event data.</p>
                     <ul><a href="https://ieeexplore.ieee.org/abstract/document/11302823" target="_blank" class="link-proyecto">🔗 See full project</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_1', this)">Read more ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_1" onclick="toggleContenido('proyecto_1', this)">Read more↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -334,12 +383,12 @@
                     <span>👤 Written by: Daniel Acevedo, Pablo Negri y Julieta Goria</span>
                     <span>📅 October 21, 2025</span>
                 </div>
-                <p>Magazine: JAIIO, Jornadas Argentinas de Informática.</p>
+                <p>Review: JAIIO, Jornadas Argentinas de Informática.</p>
                 <div class="contenido-extra" id="proyecto_2">
                     <p>Kinship recognition from facial images is a challenging task that broadens traditional facial verification techniques by incorporating genetic and generational variations. While preexisting approaches, such as those explored in the Recognizing Families In the Wild (RFIW), focus on verifying familial relationships in a standard temporal direction (mostly comparing parents to their younger children), our reaserch addresses the inverse problem: identifying children by comparing adults with younger versions of their parents. This work’s goal is to determine whether this inverse formulation consitutes a different problem from traditional kinship recognition, or whether it can be addressed using the same approaches. To this end, we used ArcFace [Deng et al., 2019] for facial alignment and embedding extraction. We also developed a new dataset reflecting this temporal inversion, based on images extracted from IMDb (Internet Movie Database). We evaluated the model’s performance by comparing the distribution of the cosine similarity in both datasets: the traditional approach (FIW) and our newly proposed inverse dataset.</p>
                     <ul><a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19857" target="_blank" class="link-proyecto">🔗 See full project</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_2', this)">Read more ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_2" onclick="toggleContenido('proyecto_2', this)">Read more↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -349,12 +398,12 @@
                     <span>👤 Written by: Pablo Negri, Sergio Hernán González, Juan Jose Ruiz, Luciano Vidal y Ezequiel Geslin</span>
                     <span>📅 September 30, 2025</span>
                 </div>
-                <p>Magazine: JAIIO, Jornadas Argentinas de Informática.</p>
+                <p>Review: JAIIO, Jornadas Argentinas de Informática.</p>
                 <div class="contenido-extra" id="proyecto_3">
                     <p>Precipitation monitoring is extremely crucial for agricultural activities, since it is a fundamental component of the hydrological balance that has a great impact on yields. In-situ observations through rain gauges are scarce, so it is complemented with precipitation estimates from remote sensors (i.e. satellites and meteorological radars) that increase the spatial and temporal coverage. In this work we propose to use a convolutional neural network model with a UNet type architecture, based on data provided by the GOES-16 satellite. In particular, the combined use of infrared brightness temperature (which provides information on cloud top temperature) and electrical activity (which provides information on convection intensity) will be evaluated. Model training is performed using precipitation data estimated by the GPM satellite-borne weather radar.</p>
                     <ul><a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19682" target="_blank" class="link-proyecto">🔗 See full project</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_3', this)">Read more ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_3" onclick="toggleContenido('proyecto_3', this)">Read more↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -364,12 +413,12 @@
                     <span>👤 Written by: Pablo Negri, Daniel Acevedo, Juan Ruiz, Sergio Gonzalez, Luciano Vidal, Alejo Silvarrey, Maria Gabriela Nicora</span>
                     <span>📅 June 14, 2025</span>
                 </div>
-                <p>Maganize: Pattern Recognition Letters.</p>
+                <p>Review: Pattern Recognition Letters.</p>
                 <div class="contenido-extra" id="proyecto_4">
                     <p>The advent of automatic precipitation detection with high-frequency data at very low spatial resolution (4 km) renders the satellite infrared brightness temperature (IR-BT) sensor a promising variable. Nevertheless, this approach must confront the inherent simplicity of this variable, where there is not always a strong correlation with convective precipitation, and the very low number of rain events occurring in nature, presenting an imbalanced problem. This paper proposes a novel approach to identify rainfall that integrates the IR-BT variable with lightning activity, defined as the number of detected lightning flashes per unit of time and space. The approach utilizes a recurrent neural network to estimate a binary output and a conditional GAN (cGAN) framework, which enhances the training and performance of this imbalanced problem. Inverse Dice loss, an alternative loss function, is employed to enhance the convergence and results of our framework: PD-GAN. Tests have shown that integrating sensors and the proposed architecture leads to positive outcomes, including a reduction in false alarms and an enhancement in the overlap of positive events.</p>
                     <ul><a href="https://www.sciencedirect.com/science/article/abs/pii/S016786552500217X" target="_blank" class="link-proyecto">🔗 See full project</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_4', this)">Read more ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_4" onclick="toggleContenido('proyecto_4', this)">Read more↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -379,12 +428,12 @@
                     <span>👤 Written by: María E. Buemi, Alexander Mulet de los Reyes, Victoria Hyde Lord, Daniel Gandía, Luis Gómez Déniz, Maikel Noriega Alemán y Cecilia Suárez</span>
                     <span>📅 September 09, 2025</span>
                 </div>
-                <p>Magazine: JAIIO, Jornadas Argentinas de Informática</p>
+                <p>Review: JAIIO, Jornadas Argentinas de Informática</p>
                 <div class="contenido-extra" id="proyecto_5">
                     <p>Glioblastoma multiforme (GBM) is the most prevalent and agressive primary brain tumour that has the worst prognosis in adults. Currently, the automatic segmentation of this kind of tumour is being intensively studied. Here, the automatic three-dimensional segmentation of the GBM is achieved with its related subzones (active tumour, inner necrosis, and peripheral oedema). Preliminary segmentations were first defined based on the four basic magnetic resonance imaging modalities and classic image processing methods (multithreshold Otsu, Chan–Vese active contours, and morphological erosion). After an automatic gap-filling post processing step, these preliminary segmentations were combined and corrected by a supervised artificial neural network of multilayer perceptron type with a hidden layer of 80 neurons, fed by 30 selected radiomic features of gray intensity and texture. Network classification has an overall accuracy of 83.9%, while the complete combined algorithm achieves average Dice similarity coefficients of 89.3%, 80.7%, 79.7%, and 66.4% for the entire region of interest, active tumour, oedema, and necrosis segmentations, respectively. These values are in the range of the best reported in the present bibliography, but even with better Hausdorff distances and lower computational costs. Results presented here evidence that it is possible to achieve the automatic segmentation of this kind of tumour by traditional radiomics. This has relevant clinical potential at the time of diagnosis, precision radiotherapy planning, or post-treatment response evaluation.</p>
-                    <ul><a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19558" target="_blank" class="link-proyecto">🔗 See full projetc</a></ul>
+                    <ul><a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19558" target="_blank" class="link-proyecto">🔗 See full project</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_5', this)">Read more ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_5" onclick="toggleContenido('proyecto_5', this)">Read more↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -394,12 +443,12 @@
                     <span>👤 Written by:María E. Buemi, Julieta Shammah, Agustín Sanguinetti</span>
                     <span>📅 September 09, 2025</span>
                 </div>
-                <p>Magazine: JAIIO, Jornadas Argentinas de Informática</p>
+                <p>Review: JAIIO, Jornadas Argentinas de Informática</p>
                 <div class="contenido-extra" id="proyecto_6">
                     <p>This study assesses the effectiveness of automatically classifying pollen types relevant to apiculture using convolutional neural networks. Using samples from ten bee-foraged plant species from Buenos Aires (Argentina), non-acetolyzed hydrated pollen specimens were prepared and photographed under an optical microscope at a medium magnification (10× objective lens). A segmentation algorithm was developed to extract individual pollen grain images, generating two independent datasets. Preliminary non-acetolyzed results with the ResNet18 network show 90% accuracy for grayscale images versus 63% for color images. This research aims to optimize the automatic identification of the floral origin of honeys from Buenos Aires using low-complexity equipment.</p>
                     <ul><a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19562" target="_blank" class="link-proyecto">🔗 See full project</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_6', this)">Read more ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_6" onclick="toggleContenido('proyecto_6', this)">Read more↓</button>
             </div>
             <hr style="opacity: 0.1; margin: 30px 0;">
 
@@ -409,12 +458,12 @@
                     <span>👤 Written by: Nicolas Mastropasqua, Ignacio Bugueno-Cordova, Rodrigo Verschae, Daniel Acevedo, Pablo Negri, Maria Elena Buemi</span>
                     <span>📅 October, 2025</span>
                 </div>
-                <p>Conference: Proceedings of the IEEE/CVF International Conference on Computer Vision</p>
+                <p>Conferencia: Proceedings of the IEEE/CVF International Conference on Computer Vision</p>
                 <div class="contenido-extra" id="proyecto_7">
                     <p>Micro-expression analysis has applications in domains such as Human-Robot Interaction and Driver Monitoring Systems. Accurately capturing subtle and fast facial movements remains difficult when relying solely on RGB cameras, due to limitations in temporal resolution and sensitivity to motion blur. Event cameras offer an alternative, with microsecond-level precision, high dynamic range, and low latency. However, public datasets featuring event-based recordings of Action Units are still scarce. In this work, we introduce a novel, preliminary multi-resolution and multi-modal micro-expression dataset recorded with synchronized RGB and event cameras under variable lighting conditions. Two baseline tasks are evaluated to explore the spatial-temporal dynamics of micro-expressions: Action Unit classification using Spiking Neural Networks (51.23% accuracy with events vs. 23.12% with RGB), and frame reconstruction using Conditional Variational Autoencoders, achieving SSIM= 0.8513 and PSNR= 26.89 dB with high-resolution event input. These promising results show that event-based data can be used for micro-expression recognition and frame reconstruction.</p>
                     <ul><a href="https://openaccess.thecvf.com/content/ICCV2025W/NeVi/html/Mastropasqua_Exploring_spatial-temporal_dynamics_in_event-based_facial_micro-expression_analysis_ICCVW_2025_paper.html" target="_blank" class="link-proyecto">🔗 See full project</a></ul>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_7', this)">Read more ↓</button>
+                <button class="btn-leer-mas" aria-expanded="false" aria-controls="proyecto_7" onclick="toggleContenido('proyecto_7', this)">Read more↓</button>
             </div>
         </section>
 
@@ -427,7 +476,7 @@
                     <span class="novedad-fecha">March 2026</span>
                 </div>
                 <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Conference</h3>
-                <p>Breve descripción en ingles.</p>
+                <p>Breve descripción de la conferencia.</p>
                 <div class="contenido-extra" id="nov_1">
                     <p>Descripción detallada y puntos importantes.</p>
                     <ul>
@@ -435,7 +484,7 @@
                         <li>Punto 2</li>
                     </ul>
                 </div>
-                <button class="btn-leer-mas" style="margin-top: 0;" onclick="toggleContenido('nov_1', this)">Read more ↓</button>
+                <button class="btn-leer-mas" style="margin-top: 0;" aria-expanded="false" aria-controls="nov_1" onclick="toggleContenido('nov_1', this)">Read more↓</button>
             </div>
             
             <hr style="opacity: 0.1; margin: 30px 0;">
@@ -448,9 +497,9 @@
                 <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Event</h3>
                 <p>Breve descripción de lo que sucedió en el evento del laboratorio.</p>
                 <div class="contenido-extra" id="nov_2">
-                    <p>Cómo fue el evento y los resultados obtenidos en detalle.</p>
+                    <p>Como fue y los resultados obtenidos en detalle.</p>
                 </div>
-                <button class="btn-leer-mas" style="margin-top: 0;" onclick="toggleContenido('nov_2', this)">Read more ↓</button>
+                <button class="btn-leer-mas" style="margin-top: 0;" aria-expanded="false" aria-controls="nov_2" onclick="toggleContenido('nov_2', this)">Read more↓</button>
             </div>
         </section>
     </div>
@@ -460,10 +509,10 @@
             
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>📍 Office 2115, Pavilion 0+Infinity, University City
-                  C1428EGA, Autonomous City of Buenos Aires
-                  Argentina</p>
-                <p>✉️ laboratoriodeimagenesyvision@gmail.com</p>
+                <p>📍 Office 2115, Pabellón 0+Infinito, Ciudad Universitaria
+                    C1428EGA, Ciudad Autónoma de Buenos Aires
+                    Argentina</p>
+                <p>✉️ laboratoriodeimegenesyvision@gmail.com</p>
             </div>
 
             <div class="footer-section">
@@ -478,7 +527,7 @@
             </div>
 
             <div class="footer-section">
-                <h4>Links</h4>
+                <h4>Quick links</h4>
                 <div class="enlaces-rapidos" style="display: flex; flex-direction: column; gap: 8px;">
                     <a href="https://instagram.com/tu_usuario" target="_blank" style="text-decoration:none;">
                         <i class="fab fa-instagram"></i> Instagram
@@ -491,16 +540,36 @@
         </div>
 
         <div class="footer-bottom">
-            &copy; All rights reserved to 2026 LIV
+            &copy; All rights reserved to LIV 2026.
         </div>
     </footer>
     
     <button onclick="irArriba()" id="btnArriba" title="Volver arriba"><i class="flecha"></i></button>
     
 <script>
-    // 1. Ocultar/Mostrar contenido
+    // --- Lógica del menú hamburguesa ---
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // Actualiza accesibilidad
+        const isExpanded = navLinks.classList.contains('active');
+        mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+    });
+
+    // Cierra el menú automáticamente al tocar un enlace en el celular
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // 1. Ocultar/Mostrar contenido (Actualizado con Accesibilidad)
     function toggleContenido(id, boton) {
         var elemento = document.getElementById(id);
+        
         if (elemento.classList.contains('visible')) {
             elemento.style.opacity = "0";
             setTimeout(function() {
@@ -508,6 +577,7 @@
                 elemento.style.display = "none";
             }, 500);
             boton.innerHTML = "Leer más ↓";
+            boton.setAttribute('aria-expanded', 'false'); // Accesibilidad
         } else {
             elemento.style.display = "block";
             setTimeout(function() {
@@ -515,6 +585,7 @@
                 elemento.style.opacity = "1";
             }, 10);
             boton.innerHTML = "Leer menos ↑";
+            boton.setAttribute('aria-expanded', 'true'); // Accesibilidad
         }
     }
 

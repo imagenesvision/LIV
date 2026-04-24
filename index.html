@@ -195,6 +195,40 @@
 
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #000000; }
 
+        /* Contenedor de logos en el footer */
+.footer-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Espacio entre los logos */
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0,0,0,0.1); /* Línea separadora sutil */
+    flex-wrap: wrap; /* Permite que bajen de línea en celulares muy pequeños */
+}
+
+.footer-logos img {
+    max-height: 50px; /* Controla el tamaño máximo para que no sean muy grandes */
+    width: auto;
+    opacity: 0.8; /* Los hace un poco transparentes para que no saturen */
+    transition: opacity 0.3s ease;
+    mix-blend-mode: multiply; /* Opcional: ayuda a que los logos con fondo blanco se mezclen con el fondo del footer */
+}
+
+.footer-logos img:hover {
+    opacity: 1; /* Al pasar el mouse recuperan su color original */
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .footer-logos {
+        gap: 20px;
+    }
+    .footer-logos img {
+        max-height: 40px; /* Un poco más pequeños en móviles */
+    }
+}
+
         /* FLECHA VOLVER ARRIBA */
         .flecha { border: solid white; border-width: 0 4px 4px 0; display: inline-block; padding: 6px; transform: rotate(-135deg); -webkit-transform: rotate(-135deg); margin-top: 5px; }
         #btnArriba { display: none; position: fixed; bottom: 20px; right: 20px; z-index: 9999; border: none; outline: none; background-color: var(--color-primario); color: white; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
@@ -538,6 +572,19 @@
                 </div>
             </div>
         </div>
+
+        </footer> </div>
+
+        <div class="footer-logos">
+            <img src="logo_institucion1.png" alt="Logo 1">
+            <img src="logo_institucion2.png" alt="Logo 2">
+            <img src="logo_institucion3.png" alt="Logo 3">
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 LIV. Todos los derechos reservados.
+        </div>
+    </footer>
 
         <div class="footer-bottom">
             &copy; 2026 LIV. Todos los derechos reservados.

@@ -13,6 +13,7 @@
         :root { --color-institucional: #1B3B6F; --color-acento: #0077B6; --color-fondo: #f4f7f6; --color-blanco: #ffffff; --texto-principal: #333333; --texto-secundario: #666666; --borde-suave: #e0e0e0; }
         body { font-family: 'Open Sans', sans-serif; margin: 0; background-color: var(--color-fondo); color: var(--texto-principal); }
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--color-institucional); }
+        
         nav { background: var(--color-blanco); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .logo { height: 50px; width: auto; }
@@ -20,10 +21,11 @@
         .nav-links { display: flex; gap: 15px; }
         .nav-links a { text-decoration: none; color: var(--texto-principal); padding: 8px 15px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; }
         .nav-links a:hover, .nav-links a.active { background: var(--color-fondo); color: var(--color-acento); }
+        .menu-toggle { display: none; background: transparent; border: none; font-size: 1.5rem; color: var(--color-institucional); cursor: pointer; }
+
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .seccion-titulo { border-bottom: 3px solid var(--color-acento); padding-bottom: 10px; margin-bottom: 40px; }
         
-        /* Estilos de los Sectores del Cuadrillé */
         .sector-titulo { color: var(--color-institucional); font-size: 1.4rem; margin: 40px 0 20px; padding-left: 12px; border-left: 5px solid var(--color-acento); }
         .cuadrícula-miembros { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 25px; margin-bottom: 50px; }
         .miembro-card { background: var(--color-blanco); padding: 30px 20px; border-radius: 15px; border: 1px solid var(--borde-suave); text-align: center; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
@@ -34,24 +36,34 @@
         .exmiembro { opacity: 0.75; }
         .avatar-generico { width: 120px; height: 120px; border-radius: 50%; background: #e0e0e0; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; }
 
+        /* Footer unificado */
         footer { background-color: var(--color-institucional); color: #d0dbe5; padding: 60px 5% 30px; margin-top: 60px; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-section h4 { color: var(--color-blanco); margin-bottom: 20px; }
-        .footer-section p, .footer-section a { color: #d0dbe5; text-decoration: none; display: block; margin-bottom: 10px; }
-        .footer-logos { display: flex; justify-content: center; gap: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 30px; }
-        .footer-logos img { max-height: 65px; background: rgba(255,255,255,0.9); padding: 6px; border-radius: 6px; }
+        .footer-section h4 { color: var(--color-blanco); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; margin-top: 0; }
+        .footer-section p, .footer-section a { color: #d0dbe5; text-decoration: none; font-size: 0.95rem; line-height: 1.6; margin-bottom: 10px; display: block; }
+        .footer-section a:hover { color: var(--color-blanco); text-decoration: underline; }
+        .formulario-contacto input, .formulario-contacto textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: none; background: rgba(255,255,255,0.1); color: white; box-sizing: border-box; }
+        .formulario-contacto button { background-color: var(--color-acento); color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .formulario-contacto button:hover { background-color: #005f92; }
+        .footer-logos { display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+        .footer-logos img { max-height: 65px; width: auto; background: rgba(255,255,255,0.9); padding: 6px; border-radius: 6px; }
+        .footer-bottom { text-align: center; margin-top: 30px; font-size: 0.85rem; color: #8aa4bb; }
+        @media (max-width: 768px) { .menu-toggle { display: block; } .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--color-blanco); padding: 20px; } .nav-links.active { display: flex; } }
     </style>
 </head>
 <body>
 
     <nav>
         <a href="index.html" class="brand"><img src="logo.png" alt="LIV" class="logo"><span class="nombre-pagina">LIV</span></a>
-        <div class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="novedades.html">Novedades</a>
-            <a href="miembros.html" class="active">Miembros</a>
-            <a href="docencia.html">Docencia</a>
-            <a href="articulos.html">Artículos</a>
+        <div class="nav-controls">
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="novedades.html">Novedades</a>
+                <a href="miembros.html" class="active">Miembros</a>
+                <a href="docencia.html">Docencia</a>
+                <a href="articulos.html">Artículos</a>
+            </div>
+            <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
@@ -60,63 +72,22 @@
 
         <h2 class="sector-titulo">Investigadores</h2>
         <div class="cuadrícula-miembros">
-            <div class="miembro-card">
-                <img src="foto1.jpg" alt="María Elena Buemi" class="foto-perfil">
-                <h3>María Elena Buemi</h3>
-                <p>Investigadora UBA</p>
-            </div>
-            <div class="miembro-card">
-                <img src="foto2.jpg" alt="Daniel Acevedo" class="foto-perfil">
-                <h3>Daniel Acevedo</h3>
-                <p>Investigador CONICET</p>
-            </div>
-            <div class="miembro-card">
-                <img src="foto3.jpg" alt="Pablo Negri" class="foto-perfil">
-                <h3>Pablo Negri</h3>
-                <p>Investigador CONICET</p>
-            </div>
+            <div class="miembro-card"><img src="foto1.jpg" alt="María Elena Buemi" class="foto-perfil"><h3>María Elena Buemi</h3><p>Investigadora UBA</p></div>
+            <div class="miembro-card"><img src="foto2.jpg" alt="Daniel Acevedo" class="foto-perfil"><h3>Daniel Acevedo</h3><p>Investigador CONICET</p></div>
+            <div class="miembro-card"><img src="foto3.jpg" alt="Pablo Negri" class="foto-perfil"><h3>Pablo Negri</h3><p>Investigador CONICET</p></div>
         </div>
 
         <h2 class="sector-titulo">Tesistas</h2>
         <div class="cuadrícula-miembros">
-            <div class="miembro-card">
-                <img src="foto4.jpg" alt="Manuel Dubinsky" class="foto-perfil">
-                <h3>Manuel Dubinsky</h3>
-                <p>Tesista Doctoral</p>
-            </div>
-            <div class="miembro-card">
-                <img src="foto7.jpg" alt="Juan Ignacio Bustos" class="foto-perfil">
-                <h3>Juan Ignacio Bustos</h3>
-                <p>Tesista de Grado</p>
-            </div>
+            <div class="miembro-card"><img src="foto4.jpg" alt="Manuel Dubinsky" class="foto-perfil"><h3>Manuel Dubinsky</h3><p>Tesista Doctoral</p></div>
+            <div class="miembro-card"><img src="foto7.jpg" alt="Juan Ignacio Bustos" class="foto-perfil"><h3>Juan Ignacio Bustos</h3><p>Tesista de Grado</p></div>
         </div>
 
         <h2 class="sector-titulo">Becarios</h2>
         <div class="cuadrícula-miembros">
-            <div class="miembro-card">
-                <img src="foto5.jpg" alt="Nicolas Mastropasqua" class="foto-perfil">
-                <h3>Nicolas Mastropasqua</h3>
-                <p>Becario CONICET</p>
-            </div>
-            <div class="miembro-card">
-                <img src="foto6.jpg" alt="Julieta Goria" class="foto-perfil">
-                <h3>Julieta Goria</h3>
-                <p>Becaria de Investigación</p>
-            </div>
-            <div class="miembro-card">
-                <img src="foto8.jpg" alt="Nicolas Carrasco" class="foto-perfil">
-                <h3>Nicolas Carrasco</h3>
-                <p>Becario</p>
-            </div>
-        </div>
-
-        <h2 class="sector-titulo">Exmiembros</h2>
-        <div class="cuadrícula-miembros">
-            <div class="miembro-card exmiembro">
-                <div class="avatar-generico"><i class="fas fa-user"></i></div>
-                <h3>Nombre Apellido</h3>
-                <p>Ex Investigador / Colaborador</p>
-            </div>
+            <div class="miembro-card"><img src="foto5.jpg" alt="Nicolas Mastropasqua" class="foto-perfil"><h3>Nicolas Mastropasqua</h3><p>Becario CONICET</p></div>
+            <div class="miembro-card"><img src="foto6.jpg" alt="Julieta Goria" class="foto-perfil"><h3>Julieta Goria</h3><p>Becaria de Investigación</p></div>
+            <div class="miembro-card"><img src="foto8.jpg" alt="Nicolas Carrasco" class="foto-perfil"><h3>Nicolas Carrasco</h3><p>Becario</p></div>
         </div>
     </div>
 
@@ -124,16 +95,34 @@
         <div class="footer-container">
             <div class="footer-section">
                 <h4>Contacto</h4>
-                <p>Oficina 2115, Pabellón 0+Infinito, Ciudad Universitaria</p>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--color-acento); margin-right: 8px;"></i> Oficina 2115, Pabellón 0+Infinito, Ciudad Universitaria, CABA</p>
+                <p><i class="fas fa-envelope" style="color: var(--color-acento); margin-right: 8px;"></i> livlab.2115@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Escríbenos</h4>
+                <form class="formulario-contacto">
+                    <input type="text" placeholder="Nombre" required>
+                    <input type="email" placeholder="Correo" required>
+                    <textarea placeholder="Mensaje..." rows="2" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
             </div>
             <div class="footer-section">
                 <h4>Enlaces</h4>
-                <a href="https://instagram.com/imagenesliv" target="_blank">Instagram</a>
+                <a href="https://instagram.com/imagenesliv" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
         <div class="footer-logos">
             <img src="logo_uba.png" alt="UBA"><img src="logo_exactas.png" alt="Exactas"><img src="logo_conicet.png" alt="CONICET">
         </div>
+        <div class="footer-bottom">&copy; 2026 LIV. Todos los derechos reservados.</div>
     </footer>
+
+    <script>
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

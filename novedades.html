@@ -13,6 +13,7 @@
         :root { --color-institucional: #1B3B6F; --color-acento: #0077B6; --color-fondo: #f4f7f6; --color-blanco: #ffffff; --texto-principal: #333333; --texto-secundario: #666666; --borde-suave: #e0e0e0; }
         body { font-family: 'Open Sans', sans-serif; margin: 0; background-color: var(--color-fondo); color: var(--texto-principal); }
         h1, h2, h4 { font-family: 'Montserrat', sans-serif; color: var(--color-institucional); }
+        
         nav { background: var(--color-blanco); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .logo { height: 50px; width: auto; }
@@ -20,28 +21,45 @@
         .nav-links { display: flex; gap: 15px; }
         .nav-links a { text-decoration: none; color: var(--texto-principal); padding: 8px 15px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; }
         .nav-links a:hover, .nav-links a.active { background: var(--color-fondo); color: var(--color-acento); }
+        .menu-toggle { display: none; background: transparent; border: none; font-size: 1.5rem; color: var(--color-institucional); cursor: pointer; }
+
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .seccion-titulo { border-bottom: 3px solid var(--color-acento); padding-bottom: 10px; margin-bottom: 40px; }
+        
         .grid-novedades { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .novedad-card { background: var(--color-blanco); border: 1px solid var(--borde-suave); border-radius: 15px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
         .novedad-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .badge { padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; color: white; text-transform: uppercase; }
         .en-curso { background-color: #2a9d8f; }
         .fecha { font-size: 0.85rem; color: var(--texto-secundario); font-weight: 600; }
+        
+        /* Footer unificado */
         footer { background-color: var(--color-institucional); color: #d0dbe5; padding: 60px 5% 30px; margin-top: 60px; }
-        .footer-logos { display: flex; justify-content: center; gap: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 30px; }
-        .footer-logos img { max-height: 65px; background: rgba(255,255,255,0.9); padding: 6px; border-radius: 6px; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-section h4 { color: var(--color-blanco); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; margin-top: 0; }
+        .footer-section p, .footer-section a { color: #d0dbe5; text-decoration: none; font-size: 0.95rem; line-height: 1.6; margin-bottom: 10px; display: block; }
+        .footer-section a:hover { color: var(--color-blanco); text-decoration: underline; }
+        .formulario-contacto input, .formulario-contacto textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: none; background: rgba(255,255,255,0.1); color: white; box-sizing: border-box; }
+        .formulario-contacto button { background-color: var(--color-acento); color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .formulario-contacto button:hover { background-color: #005f92; }
+        .footer-logos { display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+        .footer-logos img { max-height: 65px; width: auto; background: rgba(255,255,255,0.9); padding: 6px; border-radius: 6px; }
+        .footer-bottom { text-align: center; margin-top: 30px; font-size: 0.85rem; color: #8aa4bb; }
+        @media (max-width: 768px) { .menu-toggle { display: block; } .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--color-blanco); padding: 20px; } .nav-links.active { display: flex; } }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="brand"><img src="logo.png" alt="LIV" class="logo"><span class="nombre-pagina">LIV</span></a>
-        <div class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="novedades.html" class="active">Novedades</a>
-            <a href="miembros.html">Miembros</a>
-            <a href="docencia.html">Docencia</a>
-            <a href="articulos.html">Artículos</a>
+        <div class="nav-controls">
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="novedades.html" class="active">Novedades</a>
+                <a href="miembros.html">Miembros</a>
+                <a href="docencia.html">Docencia</a>
+                <a href="articulos.html">Artículos</a>
+            </div>
+            <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
     <div class="container">
@@ -57,13 +75,39 @@
             </div>
         </div>
     </div>
-    <footer>
+
+    <footer id="contacto">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--color-acento); margin-right: 8px;"></i> Oficina 2115, Pabellón 0+Infinito, Ciudad Universitaria, CABA</p>
+                <p><i class="fas fa-envelope" style="color: var(--color-acento); margin-right: 8px;"></i> livlab.2115@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Escríbenos</h4>
+                <form class="formulario-contacto">
+                    <input type="text" placeholder="Nombre" required>
+                    <input type="email" placeholder="Correo" required>
+                    <textarea placeholder="Mensaje..." rows="2" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces</h4>
+                <a href="https://instagram.com/imagenesliv" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
         <div class="footer-logos">
             <img src="logo_uba.png" alt="UBA"><img src="logo_exactas.png" alt="Exactas"><img src="logo_conicet.png" alt="CONICET">
         </div>
+        <div class="footer-bottom">&copy; 2026 LIV. Todos los derechos reservados.</div>
     </footer>
-</body>
-</html>
-</script>
+
+    <script>
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docencia - LIV</title>
+    <title>Artículos - LIV</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
     <style>
         :root { --color-institucional: #1B3B6F; --color-acento: #0077B6; --color-fondo: #f4f7f6; --color-blanco: #ffffff; --texto-principal: #333333; --texto-secundario: #666666; --borde-suave: #e0e0e0; }
         body { font-family: 'Open Sans', sans-serif; margin: 0; background-color: var(--color-fondo); color: var(--texto-principal); }
-        h1, h2 { font-family: 'Montserrat', sans-serif; color: var(--color-institucional); }
+        h1, h2, h4 { font-family: 'Montserrat', sans-serif; color: var(--color-institucional); }
         
         nav { background: var(--color-blanco); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
@@ -26,15 +26,22 @@
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .seccion-titulo { border-bottom: 3px solid var(--color-acento); padding-bottom: 10px; margin-bottom: 40px; }
         
-        /* Estilo de Tabla de Docencia */
-        .tabla-contenedor { background: var(--color-blanco); border-radius: 15px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th, td { padding: 15px; border-bottom: 1px solid var(--borde-suave); }
-        th { font-family: 'Montserrat', sans-serif; color: var(--color-institucional); font-weight: 700; }
-        tr:last-child td { border-bottom: none; }
-        .profesores-lista { font-weight: 600; color: var(--texto-principal); }
-        .duracion-badge { background: #e2f0fd; color: var(--color-acento); padding: 5px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; }
-
+        .articulos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 25px; }
+        .articulo-card { background: var(--color-blanco); border: 1px solid var(--borde-suave); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: 0.3s; }
+        .articulo-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); border-color: var(--color-acento); }
+        .articulo-card h4 { margin-top: 0; font-size: 1.15rem; margin-bottom: 15px; line-height: 1.4; }
+        .publicacion-meta { font-size: 0.85rem; color: var(--texto-secundario); margin-bottom: 15px; display: flex; flex-direction: column; gap: 6px; }
+        .publicacion-meta i { color: var(--color-acento); margin-right: 6px; width: 15px; }
+        
+        .acciones-card { display: flex; gap: 10px; align-items: center; margin-top: 15px; }
+        .btn-abstract { background: transparent; color: var(--color-acento); border: 2px solid var(--color-acento); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        .btn-abstract:hover { background: var(--color-acento); color: white; }
+        .link-completo { color: var(--color-institucional); text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px; }
+        .link-completo:hover { color: var(--color-acento); text-decoration: underline; }
+        
+        .contenido-abstract { display: none; margin-top: 15px; font-size: 0.9rem; color: var(--texto-principal); line-height: 1.6; border-top: 1px solid var(--borde-suave); padding-top: 15px; }
+        .contenido-abstract.visible { display: block; }
+        
         /* Footer unificado */
         footer { background-color: var(--color-institucional); color: #d0dbe5; padding: 60px 5% 30px; margin-top: 60px; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
@@ -59,43 +66,64 @@
                 <a href="index.html">Inicio</a>
                 <a href="novedades.html">Novedades</a>
                 <a href="miembros.html">Miembros</a>
-                <a href="docencia.html" class="active">Docencia</a>
-                <a href="articulos.html">Artículos</a>
+                <a href="docencia.html">Docencia</a>
+                <a href="articulos.html" class="active">Artículos</a>
             </div>
             <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
     <div class="container">
-        <h1 class="seccion-titulo">Materias y Cátedras Universitarias</h1>
-        
-        <div class="tabla-contenedor">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Asignatura</th>
-                        <th>Profesores / Equipo Docente</th>
-                        <th>Duración / Vigencia</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Procesamiento de Imágenes</strong></td>
-                        <td class="profesores-lista">Dra. María Elena Buemi, Dr. Pablo Negri</td>
-                        <td><span class="duracion-badge">1° Cuatrimestre (Hasta Julio)</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Visión Computacional</strong></td>
-                        <td class="profesores-lista">Dr. Daniel Acevedo, Dra. María Elena Buemi</td>
-                        <td><span class="duracion-badge">2° Cuatrimestre (Hasta Diciembre)</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Aprendizaje Profundo y Redes Neuronales</strong></td>
-                        <td class="profesores-lista">Dr. Pablo Negri, Dr. Daniel Acevedo</td>
-                        <td><span class="duracion-badge">Bimestral / Cursada Activa</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <h1 class="seccion-titulo">Artículos Científicos y Proyectos</h1>
+
+        <div class="articulos-grid">
+            <div class="articulo-card">
+                <h4>Event-based facial microexpression analysis using Spiking Neural Networks</h4>
+                <div class="publicacion-meta">
+                    <span><i class="fas fa-users"></i> D. Acevedo, P. Negri, M.E. Buemi, N. Mastropasqua</span>
+                    <span><i class="far fa-calendar-alt"></i> 2025</span>
+                    <span><i class="fas fa-bookmark"></i> Conferencia: IEEE (ICPRS)</span>
+                </div>
+                <div class="acciones-card">
+                    <button class="btn-abstract" onclick="toggleAbstract('abs1', this)">Abstract</button>
+                    <a href="https://ieeexplore.ieee.org" target="_blank" class="link-completo">Artículo Completo <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="contenido-abstract" id="abs1">
+                    <p>Microexpression analysis plays a key role in many applications such as those in Human-Robot Interaction and Driving Monitoring Systems (DMS)...</p>
+                </div>
+            </div>
+
+            <div class="articulo-card">
+                <h4>Viabilidad de búsqueda de parentesco en Problema Inverso Familiar</h4>
+                <div class="publicacion-meta">
+                    <span><i class="fas fa-users"></i> D. Acevedo, P. Negri, J. Goria</span>
+                    <span><i class="far fa-calendar-alt"></i> 2025</span>
+                    <span><i class="fas fa-bookmark"></i> Publicación: Revista JAIIO</span>
+                </div>
+                <div class="acciones-card">
+                    <button class="btn-abstract" onclick="toggleAbstract('abs2', this)">Abstract</button>
+                    <a href="#" target="_blank" class="link-completo">Artículo Completo <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="contenido-abstract" id="abs2">
+                    <p>El reconocimiento familiar a partir de imágenes faciales es una tarea desafiante que amplía la verificación facial tradicional...</p>
+                </div>
+            </div>
+
+            <div class="articulo-card">
+                <h4>Precipitación integrada satelital: combinación de productos y actividad eléctrica...</h4>
+                <div class="publicacion-meta">
+                    <span><i class="fas fa-users"></i> P. Negri, S.H. González, J.J. Ruiz, et al.</span>
+                    <span><i class="far fa-calendar-alt"></i> 2025</span>
+                    <span><i class="fas fa-bookmark"></i> Publicación: Reporte de Investigación</span>
+                </div>
+                <div class="acciones-card">
+                    <button class="btn-abstract" onclick="toggleAbstract('abs3', this)">Abstract</button>
+                    <a href="#" target="_blank" class="link-completo">Artículo Completo <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="contenido-abstract" id="abs3">
+                    <p>El monitoreo preciso de precipitación acoplando datos infrarrojos satelitales y lecturas terrestres de tormentas eléctricas...</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -128,6 +156,16 @@
     </footer>
 
     <script>
+        function toggleAbstract(id, btn) {
+            const block = document.getElementById(id);
+            if(block.classList.contains('visible')) {
+                block.classList.remove('visible');
+                btn.innerText = "Abstract";
+            } else {
+                block.classList.add('visible');
+                btn.innerText = "Ocultar";
+            }
+        }
         document.getElementById('mobile-menu').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');
         });

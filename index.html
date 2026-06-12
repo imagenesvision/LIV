@@ -79,10 +79,12 @@
             .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--color-blanco); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.05); }
             .nav-links.active { display: flex; }
             /* Botón estilo "Ver todos" */
-.btn-ver-todo {
+
+            /* Estilo para botones de "Ver todos" */
+.btn-ver-todos {
     display: block;
     width: 100%;
-    background-color: #0077b6;
+    background-color: #32908F; /* El mismo verde/azul que usas en .btn-leer-mas */
     color: white;
     text-align: center;
     padding: 15px;
@@ -92,8 +94,11 @@
     margin-top: 20px;
     transition: 0.3s;
 }
-.btn-ver-todo:hover { background-color: #005f87; color: white; }
 
+.btn-ver-todos:hover {
+    background-color: #275665;
+    color: white;
+}
 /* Metadatos de artículos mejorados */
 .publicacion-meta { 
     font-size: 0.9rem; 
@@ -186,7 +191,7 @@
                         <h4>Conferencia Internacional</h4>
                         <p style="color: var(--texto-secundario); font-size: 0.9rem;">Participación destacada de los miembros exponiendo avances recientes en el área.</p>
                     </div>
-                    <a href="novedades.html" class="btn-ver-todo">Ver todas las novedades</a>
+                  <a href="novedades.html" class="btn-ver-todos">Ver todas las novedades</a>
                 </div>
             </div>
         </section>

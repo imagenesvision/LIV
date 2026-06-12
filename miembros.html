@@ -49,11 +49,12 @@
         .footer-logos img { max-height: 65px; width: auto; background: rgba(255,255,255,0.9); padding: 6px; border-radius: 6px; }
         .footer-bottom { text-align: center; margin-top: 30px; font-size: 0.85rem; color: #8aa4bb; }
         @media (max-width: 768px) { .menu-toggle { display: block; } .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--color-blanco); padding: 20px; } .nav-links.active { display: flex; } }
-   /* Botón estilo "Ver todos" */
-.btn-ver-todo {
+
+        /* Estilo para botones de "Ver todos" */
+.btn-ver-todos {
     display: block;
     width: 100%;
-    background-color: #0077b6;
+    background-color: #32908F; /* El mismo verde/azul que usas en .btn-leer-mas */
     color: white;
     text-align: center;
     padding: 15px;
@@ -63,8 +64,11 @@
     margin-top: 20px;
     transition: 0.3s;
 }
-.btn-ver-todo:hover { background-color: #005f87; color: white; }
 
+.btn-ver-todos:hover {
+    background-color: #275665;
+    color: white;
+}
 /* Metadatos de artículos mejorados */
 .publicacion-meta { 
     font-size: 0.9rem; 

@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIV - Laboratorio de Imágenes y Visión</title>
+    <title>Artículos - LIV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
     <header>
         <div class="header-container">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="logo.png" alt="Logo LIV">
-                    <h1>LABORATORIO DE IMÁGENES Y VISIÓN</h1>
-                </a>
-            </div>
-            <nav>
+            <a href="index.html" class="logo-area">
+                <img alt="Logo LIV" src="logo.png" class="logo-img">
+                <h1 class="logo-title">LABORATORIO DE IMÁGENES Y VISIÓN</h1>
+            </a>
+            <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="miembros.html">Miembros</a></li>
-                    <li><a href="articulos.html">Artículos</a></li>
+                    <!-- Marcamos "Artículos" como la página activa -->
+                    <li><a href="articulos.html" class="active">Artículos</a></li>
                     <li><a href="novedades.html">Novedades</a></li>
                     <li><a href="docencia.html">Docencia</a></li>
                 </ul>
@@ -30,96 +29,49 @@
     </header>
 
     <main>
-        </main>
-</head>
-<body>
-
-    <nav>
-        <a href="index.html" class="brand"><img src="logo.png" alt="LIV" class="logo"><span class="nombre-pagina">LIV</span></a>
-        <div class="nav-controls">
-            <div class="nav-links" id="nav-links">
-                <a href="index.html">Inicio</a>
-                <a href="novedades.html">Novedades</a>
-                <a href="miembros.html">Miembros</a>
-                <a href="docencia.html">Docencia</a>
-                <a href="articulos.html" class="active">Artículos</a>
+        <section class="container">
+            <div class="section-header">
+                <h3>Publicaciones Científicas</h3>
             </div>
-            <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
-        </div>
-    </nav>
-
-    <section id="articulos">
-            <h2>Artículos Científicos y Publicaciones</h2>
-
-            <div class="articulo-card">
-                <p class="articulo-titulo">Event-based facial microexpression analysis using Spiking Neural Networks</p>
-                <div class="publicacion-meta">
-                    <span><i class="fas fa-users"></i> D. Acevedo, P. Negri, M.E. Buemi, N. Mastropasqua</span>
-                    <span><i class="fas fa-calendar-alt"></i> 29 Dic, 2025</span>
-                </div>
-                <p class="articulo-fuente"><strong>Conferencia:</strong> ICPRS 2025</p>
+            <div class="grid articles-grid">
                 
-                <div class="contenido-extra" id="proyecto_1">
-                    <p>Microexpression analysis plays a key role in many applications such as those in Human-Robot Interaction and Driving Monitoring Systems (DMS). However, robust and fast detection of subtle facial micro-movements in-the-wild still remains a significant challenge...</p>
-                    <a href="https://ieeexplore.ieee.org/abstract/document/11302823" target="_blank" class="link-proyecto">🔗 Ir al artículo original</a>
+                <!-- Artículo 1 -->
+                <div class="card article-card">
+                    <span class="article-meta">📅 29 Dic, 2025 &bull; 📖 Conferencia ICPRS</span>
+                    <h4>Event-based facial microexpression analysis using SNNs</h4>
+                    <p>Enfoque novedoso para el análisis de microexpresiones faciales utilizando sensores de eventos de alta velocidad y redes neuronales.</p>
+                    <a href="https://ieeexplore.ieee.org/abstract/document/11302823" target="_blank" class="article-link">Leer artículo original</a>
                 </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_1', this)">Leer Abstract ↓</button>
-            </div>
 
-            <div class="articulo-card">
-                <p class="articulo-titulo">Viabilidad de búsqueda de parentesco en Problema Inverso Familiar</p>
-                <div class="publicacion-meta">
-                    <span><i class="fas fa-users"></i> D. Acevedo, P. Negri, J. Goria</span>
-                    <span><i class="fas fa-calendar-alt"></i> 21 Oct, 2025</span>
+                <!-- Artículo 2 -->
+                <div class="card article-card">
+                    <span class="article-meta">📅 21 Oct, 2025 &bull; 📖 Revista JAIIO</span>
+                    <h4>Viabilidad de búsqueda de parentesco en Problema Inverso Familiar</h4>
+                    <p>Investigación sobre la identificación de hijos mediante la comparación de adultos con versiones más jóvenes de sus padres usando ArcFace.</p>
+                    <a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19857" target="_blank" class="article-link">Leer artículo original</a>
                 </div>
-                <p class="articulo-fuente"><strong>Revista:</strong> JAIIO</p>
-                
-                <div class="contenido-extra" id="proyecto_2">
-                    <p>El reconocimiento familiar a partir de imágenes faciales es una tarea desafiante que amplía la verificación facial tradicional al incorporar variaciones genéticas y generacionales...</p>
-                    <a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19857" target="_blank" class="link-proyecto">🔗 Ir al artículo original</a>
-                </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_2', this)">Leer Abstract ↓</button>
-            </div>
 
-            <div class="articulo-card">
-                <p class="articulo-titulo">Precipitación integrada satelital mediante CNNs</p>
-                <div class="publicacion-meta">
-                    <span><i class="fas fa-users"></i> P. Negri, S.H. González, J.J. Ruiz, et al.</span>
-                    <span><i class="fas fa-calendar-alt"></i> 30 Sep, 2025</span>
+                <!-- Artículo 3 -->
+                <div class="card article-card">
+                    <span class="article-meta">📅 30 Sep, 2025 &bull; 📖 Revista JAIIO</span>
+                    <h4>Precipitación integrada satelital mediante CNNs</h4>
+                    <p>Uso combinado de temperatura de brillo en infrarrojo y actividad eléctrica para monitoreo de precipitación agropecuaria.</p>
+                    <a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19682" target="_blank" class="article-link">Leer artículo original</a>
                 </div>
-                <p class="articulo-fuente"><strong>Revista:</strong> JAIIO</p>
-                
-                <div class="contenido-extra" id="proyecto_3">
-                    <p>El monitoreo de la precipitación es sumamente crucial para la actividad agropecuaria... En este trabajo se propone utilizar un modelo de redes neuronales convolucionales con una arquitectura de tipo UNet...</p>
-                    <a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19682" target="_blank" class="link-proyecto">🔗 Ir al artículo original</a>
-                </div>
-                <button class="btn-leer-mas" onclick="toggleContenido('proyecto_3', this)">Leer Abstract ↓</button>
+
+                <!-- Podés seguir agregando más artículos acá copiando y pegando el bloque <div class="card article-card">...</div> -->
+
             </div>
-            
-            </section>
- <footer>
+        </section>
+    </main>
+
+    <footer>
         <div class="footer-container">
-            <div class="footer-info">
-                <h4>Contacto</h4>
+            <div class="footer-col">
+                <h5>Contacto</h5>
                 <p>📍 Pabellón 0+Infinito, CABA, Argentina</p>
                 <p>✉️ livlab.2115@gmail.com</p>
             </div>
-            
-            <div class="footer-links">
-                <h4>Enlaces Rápidos</h4>
-                <a href="https://instagram.com/imagenesliv" target="_blank">Instagram</a>
-                <a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank">LinkedIn</a>
-            </div>
-            
-            <div class="footer-logos">
-                <img src="logo.png" alt="Logo LIV">
-                <img src="logo_uba.png" alt="Logo UBA">
-                <img src="logo_exactas.png" alt="Logo Exactas">
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2026 LIV. Todos los derechos reservados.</p>
         </div>
     </footer>
 

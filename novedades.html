@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIV - Laboratorio de Imágenes y Visión</title>
+    <title>Novedades - LIV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
     <header>
         <div class="header-container">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="logo.png" alt="Logo LIV">
-                    <h1>LABORATORIO DE IMÁGENES Y VISIÓN</h1>
-                </a>
-            </div>
-            <nav>
+            <a href="index.html" class="logo-area">
+                <img alt="Logo LIV" src="logo.png" class="logo-img">
+                <h1 class="logo-title">LABORATORIO DE IMÁGENES Y VISIÓN</h1>
+            </a>
+            <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="miembros.html">Miembros</a></li>
                     <li><a href="articulos.html">Artículos</a></li>
-                    <li><a href="novedades.html">Novedades</a></li>
+                    <li><a href="novedades.html" class="active">Novedades</a></li>
                     <li><a href="docencia.html">Docencia</a></li>
                 </ul>
             </nav>
@@ -30,57 +30,48 @@
     </header>
 
     <main>
-        </main>
-</head>
-<body>
-    <nav>
-        <a href="index.html" class="brand"><img src="logo.png" alt="LIV" class="logo"><span class="nombre-pagina">LIV</span></a>
-        <div class="nav-controls">
-            <div class="nav-links" id="nav-links">
-                <a href="index.html">Inicio</a>
-                <a href="novedades.html" class="active">Novedades</a>
-                <a href="miembros.html">Miembros</a>
-                <a href="docencia.html">Docencia</a>
-                <a href="articulos.html">Artículos</a>
+        <section class="container">
+            <div class="section-header">
+                <h3>Últimas Noticias y Eventos</h3>
             </div>
-            <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
-        </div>
-    </nav>
-    <div class="container">
-        <h1 class="seccion-titulo">Novedades y Eventos</h1>
-        <div class="grid-novedades">
-            <div class="novedad-card">
-                <div class="novedad-header">
-                    <span class="badge en-curso">En curso</span>
-                    <span class="fecha"><i class="far fa-calendar-alt"></i> Marzo 2026</span>
+            
+            <div class="grid news-grid">
+                <div class="card news-card">
+                    <span class="badge badge-ongoing">En curso &bull; Marzo 2026</span>
+                    <h4>Conferencia Internacional</h4>
+                    <p>Participación destacada de los miembros exponiendo avances recientes en el área de visión computacional. Estaremos compartiendo los resultados de nuestras últimas investigaciones sobre redes neuronales.</p>
                 </div>
-                <h4>Conferencia Internacional de Visión</h4>
-                <p style="color: var(--texto-secundario); font-size: 0.95rem; line-height: 1.5;">Participación de nuestro equipo de investigación en el simposio anual de procesamiento avanzado de imágenes.</p>
-            </div>
-        </div>
-    </div>
 
-   <footer>
+                <div class="card news-card">
+                    <span class="badge badge-finished">Finalizado &bull; Febrero 2026</span>
+                    <h4>Defensa de Tesis</h4>
+                    <p>Presentación de resultados obtenidos en el laboratorio durante la última jornada académica. Felicitamos a nuestros tesistas por el excelente nivel demostrado ante el jurado.</p>
+                </div>
+                
+                </div>
+        </section>
+    </main>
+
+    <footer>
         <div class="footer-container">
-            <div class="footer-info">
-                <h4>Contacto</h4>
+            <div class="footer-col">
+                <h5>Contacto</h5>
                 <p>📍 Pabellón 0+Infinito, CABA, Argentina</p>
                 <p>✉️ livlab.2115@gmail.com</p>
             </div>
-            
-            <div class="footer-links">
-                <h4>Enlaces Rápidos</h4>
-                <a href="https://instagram.com/imagenesliv" target="_blank">Instagram</a>
-                <a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank">LinkedIn</a>
+            <div class="footer-col">
+                <h5>Enlaces Rápidos</h5>
+                <ul class="footer-links">
+                    <li><a href="https://instagram.com/imagenesliv" target="_blank">Instagram</a></li>
+                    <li><a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank">LinkedIn</a></li>
+                </ul>
             </div>
-            
-            <div class="footer-logos">
-                <img src="logo.png" alt="Logo LIV">
-                <img src="logo_uba.png" alt="Logo UBA">
-                <img src="logo_exactas.png" alt="Logo Exactas">
+            <div class="footer-col footer-logos">
+                <img alt="Logo LIV" src="logo.png">
+                <img alt="Logo UBA" src="logo_uba.png">
+                <img alt="Logo Exactas" src="logo_exactas.png">
             </div>
         </div>
-        
         <div class="footer-bottom">
             <p>&copy; 2026 LIV. Todos los derechos reservados.</p>
         </div>

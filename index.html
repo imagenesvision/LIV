@@ -4,92 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIV - Laboratorio de Imágenes y Visión</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <style>
-        :root { --color-primario: #1B1B3A; --color-secundario: #fafffd; --color-acento: #32908F; --color-rosa: #BC7690; --texto-oscuro: #222222; --blanco: #ffffff; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Merriweather', sans-serif; margin: 0; background-color: var(--color-secundario); color: var(--texto-oscuro); display: flex; flex-direction: column; min-height: 100vh; line-height: 1.5; }
-        
-        /* Navegación */
-        nav { background: #fafffd; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo { height: 50px; width: auto; }
-        .nombre-pagina { font-size: 1.2rem; font-weight: bold; color: #6C4965; }
-        .nav-controls { display: flex; align-items: center; gap: 15px; }
-        .nav-links { display: flex; gap: 10px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #fafffd; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; transition: 0.3s; background: #275665; }
-        .nav-links a:hover { background: var(--color-primario); color: #fff; }
-        .menu-toggle { display: none; background: transparent; border: none; font-size: 1.6rem; color: var(--color-primario); cursor: pointer; }
-        
-        /* Banner de Inicio */
-        .hero { 
-            /* AQUÍ CAMBIAS LA FOTO DEL BANNER */
-            background: linear-gradient(rgba(27, 27, 58, 0.8), rgba(27, 27, 58, 0.8)), url('TU_FOTO_AQUI.jpg') center/cover; 
-            color: white; text-align: center; padding: 80px 20px; margin-bottom: 30px; 
-        }
-        .hero h1 { font-size: 2.2rem; margin: 0 0 10px 0; }
-        .hero p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
+</head>
+<body>
 
-        /* Contenedores y Secciones */
-        .container { max-width: 1100px; margin: 0 auto 40px; padding: 0 20px; flex: 1; }
-        section { background: var(--blanco); padding: 30px; margin-bottom: 30px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-        h2 { color: var(--color-rosa); margin-top: 0; font-size: 1.5rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 20px; }
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="logo.png" alt="Logo LIV">
+                    <h1>LABORATORIO DE IMÁGENES Y VISIÓN</h1>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="miembros.html">Miembros</a></li>
+                    <li><a href="articulos.html">Artículos</a></li>
+                    <li><a href="novedades.html">Novedades</a></li>
+                    <li><a href="docencia.html">Docencia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        /* Miembros Grid Horizontal */
-        .miembros-wrapper { display: flex; overflow-x: auto; gap: 20px; padding: 10px 5px; scroll-snap-type: x mandatory; }
-        .miembros-wrapper::-webkit-scrollbar { height: 6px; }
-        .miembros-wrapper::-webkit-scrollbar-thumb { background: #91D8A7; border-radius: 10px; }
-        .miembro-card { min-width: 200px; background: white; padding: 15px; border-radius: 15px; border: 1px solid #FCECC9; text-align: center; scroll-snap-align: start; }
-        .foto-4x4 { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 10px; border: 3px solid var(--color-primario); display: block; }
-        .miembro-card h3 { font-size: 1rem; margin: 5px 0; color: var(--color-primario); }
-        .miembro-card p { font-size: 0.8rem; margin: 0; color: #555; }
-
-        /* Artículos y Novedades Compactos */
-        .card-compacta { background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 4px solid var(--color-acento); margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
-        .card-titulo { font-size: 1.1rem; font-weight: bold; color: var(--color-primario); margin: 0 0 8px 0; }
-        .meta-info { font-size: 0.8rem; color: #666; margin-bottom: 10px; display: flex; gap: 15px; flex-wrap: wrap; }
-        .meta-info span { font-weight: bold; }
-        .resumen-corto { font-size: 0.9rem; color: #444; margin: 0 0 10px 0; line-height: 1.4; }
-        .link-directo { display: inline-flex; align-items: center; gap: 5px; color: var(--color-acento); text-decoration: none; font-weight: bold; font-size: 0.85rem; }
-        .link-directo:hover { text-decoration: underline; }
-
-        /* Botón "Ver Todos" (Va siempre AFUERA de los grids) */
-        .contenedor-boton { text-align: center; margin-top: 20px; width: 100%; }
-        .btn-ver-todos { display: inline-block; background-color: var(--color-acento); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
-        .btn-ver-todos:hover { background-color: var(--color-primario); }
-
-        /* Novedades Badges */
-        .estado-badge { padding: 3px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: bold; color: white; text-transform: uppercase; margin-right: 10px; }
-        .en-curso { background-color: #6AA84F; }
-        .finalizado { background-color: #CC0000; }
-
-        /* Footer */
-        footer { background-color: #C7E2B8; color: #1B1B3A; padding: 40px 5% 20px; }
-        .footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
-        .footer-section h4 { font-size: 1.1rem; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px; }
-        .footer-section p, .footer-section a { font-size: 0.85rem; color: #222; text-decoration: none; display: block; margin-bottom: 8px; }
-        .footer-logos { display: flex; justify-content: center; gap: 30px; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1); flex-wrap: wrap; }
-        .footer-logos img { max-height: 45px; mix-blend-mode: multiply; }
-        .footer-bottom { text-align: center; margin-top: 20px; font-size: 0.75rem; color: #444; }
-
-        /* MÓVIL COMPACTO */
-        @media (max-width: 768px) {
-            nav { padding: 8px 4%; }
-            .logo { height: 35px; }
-            .nombre-pagina { font-size: 0.8rem; max-width: 130px; line-height: 1.2; }
-            .menu-toggle { display: block; }
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--color-secundario); padding: 10px 0; }
-            .nav-links.active { display: flex; }
-            .nav-links a { margin: 5px 20px; text-align: center; }
-            .hero { padding: 50px 15px; }
-            .hero h1 { font-size: 1.6rem; }
-            .container { padding: 0 10px; }
-            section { padding: 20px 15px; }
-            .footer-container { text-align: center; gap: 20px; }
-        }
+    <main>
+        </main>
     </style>
 </head>
 <body>
@@ -198,29 +139,31 @@
 
     </div>
 
-    <footer>
+   <footer>
         <div class="footer-container">
-            <div class="footer-section">
+            <div class="footer-info">
                 <h4>Contacto</h4>
                 <p>📍 Pabellón 0+Infinito, CABA, Argentina</p>
                 <p>✉️ livlab.2115@gmail.com</p>
             </div>
-            <div class="footer-section">
+            
+            <div class="footer-links">
                 <h4>Enlaces Rápidos</h4>
-                <a href="https://instagram.com/imagenesliv" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://instagram.com/imagenesliv" target="_blank">Instagram</a>
+                <a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank">LinkedIn</a>
+            </div>
+            
+            <div class="footer-logos">
+                <img src="logo.png" alt="Logo LIV">
+                <img src="logo_uba.png" alt="Logo UBA">
+                <img src="logo_exactas.png" alt="Logo Exactas">
             </div>
         </div>
-        <div class="footer-logos">
-            <img src="logo_uba.png" alt="UBA"><img src="logo_exactas.png" alt="Exactas">
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 LIV. Todos los derechos reservados.</p>
         </div>
-        <div class="footer-bottom">&copy; 2026 LIV. Todos los derechos reservados.</div>
     </footer>
 
-<script>
-    document.getElementById('mobile-menu').addEventListener('click', () => {
-        document.getElementById('nav-links').classList.toggle('active');
-    });
-</script>
 </body>
 </html>

@@ -5,116 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIV - Laboratorio de Imágenes y Visión</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
     <style>
-        :root {
-            --color-institucional: #1B3B6F;
-            --color-acento: #0077B6;
-            --color-fondo: #f4f7f6;
-            --color-blanco: #ffffff;
-            --texto-principal: #333333;
-            --texto-secundario: #666666;
-            --borde-suave: #e0e0e0;
-        }
+        :root { --color-primario: #1B1B3A; --color-secundario: #fafffd; --color-acento: #32908F; --color-rosa: #BC7690; --texto-oscuro: #222222; --blanco: #ffffff; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Open Sans', sans-serif; margin: 0; background-color: var(--color-fondo); color: var(--texto-principal); }
-        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; color: var(--color-institucional); }
+        body { font-family: 'Merriweather', sans-serif; margin: 0; background-color: var(--color-secundario); color: var(--texto-oscuro); display: flex; flex-direction: column; min-height: 100vh; line-height: 1.5; }
         
-        /* Navbar */
-        nav { background: var(--color-blanco); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        /* Navegación */
+        nav { background: #fafffd; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo { height: 50px; width: auto; }
-        .nombre-pagina { font-size: 1.3rem; font-weight: 700; color: var(--color-institucional); }
-        .nav-controls { display: flex; align-items: center; gap: 20px; }
-        .nav-links { display: flex; gap: 15px; }
-        .nav-links a { text-decoration: none; color: var(--texto-principal); padding: 8px 15px; border-radius: 20px; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { background: var(--color-fondo); color: var(--color-acento); }
-        .lang-switch { background: transparent; color: var(--color-institucional); border: 2px solid var(--color-institucional); padding: 6px 15px; text-decoration: none; border-radius: 20px; font-weight: 700; font-size: 0.9rem; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
-        .lang-switch:hover { background: var(--color-institucional); color: var(--color-blanco); }
-        .menu-toggle { display: none; background: transparent; border: none; font-size: 1.5rem; color: var(--color-institucional); cursor: pointer; }
+        .nombre-pagina { font-size: 1.2rem; font-weight: bold; color: #6C4965; }
+        .nav-controls { display: flex; align-items: center; gap: 15px; }
+        .nav-links { display: flex; gap: 10px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #fafffd; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; transition: 0.3s; background: #275665; }
+        .nav-links a:hover { background: var(--color-primario); color: #fff; }
+        .menu-toggle { display: none; background: transparent; border: none; font-size: 1.6rem; color: var(--color-primario); cursor: pointer; }
         
-        /* Hero */
-        .hero { background: linear-gradient(rgba(27, 59, 111, 0.85), rgba(27, 59, 111, 0.85)), url('portada.jpg') center/cover; color: var(--color-blanco); text-align: center; padding: 120px 20px; border-radius: 0 0 30px 30px; margin-bottom: 40px; }
-        .hero h1 { color: var(--color-blanco); font-size: 2.8rem; margin-bottom: 20px; margin-top: 0; }
-        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; line-height: 1.6; }
-        
+        /* Banner de Inicio */
+        .hero { 
+            /* AQUÍ CAMBIAS LA FOTO DEL BANNER */
+            background: linear-gradient(rgba(27, 27, 58, 0.8), rgba(27, 27, 58, 0.8)), url('TU_FOTO_AQUI.jpg') center/cover; 
+            color: white; text-align: center; padding: 80px 20px; margin-bottom: 30px; 
+        }
+        .hero h1 { font-size: 2.2rem; margin: 0 0 10px 0; }
+        .hero p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
+
         /* Contenedores y Secciones */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        section { background: var(--color-blanco); padding: 40px; margin-bottom: 40px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
-        h2 { font-size: 1.8rem; border-bottom: 3px solid var(--color-acento); padding-bottom: 8px; margin-top: 0; inline-size: max-content; margin-bottom: 25px; }
-        
-        /* Grillas e Interfaz de Inicio */
-        .grid-home { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 25px; }
-        .card-home { background: var(--color-fondo); border: 1px solid var(--borde-suave); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-miembro-preview { text-align: center; background: var(--color-fondo); border: 1px solid var(--borde-suave); border-radius: 15px; padding: 20px; }
-        .foto-perfil-preview { width: 90px; height: 90px; object-fit: cover; border-radius: 50%; margin-bottom: 10px; border: 3px solid var(--color-blanco); }
-        
-        /* Botones */
-        .btn-ver-mas { background: var(--color-acento); color: white; border: none; padding: 10px 25px; border-radius: 20px; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; margin-top: 10px; }
-        .btn-ver-mas:hover { background: var(--color-institucional); }
-        .seccion-centrada-btn { text-align: center; margin-top: 20px; }
-        
-        .estado-badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; color: white; text-transform: uppercase; margin-bottom: 10px; }
-        .en-curso { background-color: #2a9d8f; }
-        
-        /* Footer unificado */
-        footer { background-color: var(--color-institucional); color: #d0dbe5; padding: 60px 5% 30px; margin-top: 60px; }
-        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-section h4 { color: var(--color-blanco); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; margin-top: 0; }
-        .footer-section p, .footer-section a { color: #d0dbe5; text-decoration: none; font-size: 0.95rem; line-height: 1.6; margin-bottom: 10px; display: block; }
-        .footer-section a:hover { color: var(--color-blanco); text-decoration: underline; }
-        .formulario-contacto input, .formulario-contacto textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: none; background: rgba(255,255,255,0.1); color: white; box-sizing: border-box; }
-        .formulario-contacto button { background-color: var(--color-acento); color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .formulario-contacto button:hover { background-color: #005f92; }
-        .footer-logos { display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
-        .footer-logos img { max-height: 65px; width: auto; background: rgba(255,255,255,0.9); padding: 6px; border-radius: 6px; }
-        .footer-bottom { text-align: center; margin-top: 30px; font-size: 0.85rem; color: #8aa4bb; }
+        .container { max-width: 1100px; margin: 0 auto 40px; padding: 0 20px; flex: 1; }
+        section { background: var(--blanco); padding: 30px; margin-bottom: 30px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        h2 { color: var(--color-rosa); margin-top: 0; font-size: 1.5rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 20px; }
 
+        /* Miembros Grid Horizontal */
+        .miembros-wrapper { display: flex; overflow-x: auto; gap: 20px; padding: 10px 5px; scroll-snap-type: x mandatory; }
+        .miembros-wrapper::-webkit-scrollbar { height: 6px; }
+        .miembros-wrapper::-webkit-scrollbar-thumb { background: #91D8A7; border-radius: 10px; }
+        .miembro-card { min-width: 200px; background: white; padding: 15px; border-radius: 15px; border: 1px solid #FCECC9; text-align: center; scroll-snap-align: start; }
+        .foto-4x4 { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 10px; border: 3px solid var(--color-primario); display: block; }
+        .miembro-card h3 { font-size: 1rem; margin: 5px 0; color: var(--color-primario); }
+        .miembro-card p { font-size: 0.8rem; margin: 0; color: #555; }
+
+        /* Artículos y Novedades Compactos */
+        .card-compacta { background: #fdfdfd; padding: 20px; border-radius: 10px; border-left: 4px solid var(--color-acento); margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+        .card-titulo { font-size: 1.1rem; font-weight: bold; color: var(--color-primario); margin: 0 0 8px 0; }
+        .meta-info { font-size: 0.8rem; color: #666; margin-bottom: 10px; display: flex; gap: 15px; flex-wrap: wrap; }
+        .meta-info span { font-weight: bold; }
+        .resumen-corto { font-size: 0.9rem; color: #444; margin: 0 0 10px 0; line-height: 1.4; }
+        .link-directo { display: inline-flex; align-items: center; gap: 5px; color: var(--color-acento); text-decoration: none; font-weight: bold; font-size: 0.85rem; }
+        .link-directo:hover { text-decoration: underline; }
+
+        /* Botón "Ver Todos" (Va siempre AFUERA de los grids) */
+        .contenedor-boton { text-align: center; margin-top: 20px; width: 100%; }
+        .btn-ver-todos { display: inline-block; background-color: var(--color-acento); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
+        .btn-ver-todos:hover { background-color: var(--color-primario); }
+
+        /* Novedades Badges */
+        .estado-badge { padding: 3px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: bold; color: white; text-transform: uppercase; margin-right: 10px; }
+        .en-curso { background-color: #6AA84F; }
+        .finalizado { background-color: #CC0000; }
+
+        /* Footer */
+        footer { background-color: #C7E2B8; color: #1B1B3A; padding: 40px 5% 20px; }
+        .footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+        .footer-section h4 { font-size: 1.1rem; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px; }
+        .footer-section p, .footer-section a { font-size: 0.85rem; color: #222; text-decoration: none; display: block; margin-bottom: 8px; }
+        .footer-logos { display: flex; justify-content: center; gap: 30px; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1); flex-wrap: wrap; }
+        .footer-logos img { max-height: 45px; mix-blend-mode: multiply; }
+        .footer-bottom { text-align: center; margin-top: 20px; font-size: 0.75rem; color: #444; }
+
+        /* MÓVIL COMPACTO */
         @media (max-width: 768px) {
+            nav { padding: 8px 4%; }
+            .logo { height: 35px; }
+            .nombre-pagina { font-size: 0.8rem; max-width: 130px; line-height: 1.2; }
             .menu-toggle { display: block; }
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--color-blanco); padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.05); }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--color-secundario); padding: 10px 0; }
             .nav-links.active { display: flex; }
-            /* Botón estilo "Ver todos" */
-
-            /* Estilo para botones de "Ver todos" */
-.btn-ver-todos {
-    display: block;
-    width: 100%;
-    background-color: #32908F; /* El mismo verde/azul que usas en .btn-leer-mas */
-    color: white;
-    text-align: center;
-    padding: 15px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 20px;
-    transition: 0.3s;
-}
-
-.btn-ver-todos:hover {
-    background-color: #275665;
-    color: white;
-}
-/* Metadatos de artículos mejorados */
-.publicacion-meta { 
-    font-size: 0.9rem; 
-    color: #4a4a4a; 
-    margin: 10px 0; 
-    background: #f9f9f9; 
-    padding: 10px; 
-    border-radius: 8px;
-}
-.journal-info {
-    font-weight: bold;
-    color: #275665;
-    display: block;
-    margin-top: 5px;
-}
-}
+            .nav-links a { margin: 5px 20px; text-align: center; }
+            .hero { padding: 50px 15px; }
+            .hero h1 { font-size: 1.6rem; }
+            .container { padding: 0 10px; }
+            section { padding: 20px 15px; }
+            .footer-container { text-align: center; gap: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -122,143 +97,130 @@
     <nav>
         <a href="index.html" class="brand">
             <img src="logo.png" alt="Logo LIV" class="logo">
-            <span class="nombre-pagina">LIV</span>
+            <span class="nombre-pagina">LABORATORIO DE IMÁGENES Y VISIÓN</span>
         </a>
         <div class="nav-controls">
             <div class="nav-links" id="nav-links">
-                <a href="index.html" class="active">Inicio</a>
-                <a href="novedades.html">Novedades</a>
+                <a href="index.html">Inicio</a>
                 <a href="miembros.html">Miembros</a>
-                <a href="docencia.html">Docencia</a>
                 <a href="articulos.html">Artículos</a>
+                <a href="novedades.html">Novedades</a>
+                <a href="docencia.html">Docencia</a>
             </div>
-            <a href="index_en.html" class="lang-switch"><i class="fas fa-globe"></i> EN</a>
             <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
     <div class="hero">
-        <h1>Laboratorio de Imágenes y Visión</h1>
-        <p>...</p>
+        <h1>Bienvenidos al LIV</h1>
+        <p>Un espacio dedicado a la investigación de vanguardia en procesamiento de imágenes, visión por computadora y redes neuronales biológicamente inspiradas.</p>
     </div>
 
     <div class="container">
-        <section id="sobre-nosotros">
-            <h2>Bienvenidos al LIV</h2>
-            <p>Página en proceso...</p>
-        </section>
-
-        <section>
-            <h2>Miembros del Equipo</h2>
-            <div class="grid-home">
-                <div class="card-miembro-preview">
-                    <img src="foto1.jpg" alt="María Elena Buemi" class="foto-perfil-preview">
-                    <h4>María Elena Buemi</h4>
-                    <p style="color: var(--texto-secundario); font-size: 0.9rem; margin: 0;">Investigadora UBA</p>
-                </div>
-                <div class="card-miembro-preview">
-                    <img src="foto2.jpg" alt="Daniel Acevedo" class="foto-perfil-preview">
-                    <h4>Daniel Acevedo</h4>
-                    <p style="color: var(--texto-secundario); font-size: 0.9rem; margin: 0;">Investigador CONICET</p>
-                </div>
-                <div class="card-miembro-preview">
-                    <img src="foto3.jpg" alt="Pablo Negri" class="foto-perfil-preview">
-                    <h4>Pablo Negri</h4>
-                    <p style="color: var(--texto-secundario); font-size: 0.9rem; margin: 0;">Investigador CONICET</p>
-                </div>
-                <div class="card-miembro-preview">
-                    <img src="foto4.jpg" alt="Manuel Dubinsky" class="foto-perfil-preview">
-                    <h4>Manuel Dubinsky</h4>
-                    <p style="color: var(--texto-secundario); font-size: 0.9rem; margin: 0;">Tesista Doctoral</p>
-                </div>
-                <div class="card-miembro-preview">
-                    <img src="foto5.jpg" alt="Nicolas Mastropasqua" class="foto-perfil-preview">
-                    <h4>N. Mastropasqua</h4>
-                    <p style="color: var(--texto-secundario); font-size: 0.9rem; margin: 0;">Becario CONICET</p>
-                </div>
+        
+        <section id="miembros">
+            <h2>Nuestro Equipo</h2>
+            <div class="miembros-wrapper">
+                <div class="miembro-card"><img src="foto1.jpg" alt="María Elena Buemi" class="foto-4x4"><h3>María Elena Buemi</h3><p>Investigadora UBA</p></div>
+                <div class="miembro-card"><img src="foto2.jpg" alt="Daniel Acevedo" class="foto-4x4"><h3>Daniel Acevedo</h3><p>Investigador CONICET</p></div>
+                <div class="miembro-card"><img src="foto3.jpg" alt="Pablo Negri" class="foto-4x4"><h3>Pablo Negri</h3><p>Investigador CONICET</p></div>
+                <div class="miembro-card"><img src="foto4.jpg" alt="Manuel Dubinsky" class="foto-4x4"><h3>Manuel Dubinsky</h3><p>Tesista doctoral</p></div>
+                <div class="miembro-card"><img src="foto5.jpg" alt="Nicolas Mastropasqua" class="foto-4x4"><h3>N. Mastropasqua</h3><p>Becario doctoral</p></div>
             </div>
-            <div class="seccion-centrada-btn">
-                <a href="miembros.html" class="btn-ver-mas">Ver todos los miembros</a>
+            <div class="contenedor-boton">
+                <a href="miembros.html" class="btn-ver-todos">Ver todos los miembros</a>
             </div>
         </section>
 
-        <section>
-            <h2>Últimas Novedades</h2>
-            <div class="grid-home">
-                <div class="card-home">
-                    <div>
-                        <span class="estado-badge en-curso">En curso</span>
-                        <h4>Conferencia Internacional</h4>
-                        <p style="color: var(--texto-secundario); font-size: 0.9rem;">Participación destacada de los miembros exponiendo avances recientes en el área.</p>
-                    </div>
-                </div>
-         <div class="seccion-centrada-btn">
-                <a href="novedades.html" class="btn-ver-mas">Ver todas las novedades.</a>
-         </div>
-        </section>
-
-        <section>
+        <section id="articulos">
             <h2>Artículos Destacados</h2>
-            <div class="grid-home">
-                    <div class="card-home">
-    <h4 style="margin-bottom: 5px;">Event-based facial microexpression analysis...</h4>
-    <p style="color: var(--texto-secundario); font-size: 0.85rem; margin-top: 0;"><i class="fas fa-users"></i> D. Acevedo, P. Negri, M.E. Buemi, N. Mastropasqua</p>
-    
-    <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">Breve resumen de 2 o 3 líneas sobre lo que trata la publicación para enganchar al lector rápidamente.</p>
-    
-    <a href="LINK_AL_ARTICULO_AQUI" target="_blank" style="color: var(--color-acento); font-weight: bold; text-decoration: none; font-size: 0.9rem;">Leer artículo completo <i class="fas fa-external-link-alt"></i></a>
-              </div>
+            
+            <div class="card-compacta">
+                <p class="card-titulo">Event-based facial microexpression analysis using SNNs</p>
+                <div class="meta-info">
+                    <span>📅 29 Dic, 2025</span>
+                    <span style="color: var(--color-primario);">📖 Conferencia ICPRS</span>
+                </div>
+                <p class="resumen-corto">Enfoque novedoso para el análisis de microexpresiones faciales utilizando sensores de eventos de alta velocidad y redes neuronales.</p>
+                <a href="https://ieeexplore.ieee.org/abstract/document/11302823" target="_blank" class="link-directo">Leer artículo original <i class="fas fa-external-link-alt"></i></a>
             </div>
-            <div class="grid-home">
-                    <div class="card-home">
-    <h4 style="margin-bottom: 5px;">titulo...</h4>
-    <p style="color: var(--texto-secundario); font-size: 0.85rem; margin-top: 0;"><i class="fas fa-users"></i> participantes</p>
-    
-    <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">Breve resumen de 2 o 3 líneas sobre lo que trata la publicación para enganchar al lector rápidamente.</p>
-    
-    <a href="LINK_AL_ARTICULO_AQUI" target="_blank" style="color: var(--color-acento); font-weight: bold; text-decoration: none; font-size: 0.9rem;">Leer artículo completo <i class="fas fa-external-link-alt"></i></a>
+
+            <div class="card-compacta">
+                <p class="card-titulo">Viabilidad de búsqueda de parentesco en Problema Inverso Familiar</p>
+                <div class="meta-info">
+                    <span>📅 21 Oct, 2025</span>
+                    <span style="color: var(--color-primario);">📖 Revista JAIIO</span>
+                </div>
+                <p class="resumen-corto">Investigación sobre la identificación de hijos mediante la comparación de adultos con versiones más jóvenes de sus padres usando ArcFace.</p>
+                <a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19857" target="_blank" class="link-directo">Leer artículo original <i class="fas fa-external-link-alt"></i></a>
             </div>
-        </div>
-     <div class="seccion-centrada-btn">
-                <a href="articulos.html" class="btn-ver-mas">Ver todos los artíulos.</a>
-         </div>
+
+            <div class="card-compacta">
+                <p class="card-titulo">Precipitación integrada satelital mediante CNNs</p>
+                <div class="meta-info">
+                    <span>📅 30 Sep, 2025</span>
+                    <span style="color: var(--color-primario);">📖 Revista JAIIO</span>
+                </div>
+                <p class="resumen-corto">Uso combinado de temperatura de brillo en infrarrojo y actividad eléctrica para monitoreo de precipitación agropecuaria.</p>
+                <a href="https://revistas.unlp.edu.ar/JAIIO/article/view/19682" target="_blank" class="link-directo">Leer artículo original <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="contenedor-boton">
+                <a href="articulos.html" class="btn-ver-todos">Explorar todos los artículos</a>
+            </div>
         </section>
+
+        <section id="novedades">
+            <h2>Últimas Novedades</h2>
+            
+            <div class="card-compacta" style="border-left-color: var(--color-rosa);">
+                <div style="margin-bottom: 8px;">
+                    <span class="estado-badge en-curso">En curso</span>
+                    <span style="font-size: 0.8rem; font-weight: bold; color: #666;">Marzo 2026</span>
+                </div>
+                <p class="card-titulo">Conferencia Internacional</p>
+                <p class="resumen-corto">Participación destacada de los miembros exponiendo avances recientes en el área de visión computacional.</p>
+            </div>
+
+            <div class="card-compacta" style="border-left-color: var(--color-rosa);">
+                <div style="margin-bottom: 8px;">
+                    <span class="estado-badge finalizado">Finalizado</span>
+                    <span style="font-size: 0.8rem; font-weight: bold; color: #666;">Febrero 2026</span>
+                </div>
+                <p class="card-titulo">Defensa de Tesis</p>
+                <p class="resumen-corto">Presentación de resultados obtenidos en el laboratorio durante la última jornada académica.</p>
+            </div>
+
+            <div class="contenedor-boton">
+                <a href="novedades.html" class="btn-ver-todos">Ver todas las novedades</a>
+            </div>
+        </section>
+
     </div>
 
-    <footer id="contacto">
+    <footer>
         <div class="footer-container">
             <div class="footer-section">
                 <h4>Contacto</h4>
-                <p><i class="fas fa-map-marker-alt" style="color: var(--color-acento); margin-right: 8px;"></i> Oficina 2115, Pabellón 0+Infinito, Ciudad Universitaria, CABA</p>
-                <p><i class="fas fa-envelope" style="color: var(--color-acento); margin-right: 8px;"></i> livlab.2115@gmail.com</p>
+                <p>📍 Pabellón 0+Infinito, CABA, Argentina</p>
+                <p>✉️ livlab.2115@gmail.com</p>
             </div>
             <div class="footer-section">
-                <h4>Escríbenos</h4>
-                <form class="formulario-contacto">
-                    <input type="text" placeholder="Nombre" required>
-                    <input type="email" placeholder="Correo" required>
-                    <textarea placeholder="Mensaje..." rows="2" required></textarea>
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-            <div class="footer-section">
-                <h4>Enlaces</h4>
+                <h4>Enlaces Rápidos</h4>
                 <a href="https://instagram.com/imagenesliv" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
                 <a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
         <div class="footer-logos">
-            <img src="logo_uba.png" alt="UBA">
-            <img src="logo_exactas.png" alt="Exactas">
-            <img src="logo_conicet.png" alt="CONICET">
+            <img src="logo_uba.png" alt="UBA"><img src="logo_exactas.png" alt="Exactas">
         </div>
         <div class="footer-bottom">&copy; 2026 LIV. Todos los derechos reservados.</div>
     </footer>
 
-    <script>
-        document.getElementById('mobile-menu').addEventListener('click', () => {
-            document.getElementById('nav-links').classList.toggle('active');
-        });
-    </script>
+<script>
+    document.getElementById('mobile-menu').addEventListener('click', () => {
+        document.getElementById('nav-links').classList.toggle('active');
+    });
+</script>
 </body>
 </html>

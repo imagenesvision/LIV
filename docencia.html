@@ -3,109 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIV - Laboratorio de Imágenes y Visión</title>
+    <title>Docencia - LIV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
     <header>
         <div class="header-container">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="logo.png" alt="Logo LIV">
-                    <h1>LABORATORIO DE IMÁGENES Y VISIÓN</h1>
-                </a>
-            </div>
-            <nav>
+            <a href="index.html" class="logo-area">
+                <img alt="Logo LIV" src="logo.png" class="logo-img">
+                <h1 class="logo-title">LABORATORIO DE IMÁGENES Y VISIÓN</h1>
+            </a>
+            <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="miembros.html">Miembros</a></li>
                     <li><a href="articulos.html">Artículos</a></li>
                     <li><a href="novedades.html">Novedades</a></li>
-                    <li><a href="docencia.html">Docencia</a></li>
+                    <li><a href="docencia.html" class="active">Docencia</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        </main>
-</head>
-<body>
-
-    <nav>
-        <a href="index.html" class="brand"><img src="logo.png" alt="LIV" class="logo"><span class="nombre-pagina">LIV</span></a>
-        <div class="nav-controls">
-            <div class="nav-links" id="nav-links">
-                <a href="index.html">Inicio</a>
-                <a href="novedades.html">Novedades</a>
-                <a href="miembros.html">Miembros</a>
-                <a href="docencia.html" class="active">Docencia</a>
-                <a href="articulos.html">Artículos</a>
+        <section class="hero" style="padding: 4rem 2rem; background: var(--primary-color);">
+            <div class="hero-content">
+                <h2 style="font-size: 2.5rem;">Actividades de Docencia</h2>
+                <p>Nuestros investigadores participan activamente en la formación de estudiantes de grado y posgrado, dictando materias y dirigiendo tesis.</p>
             </div>
-            <button class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></button>
-        </div>
-    </nav>
+        </section>
 
-    <div class="container">
-        <h1 class="seccion-titulo">Materias y Cátedras Universitarias</h1>
-        
-        <div class="tabla-contenedor">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Asignatura</th>
-                        <th>Profesores / Equipo Docente</th>
-                        <th>Duración / Vigencia</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Procesamiento de Imágenes</strong></td>
-                        <td class="profesores-lista">Dra. María Elena Buemi, Dr. Pablo Negri</td>
-                        <td><span class="duracion-badge">1° Cuatrimestre (Hasta Julio)</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Visión Computacional</strong></td>
-                        <td class="profesores-lista">Dr. Daniel Acevedo, Dra. María Elena Buemi</td>
-                        <td><span class="duracion-badge">2° Cuatrimestre (Hasta Diciembre)</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Aprendizaje Profundo y Redes Neuronales</strong></td>
-                        <td class="profesores-lista">Dr. Pablo Negri, Dr. Daniel Acevedo</td>
-                        <td><span class="duracion-badge">Bimestral / Cursada Activa</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-info">
-                <h4>Contacto</h4>
-                <p>📍 Pabellón 0+Infinito, CABA, Argentina</p>
-                <p>✉️ livlab.2115@gmail.com</p>
+        <section class="container">
+            <div class="section-header">
+                <h3>Materias y Cursos</h3>
             </div>
             
-            <div class="footer-links">
-                <h4>Enlaces Rápidos</h4>
-                <a href="https://instagram.com/imagenesliv" target="_blank">Instagram</a>
-                <a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank">LinkedIn</a>
-            </div>
-            
-            <div class="footer-logos">
-                <img src="logo.png" alt="Logo LIV">
-                <img src="logo_uba.png" alt="Logo UBA">
-                <img src="logo_exactas.png" alt="Logo Exactas">
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2026 LIV. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                
+                <div class="card">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Procesamiento de Imágenes</h4>
+                    <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 1rem;">Materia de Grado / Posgrado</p>
+                    <p>Introducción a los fundamentos del procesamiento digital de imágenes, filtrado, segmentación y reconocimiento básico de patrones.</p>
+                </div>
 
-</body>
-</html>
+                <div class="card">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Visión por Computadora</h4>
+                    <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 1rem;">Materia de Grado / Posgrado</p>
+                    <p>Estudio avanzado de algoritmos para la interpretación visual por parte de máquinas, incluyendo redes neuronales convolucionales y deep learning.</p>
+                </div>

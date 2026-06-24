@@ -365,4 +365,19 @@ footer {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+   /* Estilos específicos para imágenes de pósters dentro de las tarjetas */
+.poster-img {
+    width: 100%; /* Fuerza a la imagen a usar todo el ancho de la tarjeta */
+    height: auto;
+    border-radius: 8px; /* Le da bordes apenitas redondeados para que quede prolijo */
+    margin-top: 1rem; /* La separa un poco del enlace "Más información" */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Le da una sombrita sutil */
+    transition: transform 0.3s ease; /* Prepara el efecto de movimiento */
+}
+
+/* Efecto: la imagen se agranda un poquito al pasarle el mouse */
+.poster-img:hover {
+    transform: scale(1.03);
+    cursor: zoom-in; /* Cambia la flechita del mouse por una lupa */
+}
 }

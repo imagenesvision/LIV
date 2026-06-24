@@ -192,7 +192,7 @@ header {
     background-color: var(--bg-white);
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
-    padding: 2rem;
+    padding: 1.2rem;
     transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
 }
 
@@ -202,9 +202,15 @@ header {
 }
 
 /* Grids por defecto (Escritorio) */
-.team-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-.articles-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-.news-grid { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+.team-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); } /* */
+.articles-grid { 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /*[cite: 3] */
+    align-items: start; /* Añadimos esto */
+}
+.news-grid { 
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /*[cite: 3] */
+    align-items: start; /* Añadimos esto */
+}
 
 .member-card { text-align: center; }
 .member-img-container {

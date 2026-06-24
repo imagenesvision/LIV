@@ -359,4 +359,10 @@ footer {
     .footer-logos img {
         height: 35px;
     }
+   .news-card p, .article-card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Muestra un máximo de 4 líneas de texto */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 }

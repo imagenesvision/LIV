@@ -51,33 +51,25 @@
                 
                 <div class="card news-card">
                     <span class="badge badge-defensatesis">Defensa de Tesis &bull; 31/07/2026 </span>
-                    <h4>Lo quelas redes neuronales no saben: descubrimiento e interpretando el conocimiento aprendido en redes neuronales convolucionales.</h4>
-                    <p><strong>Alumno:</strong> Gabriel Baca Rubinztain</p>
-                    <p><strong>Fecha:</strong> Jueves 31 de julio a las 17:00hs</p>
-                    <p><strong>Lugar:</strong> Aula 1301, Pabellón 0+i</p>
-                    <p><strong>Jurado:</strong> Daniel Acevedo y Vicroria Paternostro.</p>
-                    <p><strong>Director:</strong> Gabriel Kreiman</p>
-                    <p><strong>Co-director</strong> Pablo Negri</p>
-                    
-                    <p>Este trabajo aborda el problema de inferir el conocimiento adquirido por una red neuronal convolucional para clasificación de imágenes, sin información previa sobre sus datos de entrenamiento. En particular, se estudia si es posible determinar qué clases fueron utilizadas durante el entrenamiento bajo distintas restricciones sobre el acceso a la arquitectura, los pesos y las salidas de la red.</p>
-                    <p>Se definen seis variantes del problema, que representan escenarios cada vez más generales y desafiantes. Entre los métodos explorados, el análisis de la proporción de activación neuronal en capas Fully Connected combinado con clustering no supervisado mediante K-Means mostró resultados sólidos, alcanzando scores F1 superiores a 0.8 incluso en configuraciones con hasta siete clases de diez no entrenadas.</p>
+             <h4>Lo que las redes neuronales no saben: descubriendo e interpretando el conocimiento aprendido en redes neuronales convolucionales.</h4>
+             <p><strong>Alumno:</strong> Gabriel Baca Rubinztain</p>
+             <p><strong>Fecha:</strong> Jueves 31 de julio a las 17:00hs</p>
+             <p><strong>Lugar:</strong> Aula 1301, Pabellón 0+i</p>
+             <p><strong>Director:</strong> Gabriel Kreiman</p>
+             <p><strong>Co-Director:</strong> Pablo Negri</p>
+             <p><strong>Jurado:</strong> Daniel Acevedo, Victoria Paternostro</p>
+    
+    <!-- Todo lo que va dentro de details queda oculto por defecto -->
+            <details>
+                    <summary style="cursor: pointer; font-weight: bold; margin-top: 10px; color: #0056b3;">
+                        Leer resumen de la tesis
+                    </summary>
+        
+                    <p>Este trabajo aborda el problema de inferir el conocimiento adquirido por una red neuronal convolucional para clasificación de imágenes, sin información previa sobre sus datos de entrenamiento. En particular, se estudia si es posible determinar qué clases fueron utilizadas durante el entrenamiento bajo distintas restricciones sobre el acceso a la arquitectura, los pesos y las salidas de la red. </p>
+                    <p>Se definen seis variantes del problema, que representan escenarios cada vez más generales y desafiantes. Entre los métodos explorados, el análisis de la proporción de activación neuronal en capas Fully Connected combinado con clustering no supervisado mediante K-Means mostró resultados sólidos, alcanzando scores F1 superiores a 0.8 incluso en configuraciones con hasta siete clases de diez no entrenadas. </p>
                     <p>La principal contribución del trabajo es el desarrollo de un framework basado en DeepDream para la extracción de conocimiento, que es agnóstico al dataset, a la arquitectura del modelo y a la métricas de similitud. Experimentos preliminares con este enfoque alcanzaron scores F1 superiores a 0.95 en MNIST con redes artesanales pequeñas y mostraron desempeños comparables en CIFAR-10 utilizando una ResNet20 pre-entrenada.</p>
-                </div>
-                
-                <div class="card news-card">
-                    <span class="badge badge-defensatesis">Defensa de Tesis &bull; 18/12/26</span>
-                    <h4>Reconocimiento de expresiones faciles en secuencias a través de Citation-kNN y GANs con preservación de la identidad.</h4>
-                    <p><strong>Alumno:</strong> Andreas Sturmer</p>
-                    <p><strong>Fecha:</strong> Jueves 18 de diciembre a las 16:00hs</p>
-                    <p><strong>Lugar:</strong> Sala 1604, Pabellón 0+i</p>
-                    <p><strong>Jurado:</strong> Gonzalo Fernández Florio y Carlos Orozco.</p>
-                    <p><strong>Directores:</strong> Pablo Negri y Daniel Acevedo</p>
-                    
-                    <p>En este trabajo proponemos un método de Reconocimiento de Expresiones Faciales para la tarea de One-Shot en secuencias de video. El reconocimiento de las expresiones se aborda mediante la correlación entre las dinámicas de los videos de entrada, que corresponden a una expresión realizada por un sujeto, y una serie de secuencias artificiales generadas por modernas arquitecturas de Redes Neuronales Profundas. La generación de estos cuadros artificiales se logra a través de una Red Generativa Antagónica (GAN). Luego, la expresión de entrada es categorizada a partir de aquella secuencia artificial más similar en el espacio de clasificación.</p>
-                    <p>Se plantea como hipótesis que la correlación dinámica se vería reforzada mediante el uso de arquitecturas de redes neuronales y estrategias que conserven la información de identidad del sujeto de test.</p>
-                    <p>Realizamos experimentos para distintas variantes de representación de las imágenes, enfocándonos en la familia de métodos de 2DLDA, y reportamos métricas para cada expresión.</p>
-                </div>
-
+                </details>
+            </div>
                 </div>
         </section>
     </main>

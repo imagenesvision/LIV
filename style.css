@@ -389,4 +389,36 @@ footer {
     overflow: hidden;
     margin-bottom: 15px; 
 }
+   /* Alinear el contenido del header (si no lo tienes ya configurado así) */
+header > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+
+/* Estilos para el contenedor del botón de idioma */
+.lang-switch {
+    margin-left: 20px;
+    font-size: 16px;
+    font-family: inherit; /* Hereda la tipografía de tu página */
+}
+
+/* Estilo para el idioma que NO está seleccionado (el enlace) */
+.lang-switch a {
+    text-decoration: none;
+    color: #666666; /* Gris oscuro */
+    transition: color 0.3s ease; /* Efecto suave al pasar el mouse */
+}
+
+/* Efecto al pasar el mouse por encima del idioma inactivo */
+.lang-switch a:hover {
+    color: #0056b3; /* Cambia a este azul (o usa el color principal de tu página) */
+}
+
+/* Estilo para el idioma actual/activo (el texto que no es enlace) */
+.lang-switch span {
+    color: #000000; /* Negro oscuro */
+    font-weight: bold;
+}
 }

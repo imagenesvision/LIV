@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIV - Laboratorio de Imágenes y Visión</title>
+    <!-- Importación de tipografía profesional desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Vinculación correcta de la hoja de estilos -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <!-- Encabezado Único del Sitio -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-area">
+                <img alt="Logo LIV" src="logo.png" class="logo-img">
+                <h1 class="logo-title">LABORATORIO DE IMÁGENES Y VISIÓN</h1>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index_en.html" class="active">Home</a></li>
+                    <li><a href="miembros_en.html">Members</a></li>
+                    <li><a href="articulos_en.html">Artícles</a></li>
+                    <li><a href="novedades_en.html">News</a></li>
+                    <li><a href="docencia_en.html">Teaching</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <!-- Sección Hero (Bienvenida) -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Welcome to LIV</h2>
+                <p>Página en proceso.</p>
+            </div>
+        </section>
+
+        <!-- Sección: Nuestro Equipo -->
+        <section class="container">
+            <div class="section-header">
+                <h3>Our Team</h3>
+                <a href="miembros_en.html" class="btn-secondary">See all the members &rarr;</a>
+            </div>
+            <div class="grid team-grid">
+                <div class="card member-card">
+                    <div class="member-img-container">
+                        <img alt="María Elena Buemi" src="foto1.jpg">
+                    </div>
+                    <h4>María Elena Buemi</h4>
+                    <p class="role">UBA Researcher</p>
+                </div>
+                <div class="card member-card">
+                    <div class="member-img-container">
+                        <img alt="Daniel Acevedo" src="foto2.jpg">
+                    </div>
+                    <h4>Daniel Acevedo</h4>
+                    <p class="role">CONICET Researcher</p>
+                </div>
+                <div class="card member-card">
+                    <div class="member-img-container">
+                        <img alt="Pablo Negri" src="foto3.jpg">
+                    </div>
+                    <h4>Pablo Negri</h4>
+                    <p class="role">CONICET Researcher</p>
+                </div>
+            </div>
+        </section>
+
+          <!-- Sección: Últimas Novedades -->
+        <section class="container">
+            <div class="section-header">
+                <h3>Latest News</h3>
+                <a href="novedades_en.html" class="btn-secondary">See all the news &rarr;</a>
+            </div>
+            <div class="grid news-grid">
+                <div class="card news-card">
+                    <span class="badge badge-novedad"> New &bull; Date: 03/06/2026</span>
+                    <h4>Poster presentation at the Third Joint Egocentric Vision (EgoVis) Workshop (CVPR2026) by Juan Ignacio Bustos Gorostegui</h4>
+                    <a href="novedades_en.html">View the full update</a>
+                </div>
+
+                <div class="card news-card">
+                    <span class="badge badge-defensatesis"> Thesis defense &bull; Date: 31/07/2025</span>
+                    <h4>Lo que las redes neuronales no saben: descubriendo e interpretando el conocimiento aprendido en redes neuronales convolucionales.</h4>
+     <!-- Acá aplicás la clase para limitar las líneas visualmente -->
+    <div class="texto-limitado">
+        <p>Este trabajo aborda el problema de inferir el conocimiento adquirido por una red neuronal convolucional para clasificación de imágenes, sin información previa sobre sus datos de entrenamiento. En particular, se estudia si es posible determinar qué clases fueron utilizadas...</p>
+    </div>
+    
+    <a href="novedades_en.html">View the full update</a>
+</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Artículos Destacados -->
+        <section class="container">
+            <div class="section-header">
+                <h3>Artícles</h3>
+                <a href="articulos_en.html" class="btn-secondary">Explore all the articles &rarr;</a>
+            </div>
+            <div class="grid articles-grid">
+                <div class="card article-card">
+                    <span class="article-meta">📅 April 29, 2026 &bull; 📖 Magazine arXiv preprint arXiv:2604.26285</span>
+                    <span class="article-meta" style="display: block; margin-top: 4px;">👥 P Negri, D Acevedo, N Mastropascua, I Bugueno-Cordova, R Verschae</span>
+                    <h4>Event-based Liveness Detection using Temporal Ocular Dynamics: An Exploratory Approach</h4>
+                    <p>Face liveness detection has been extensively studied using RGB cameras, achieving strong performance under controlled conditions but often failing to generalize across sensors and attack scenarios. In this work, we explore event cameras as an alternative sensing modality for liveness detection based on temporal ocular dynamics...</p>
+                    <a href="https://arxiv.org/abs/2604.26285" target="_blank" class="article-link">Read the full article</a>
+                </div>
+
+                <div class="card article-card">
+                    <span class="article-meta">📅 April 15, 2026 &bull; 📖 Network GTAP</span>
+                    <span class="article-meta" style="display: block; margin-top: 4px;">👥 ER Gomez, ML Ojeda, P Negri, MP Ramos, N Falczuk</span>
+                    <h4>Climate Change and Integrated Resource Management: A Multi-Scale Modeling Framework for Water and Food Security in Argentina</h4>
+                    <p>This paper presents the construction and an application of SIMPLE-G-AR, the first spatially explicit, gridded partial equilibrium model of agricultural production and water use calibrated for Argentina. Argentina is a major global food exporter whose agricultural sector is highly exposed to climate variability: only 5.2 percent of cropland relies on artificial irrigation, while recurrent droughts such as the 2022–2023 La Niña event caused export declines of 38 percent in primary products and 27 percent in agro-industrial manufactures...</p>
+                    <a href="https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=7873" target="_blank" class="article-link">Read the full article</a>
+                </div>
+
+                <div class="card article-card">
+                    <span class="article-meta">📅 May 23, 2026 &bull; 📖 Magazine arXiv preprint arXiv:2605.24302</span>
+                    <span class="article-meta" style="display: block; margin-top: 4px;">👥 JIB Gorostegui, ME Buemi</span>
+                    <h4>Cross-Modal Action Recognition in Egocentric Video Using Mamba: Integrating RGB and Hand Skeleton Streams via CLS Token Fusion Strategies</h4>
+                    <p>Egocentric action recognition is a challenging task due to erratic camera motion, frequent hand occlusion, and the difficulty of maintaining consistent visual representations over time. In this work, we propose a cross-modal architecture that combines RGB video and temporal hand skeleton data within a unified Mamba-based framework, exploiting the linear time complexity of State Space Models (SSMs)... </p>
+                    <a href="https://arxiv.org/abs/2605.24302" target="_blank" class="article-link">Read the full article</a>
+                </div>
+            </div>
+        </section>
+
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <p>📍 Pabellón 0+Infinito, CABA, Argentina</p>
+                <p>✉️ livlab.2115@gmail.com</p>
+            </div>
+            
+            <div class="footer-col">
+                <h5>Quick links</h5>
+                <ul class="footer-links">
+                    <li><a href="https://linkedin.com/in/laboratorio-de-imágenes-y-visión-413093406" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col footer-logos">
+                <img alt="Logo UBA" src="logo_uba.png">
+                <img alt="Logo Exactas" src="logo_exactas.png">
+                <img alt="Logo Conicet" src="logo_conicet.png">
+                <img alt="Logo DC" src="logo_dc.png">
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; All rights reserved to 2026 LIV.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
